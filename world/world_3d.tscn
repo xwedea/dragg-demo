@@ -1,6 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b14uq6kn8i7r0"]
+[gd_scene load_steps=16 format=3 uid="uid://b14uq6kn8i7r0"]
 
+[ext_resource type="Script" path="res://src/ControlUI.cs" id="1_6b85p"]
+[ext_resource type="Texture2D" uid="uid://4nwkxqmk8uw1" path="res://assets/images/stick-circle.png" id="2_5cfvc"]
 [ext_resource type="PackedScene" uid="uid://bumxigukd3hh2" path="res://characters/base_character.tscn" id="2_ft3kg"]
+[ext_resource type="Texture2D" uid="uid://diyyau0xc031n" path="res://assets/images/stick-button.png" id="3_lvg8e"]
 [ext_resource type="PackedScene" uid="uid://bfx54y75ia2vg" path="res://ball.tscn" id="3_m1i4d"]
 [ext_resource type="Script" path="res://src/GameCamera.cs" id="4_0k1nt"]
 [ext_resource type="PackedScene" uid="uid://c3bo0ps5tay8y" path="res://characters/base_enemy.tscn" id="5_hfvbo"]
@@ -28,6 +31,46 @@ albedo_color = Color(0.788235, 0.341176, 0.976471, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_cb2s3"]
 
 [node name="World3D" type="Node3D"]
+
+[node name="ControlUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6b85p")
+
+[node name="StickButtonContainer" type="Control" parent="ControlUI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StickButton" type="TextureRect" parent="ControlUI/StickButtonContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -67.0
+offset_right = 26.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lvg8e")
+
+[node name="StickCircleContainer" type="Control" parent="ControlUI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StickCircle" type="TextureRect" parent="ControlUI/StickCircleContainer"]
+layout_mode = 0
+offset_left = -47.0
+offset_top = -47.0
+offset_right = 46.0
+offset_bottom = 46.0
+texture = ExtResource("2_5cfvc")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_4n7di")
