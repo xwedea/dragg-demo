@@ -34,10 +34,6 @@ public partial class BaseEnemy : CharacterBody3D
 			velocity = direction * 0.5f;
 		}
 
-		// 	velocity.X = Mathf.MoveToward(velocity.X, 0, (float) delta * 10);
-		// 	velocity.Z = Mathf.MoveToward(velocity.Z, 0, (float) delta * 10);
-		// }
-
 		Velocity = velocity;
 		MoveAndSlide();
 	}
@@ -54,7 +50,6 @@ public partial class BaseEnemy : CharacterBody3D
 
 			GD.Print(ballVelocityLength);
 			if (ballVelocityLength > DeathThreshold) {
-				GD.Print("x");
 				impulse.Y += 15;
 				isDead = true;
 				DeathTimer.Start();
@@ -70,7 +65,6 @@ public partial class BaseEnemy : CharacterBody3D
 
 	private void OnDeathTimerTimeout()
 	{
-		GD.Print("freed");
 		QueueFree();
 	}
 
