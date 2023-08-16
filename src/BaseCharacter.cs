@@ -55,23 +55,17 @@ public partial class BaseCharacter : CharacterBody3D
 			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, 2);
 		}
 
-		BallDragging();
-
 		Velocity = velocity;
-
-		if (Velocity.Length() > MaxSpeed) {
-			Velocity = Velocity.Normalized() * MaxSpeed;
-		}
-
+		BallDragging();
 		MoveAndSlide();
-
 		
+		// Handle graphics
+		HandleAnimations();
+
 		if (direction.Length() > 0) {
-			Vector3 faceDirection = Transform.Origin + direction;
+			Vector3 faceDirection = Transform.Origin + Velocity.Normalized();
 			Model.LookAt(faceDirection);
 		}
-
-		// HandleAnimations();
 	}
 
 	public void Kick() {
@@ -118,8 +112,6 @@ public partial class BaseCharacter : CharacterBody3D
 
 		if (distance > 5) {
 			Vector3 toBall = Position.DirectionTo(Ball.Position);
-			// double force = Math.Pow(distance/2, 2);
-			// double force = distance / 5;
 			double force = 3;
 
 			Vector3 dragImpulse = toBall * (float) force;
@@ -131,18 +123,20 @@ public partial class BaseCharacter : CharacterBody3D
 	private void HandleAnimations() {
 		string currentAnim = AnimPlayer.CurrentAnimation;
 
-		Vector3 velocityXZ = Velocity;
-		velocityXZ.Y = 0;
-
-		if (velocityXZ.Length() > 0 && currentAnim != "Run") {
-			AnimPlayer.Play("Run");
+		if (IsMoving) {
+			if (currentAnim != "Run") {
+				AnimPlayer.Play("Run");
+			}
 		}
-		else if (Velocity.Length() == 0) {
+		else {
 			if (currentAnim != "Idle") {
 				AnimPlayer.Play("Idle");
 			}
 		}
 	}
-
 	
+
+
+
+
 }

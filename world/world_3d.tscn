@@ -118,12 +118,3 @@ script = ExtResource("4_0k1nt")
 
 [node name="BaseEnemy" parent="." instance=ExtResource("5_hfvbo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1291, 0.544712, -20.0463)
-
-[node name="BaseEnemy2" parent="." instance=ExtResource("5_hfvbo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1291, 0.544712, -20.0463)
-
-[node name="BaseEnemy3" parent="." instance=ExtResource("5_hfvbo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8709, 0.544712, -5.04634)
-
-[node name="BaseEnemy4" parent="." instance=ExtResource("5_hfvbo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8709, 0.544712, 11.3175)

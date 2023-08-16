@@ -33,7 +33,7 @@ public partial class BaseEnemy : CharacterBody3D
 			Vector3 direction = nextPathPosition - GlobalPosition;
 			velocity = direction * 0.5f;
 		}
-		
+
 		// 	velocity.X = Mathf.MoveToward(velocity.X, 0, (float) delta * 10);
 		// 	velocity.Z = Mathf.MoveToward(velocity.Z, 0, (float) delta * 10);
 		// }
@@ -54,9 +54,12 @@ public partial class BaseEnemy : CharacterBody3D
 
 			GD.Print(ballVelocityLength);
 			if (ballVelocityLength > DeathThreshold) {
+				GD.Print("x");
 				impulse.Y += 15;
 				isDead = true;
 				DeathTimer.Start();
+
+				GlobalRotation = new Vector3(20, 20, 20);
 			}
 			
 			Velocity += impulse;
