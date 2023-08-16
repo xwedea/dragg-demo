@@ -36,6 +36,8 @@ public partial class BaseEnemy : CharacterBody3D
 
 		Velocity = velocity;
 		MoveAndSlide();
+
+		LookAt(Player.GlobalPosition);
 	}
 
 	private void OnHitBoxBodyEntered(Node3D body)
@@ -48,7 +50,6 @@ public partial class BaseEnemy : CharacterBody3D
 			Vector3 impulseDirection = ball.Position.DirectionTo(Position);
 			Vector3 impulse = impulseDirection * ball.LinearVelocity.Length() * 1.5f;
 
-			GD.Print(ballVelocityLength);
 			if (ballVelocityLength > DeathThreshold) {
 				impulse.Y += 15;
 				isDead = true;

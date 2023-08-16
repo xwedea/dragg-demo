@@ -4,11 +4,7 @@ using System;
 
 public partial class BaseCharacter : CharacterBody3D
 {
-	public const float Acceleration = 0.05f;
-	public const float WalkSpeed = 5f;
-	public const float JumpVelocity = 4.5f;
-	public const float WalkSpeedLimit = 3f;
-	public const float MaxSpeed = 20f;
+	[Export] float WalkSpeed = 5f;
 
 	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
@@ -63,12 +59,12 @@ public partial class BaseCharacter : CharacterBody3D
 		HandleAnimations();
 
 		if (direction.Length() > 0) {
-			Vector3 faceDirection = Transform.Origin + Velocity.Normalized();
+			Vector3 faceDirection = Transform.Origin + Velocity.Normalized() * 10;
 			Model.LookAt(faceDirection);
 		}
 	}
 
-	public void Kick() {
+	private void Kick() {
 		float distance = Position.DistanceTo(Ball.Position);
 		if (distance < 5) {
 			Vector3 toBall = Position.DirectionTo(Ball.Position);
@@ -80,32 +76,6 @@ public partial class BaseCharacter : CharacterBody3D
 		}
 	}
 
-	public Vector3 GetMovement() {
-		if (!IsMoving) {
-			return Vector3.Zero;
-		}
-
-		Vector2 mousePosition = GetViewport().GetMousePosition();
-		Vector2 stickDirection = StickCenter.DirectionTo(mousePosition);
-
-		Vector3 velocity = Vector3.Zero;
-		velocity.Z = stickDirection.Y;
-		velocity.X = stickDirection.X;
-
-		return velocity;
-	}
-
-
-	public void HandleStick() {
-		if (Input.IsActionJustPressed("LeftClick")) {
-			IsMoving = true;
-			StickCenter = GetViewport().GetMousePosition();
-		}
-		else if (Input.IsActionJustReleased("LeftClick")) {
-			IsMoving = false;
-			Kick();
-		}
-	}
 
 	private void BallDragging() {
 		float distance = Position.DistanceTo(Ball.Position);
@@ -135,6 +105,32 @@ public partial class BaseCharacter : CharacterBody3D
 		}
 	}
 	
+	private Vector3 GetMovement() {
+		if (!IsMoving) {
+			return Vector3.Zero;
+		}
+
+		Vector2 mousePosition = GetViewport().GetMousePosition();
+		Vector2 stickDirection = StickCenter.DirectionTo(mousePosition);
+
+		Vector3 velocity = Vector3.Zero;
+		velocity.Z = stickDirection.Y;
+		velocity.X = stickDirection.X;
+
+		return velocity;
+	}
+
+
+	private void HandleStick() {
+		if (Input.IsActionJustPressed("LeftClick")) {
+			IsMoving = true;
+			StickCenter = GetViewport().GetMousePosition();
+		}
+		else if (Input.IsActionJustReleased("LeftClick")) {
+			IsMoving = false;
+			Kick();
+		}
+	}
 
 
 
