@@ -23,7 +23,6 @@ public partial class BallRope : Node3D
 		RopeSkeleton = GetNode<Skeleton3D>("Armature/Skeleton3D");
 		RopeSkeleton.PhysicalBonesStartSimulation();
 
-
 		FirstBone = RopeSkeleton.GetNode<BoneAttachment3D>("Bone");
 		// FirstBone.OverridePose = true;
 		// FirstBone.GlobalPosition = BallRopeSlot.GlobalPosition;
