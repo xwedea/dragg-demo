@@ -52,13 +52,13 @@ public partial class BaseCharacter : CharacterBody3D
 		}
 
 		Velocity = velocity;
-		BallDragging();
+		GetDragged();
 		MoveAndSlide();
 		
 		// Handle graphics
 		HandleAnimations();
 
-		if (direction.Length() > 0) {
+		if (direction.Length() > 0 && Velocity.Length() > 0.5) {
 			Vector3 faceDirection = Transform.Origin + Velocity.Normalized() * 10;
 			Model.LookAt(faceDirection);
 		}
@@ -66,7 +66,7 @@ public partial class BaseCharacter : CharacterBody3D
 
 	private void Kick() {
 		float distance = Position.DistanceTo(Ball.Position);
-		if (distance < 5) {
+		if (distance < Ball.MaxKickDistance) {
 			Vector3 toBall = Position.DirectionTo(Ball.Position);
 			toBall.Y = 0;
 			float force = 120/distance;
@@ -77,10 +77,10 @@ public partial class BaseCharacter : CharacterBody3D
 	}
 
 
-	private void BallDragging() {
+	private void GetDragged() {
 		float distance = Position.DistanceTo(Ball.Position);
 
-		if (distance > 5) {
+		if (distance > Ball.LineLength) {
 			Vector3 toBall = Position.DirectionTo(Ball.Position);
 			double force = 3;
 
