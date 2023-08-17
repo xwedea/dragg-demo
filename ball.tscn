@@ -28,3 +28,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cfagf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_vfd8j")
+
+[node name="RopeSlot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51188, 0, 0)
