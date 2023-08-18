@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://djdwv5nlgvsvk"
-path="res://.godot/imported/tiny-rope.glb-5176dacccb652dc7889fd79d113c668c.scn"
+path="res://.godot/imported/tiny-rope.glb-3f987794a3eeb0a9d677e4d102e3562f.scn"
 
 [deps]
 
-source_file="res://tiny-rope.glb"
-dest_files=["res://.godot/imported/tiny-rope.glb-5176dacccb652dc7889fd79d113c668c.scn"]
+source_file="res://ball/tiny-rope.glb"
+dest_files=["res://.godot/imported/tiny-rope.glb-3f987794a3eeb0a9d677e4d102e3562f.scn"]
 
 [params]
 

@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+
 
 public partial class BaseEnemy : CharacterBody3D
 {
@@ -20,7 +22,7 @@ public partial class BaseEnemy : CharacterBody3D
 		NavAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 		DeathTimer = GetNode<Timer>("DeathTimer");
 		Player = World.GetNode<BaseCharacter>("BaseCharacter");
-
+	
 	}
 
 	public override void _PhysicsProcess(double delta)

@@ -1,13 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfx54y75ia2vg"]
+[gd_scene load_steps=8 format=3 uid="uid://bfx54y75ia2vg"]
 
 [ext_resource type="Script" path="res://src/Ball.cs" id="1_6vaml"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_30x3u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ktb4"]
-albedo_color = Color(0, 0, 0.764706, 1)
+albedo_color = Color(0, 0, 0.811765, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akye7"]
+transparency = 1
 
 [sub_resource type="SphereMesh" id="SphereMesh_ko2w7"]
+material = SubResource("StandardMaterial3D_akye7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfagf"]
 
@@ -17,12 +21,14 @@ radius = 1.00431
 [node name="Ball" type="RigidBody3D"]
 axis_lock_linear_y = true
 physics_material_override = SubResource("PhysicsMaterial_30x3u")
+continuous_cd = true
 linear_damp = 5.0
 script = ExtResource("1_6vaml")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_1ktb4")
+transparency = 0.36
 mesh = SubResource("SphereMesh_ko2w7")
 surface_material_override/0 = SubResource("StandardMaterial3D_cfagf")
 

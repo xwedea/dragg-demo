@@ -1,12 +1,12 @@
 [gd_scene load_steps=16 format=3 uid="uid://b14uq6kn8i7r0"]
 
-[ext_resource type="Script" path="res://src/ControlUI.cs" id="1_6b85p"]
-[ext_resource type="Texture2D" uid="uid://4nwkxqmk8uw1" path="res://assets/images/stick-circle.png" id="2_5cfvc"]
-[ext_resource type="PackedScene" uid="uid://bumxigukd3hh2" path="res://characters/base_character.tscn" id="2_ft3kg"]
-[ext_resource type="Texture2D" uid="uid://diyyau0xc031n" path="res://assets/images/stick-button.png" id="3_lvg8e"]
-[ext_resource type="PackedScene" uid="uid://bfx54y75ia2vg" path="res://ball.tscn" id="3_m1i4d"]
-[ext_resource type="Script" path="res://src/GameCamera.cs" id="4_0k1nt"]
-[ext_resource type="PackedScene" uid="uid://c3bo0ps5tay8y" path="res://characters/base_enemy.tscn" id="5_hfvbo"]
+[ext_resource type="Script" path="res://src/ControlUI.cs" id="1_7nrdo"]
+[ext_resource type="Texture2D" uid="uid://diyyau0xc031n" path="res://assets/images/stick-button.png" id="2_1iuhe"]
+[ext_resource type="Texture2D" uid="uid://4nwkxqmk8uw1" path="res://assets/images/stick-circle.png" id="3_y2g8e"]
+[ext_resource type="Script" path="res://src/GameCamera.cs" id="4_a2o1i"]
+[ext_resource type="PackedScene" uid="uid://bumxigukd3hh2" path="res://characters/base_character.tscn" id="5_1nxl5"]
+[ext_resource type="PackedScene" uid="uid://bfx54y75ia2vg" path="res://ball/ball.tscn" id="6_ydc3q"]
+[ext_resource type="PackedScene" uid="uid://c3bo0ps5tay8y" path="res://characters/base_enemy.tscn" id="7_cwvuu"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4n7di"]
 vertices = PackedVector3Array(-43.5, 1, -49.5, -49.5, 1, -49.5, -49.5, 1, -43.5, -49.5, 1, 43.25, -49.5, 1, 49.5, -43.5, 1, 49.5, 49.5, 1, -43.5, 49.5, 1, -49.5, 43.25, 1, -49.5, 43.25, 1, 49.5, 49.5, 1, 49.5, 49.5, 1, 43.25, -37.25, 1, -49.5, -43.5, 1, -49.5, -49.5, 1, -43.5, -49.5, 1, -37.25, -49.5, 1, 43.25, -43.5, 1, 49.5, -37.25, 1, 49.5, -49.5, 1, 37, 49.5, 1, -37.25, 49.5, 1, -43.5, 43.25, 1, -49.5, 37, 1, -49.5, 37, 1, 49.5, 43.25, 1, 49.5, 49.5, 1, 43.25, -49.5, 1, 0, -49.5, 1, 6, -6.25, 1, 49.5, 18.5, 1, 49.5, 49.5, 1, 24.75, 49.5, 1, 18.5, 12.25, 1, 49.5, 49.5, 1, -6.25, 49.5, 1, -12.5, 12.25, 1, -49.5, 6, 1, -49.5, 37, 1, 49.5, 49.5, 1, 43.25, 49.5, 1, 37, 30.75, 1, 49.5, -31, 1, -49.5, -37.25, 1, -49.5, -49.5, 1, -37.25, -49.5, 1, -31, -49.5, 1, 37, -37.25, 1, 49.5, -31, 1, 49.5, -49.5, 1, 30.75, 49.5, 1, -31, 49.5, 1, -37.25, 37, 1, -49.5, 30.75, 1, -49.5, -12.5, 1, -49.5, -18.75, 1, -49.5, -49.5, 1, -18.75, -49.5, 1, -12.5, -49.5, 1, 18.5, -18.75, 1, 49.5, -12.5, 1, 49.5, -49.5, 1, 12.25, 49.5, 1, -6.25, 6, 1, -49.5, 0, 1, -49.5, 49.5, 1, 0, 49.5, 1, -12.5, 49.5, 1, -18.75, 18.5, 1, -49.5, 12.25, 1, -49.5, 30.75, 1, 49.5, 49.5, 1, 37, 49.5, 1, 30.75, 24.75, 1, 49.5, -49.5, 1, 24.75, -49.5, 1, 30.75, -31, 1, 49.5, -24.75, 1, 49.5, 49.5, 1, -31, 30.75, 1, -49.5, 24.75, 1, -49.5, 49.5, 1, -24.75, -24.75, 1, -49.5, -31, 1, -49.5, -49.5, 1, -31, -49.5, 1, -24.75, 49.5, 1, 0, 0, 1, -49.5, -49.5, 1, 0, -6.25, 1, 49.5, 0, 1, 49.5, 49.5, 1, 6, 12.25, 1, 49.5, 49.5, 1, 18.5, 49.5, 1, 12.25, 6, 1, 49.5, 24.75, 1, 49.5, 49.5, 1, 30.75, 49.5, 1, 24.75, 18.5, 1, 49.5, 0, 1, -49.5, -6.25, 1, -49.5, -49.5, 1, -6.25, -49.5, 1, 0, 6, 1, 49.5, 49.5, 1, 12.25, 49.5, 1, 6, 0, 1, 49.5, -49.5, 1, 24.75, -24.75, 1, 49.5, -18.75, 1, 49.5, -49.5, 1, 18.5, 49.5, 1, -18.75, 49.5, 1, -24.75, 24.75, 1, -49.5, 18.5, 1, -49.5, -18.75, 1, -49.5, -24.75, 1, -49.5, -49.5, 1, -24.75, -49.5, 1, -18.75, -6.25, 1, -49.5, -12.5, 1, -49.5, -49.5, 1, -12.5, -49.5, 1, -6.25, -49.5, 1, 12.25, -12.5, 1, 49.5, -6.25, 1, 49.5, -49.5, 1, 6)
@@ -37,7 +37,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_6b85p")
+script = ExtResource("1_7nrdo")
 
 [node name="StickButtonContainer" type="Control" parent="ControlUI"]
 anchors_preset = 0
@@ -57,7 +57,7 @@ offset_right = 26.0
 offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_lvg8e")
+texture = ExtResource("2_1iuhe")
 
 [node name="StickCircleContainer" type="Control" parent="ControlUI"]
 anchors_preset = 0
@@ -70,7 +70,7 @@ offset_left = -47.0
 offset_top = -47.0
 offset_right = 46.0
 offset_bottom = 46.0
-texture = ExtResource("2_5cfvc")
+texture = ExtResource("3_y2g8e")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_4n7di")
@@ -96,27 +96,27 @@ environment = SubResource("Environment_dwyoh")
 [node name="GameCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, -12.3796, 8.3593, 6.27124)
 current = true
-script = ExtResource("4_0k1nt")
+script = ExtResource("4_a2o1i")
 
-[node name="BaseCharacter" parent="." instance=ExtResource("2_ft3kg")]
+[node name="BaseCharacter" parent="." instance=ExtResource("5_1nxl5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9934, 0.567883, -0.534044)
 
-[node name="Ball" parent="." instance=ExtResource("3_m1i4d")]
+[node name="Ball" parent="." instance=ExtResource("6_ydc3q")]
 transform = Transform3D(0.866244, -0.499622, 0, 0.499622, 0.866244, 0, 0, 0, 1, -13.0799, 1.97766, -6.67017)
 axis_lock_linear_y = false
 
 [node name="Enemies" type="Node3D" parent="."]
 
-[node name="BaseEnemy" parent="Enemies" instance=ExtResource("5_hfvbo")]
+[node name="BaseEnemy" parent="Enemies" instance=ExtResource("7_cwvuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1291, 0.544712, -20.0463)
 
-[node name="BaseEnemy2" parent="Enemies" instance=ExtResource("5_hfvbo")]
+[node name="BaseEnemy2" parent="Enemies" instance=ExtResource("7_cwvuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8709, 0.544712, -14.0463)
 
-[node name="BaseEnemy3" parent="Enemies" instance=ExtResource("5_hfvbo")]
+[node name="BaseEnemy3" parent="Enemies" instance=ExtResource("7_cwvuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8709, 0.544712, 4.88903)
 
-[node name="BaseEnemy4" parent="Enemies" instance=ExtResource("5_hfvbo")]
+[node name="BaseEnemy4" parent="Enemies" instance=ExtResource("7_cwvuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.18524, 0.544712, 14.3408)
 
 [node name="Obstacle" type="RigidBody3D" parent="."]
