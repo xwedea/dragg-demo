@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bhnd0uvbjnp2t"]
 
 [ext_resource type="PackedScene" uid="uid://djdwv5nlgvsvk" path="res://ball/tiny-rope.glb" id="1_6iii0"]
-[ext_resource type="Script" path="res://src/BallRope.cs" id="2_opvvx"]
+[ext_resource type="Script" path="res://src/csharp/BallRope.cs" id="2_opvvx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dlq1o"]
 radius = 0.15

@@ -1,6 +1,6 @@
 [gd_scene load_steps=55 format=3 uid="uid://c3bo0ps5tay8y"]
 
-[ext_resource type="Script" path="res://src/gdscript/base_enemy.gd" id="1_pnrgx"]
+[ext_resource type="Script" path="res://src/base_enemy.gd" id="1_es1re"]
 [ext_resource type="Material" uid="uid://b5yiyxu0o7yhi" path="res://characters/enemy_head_material.tres" id="2_rnx1n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3fcd"]
@@ -3872,7 +3872,7 @@ radius = 0.60687
 height = 1.67225
 
 [node name="BaseEnemy" type="CharacterBody3D"]
-script = ExtResource("1_pnrgx")
+script = ExtResource("1_es1re")
 
 [node name="CapsuleCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.82589, 0)
