@@ -1,13 +1,11 @@
 [gd_scene load_steps=55 format=3 uid="uid://c3bo0ps5tay8y"]
 
 [ext_resource type="Script" path="res://src/BaseEnemy.cs" id="1_0ckw8"]
+[ext_resource type="Material" uid="uid://b5yiyxu0o7yhi" path="res://characters/enemy_head_material.tres" id="2_rnx1n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3fcd"]
 radius = 0.393939
 height = 1.63386
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqgp1"]
-albedo_color = Color(0.796078, 0.121569, 0.25098, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oso7y"]
 resource_name = "White"
@@ -53,7 +51,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vk2tj"]
-albedo_color = Color(0.752941, 0.631373, 0.54902, 1)
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4upy"]
 resource_name = "Glow"
@@ -3935,7 +3933,7 @@ bone_name = "Head"
 bone_idx = 1
 
 [node name="character_skeleton_minion_head" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/Head"]
-material_override = SubResource("StandardMaterial3D_pqgp1")
+material_override = ExtResource("2_rnx1n")
 mesh = SubResource("ArrayMesh_6w2gt")
 skeleton = NodePath("")
 blend_shapes/Angry = 0.0
@@ -3949,6 +3947,7 @@ skeleton = NodePath("")
 
 [node name="character_skeleton_minion_jaw" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/Head/character_skeleton_minion_head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.126701, 0.0399227)
+material_override = ExtResource("2_rnx1n")
 mesh = SubResource("ArrayMesh_p44p3")
 skeleton = NodePath("")
 
@@ -3958,6 +3957,7 @@ bone_name = "Body"
 bone_idx = 0
 
 [node name="character_skeleton_minion_body" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/Body"]
+transform = Transform3D(1, 3.57977e-09, 0, -3.88536e-09, 1, 0, -4.65661e-10, 3.72529e-09, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_rwxjg")
 mesh = SubResource("ArrayMesh_ekist")
 skeleton = NodePath("")
@@ -3969,6 +3969,7 @@ bone_idx = 2
 
 [node name="character_skeleton_minion_armLeft" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/ArmLeft"]
 transform = Transform3D(-3.86997e-10, 2.53319e-07, -0.999999, 0.471936, -0.881633, -2.53319e-07, -0.881633, -0.471936, -3.86997e-10, 0, 0, 0)
+material_override = ExtResource("2_rnx1n")
 mesh = SubResource("ArrayMesh_tpgoj")
 skeleton = NodePath("")
 
@@ -3979,6 +3980,7 @@ bone_idx = 4
 
 [node name="character_skeleton_minion_armRight" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/ArmRight"]
 transform = Transform3D(-1.44519e-08, -2.79594e-07, -0.999999, -0.471936, -0.881633, 2.79594e-07, -0.881633, 0.471936, -1.44519e-08, 0, 0, 0)
+material_override = ExtResource("2_rnx1n")
 mesh = SubResource("ArrayMesh_i56ud")
 skeleton = NodePath("")
 
