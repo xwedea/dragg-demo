@@ -24,6 +24,8 @@ physics_material_override = SubResource("PhysicsMaterial_30x3u")
 continuous_cd = true
 linear_damp = 5.0
 script = ExtResource("1_mtp84")
+rope_thickness = 0.05
+override_rope_color = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

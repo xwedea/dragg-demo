@@ -11,12 +11,14 @@ var world : Node3D
 var model : Node3D
 var ball : Ball
 var anim_player : AnimationPlayer
+var rope_slot : Node3D
 
 
 func _ready():
-	world = get_tree().root.get_node("World3D")
-	model = get_node("Model")
+	world = get_tree().root.get_node("World3D") as Node3D
+	model = get_node("Model") as Node3D
 	ball = world.get_node("Ball") as Ball
+	rope_slot = get_node("RopeSlot") as Node3D
 	anim_player = model.get_node("AnimationPlayer")
 	anim_player.play("Idle")
 	
@@ -50,30 +52,30 @@ func _physics_process(delta):
 func _kick() -> void:
 	var distance : float = position.distance_to(ball.position);
 	if (distance < ball.max_kick_distance): 
-		var toBall = position.direction_to(ball.position);
-		toBall.y = 0;
+		var to_ball = position.direction_to(ball.position);
+		to_ball.y = 0;
 		var force = 120/distance;
-		var ballImpulse = force * toBall;
+		var ballImpulse = force * to_ball;
 		ball.apply_impulse(ballImpulse);
 
 
 func _get_dragged() -> void: 
 	var distance = position.distance_to(ball.position);
 	if (distance > ball.line_length):
-		var toBall = position.direction_to(ball.position).normalized();
+		var to_ball = position.direction_to(ball.position).normalized();
 		var force = 3;
-		var dragImpulse = toBall * force;
+		var dragImpulse = to_ball * force;
 		velocity += dragImpulse;
 			
 
 func _handle_animations() -> void:
-	var currentAnim = anim_player.current_animation;
+	var current_anim = anim_player.current_animation;
 	
 	if (is_moving):
-		if (currentAnim != "Run"):
+		if (current_anim != "Run"):
 			anim_player.play("Run");
 	else:
-		if (currentAnim != "Idle"):
+		if (current_anim != "Idle"):
 			anim_player.play("Idle");
 
 	
@@ -81,8 +83,8 @@ func _get_movement() -> Vector3:
 	if (!is_moving):
 		return Vector3.ZERO;
 		
-	var stickDirection = stick_center.direction_to(get_viewport().get_mouse_position());
-	return Vector3(stickDirection.x, 0, stickDirection.y);
+	var stick_direction = stick_center.direction_to(get_viewport().get_mouse_position());
+	return Vector3(stick_direction.x, 0, stick_direction.y);
 
 
 func _handle_stick() -> void:

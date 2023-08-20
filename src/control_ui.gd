@@ -1,6 +1,6 @@
 extends Control
 
-@export var maxDistance: float = 47
+@export var max_distance: float = 47
 
 var stick_circle_container: Control
 var stick_button_container: Control
@@ -20,9 +20,9 @@ func _process(_delta: float) -> void:
 
 	if is_screen_pressed:
 		stick_button_container.position = mousePosition
-		if stick_circle_container.position.distance_to(mousePosition) > maxDistance:
+		if stick_circle_container.position.distance_to(mousePosition) > max_distance:
 			var direction = (mousePosition - stick_circle_container.position).normalized()
-			stick_button_container.position = stick_circle_container.position + direction * maxDistance
+			stick_button_container.position = stick_circle_container.position + direction * max_distance
 
 	if Input.is_action_just_pressed("LeftClick"):
 		is_screen_pressed = true

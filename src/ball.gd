@@ -17,7 +17,7 @@ func _ready():
 	
 	if !override_rope_color:
 		rope_color = Color(1, 0, 0) # Red
-	previous_rope = _create_line_mesh(global_position, player.global_position, rope_thickness, rope_color)
+	previous_rope = _create_line_mesh(global_position, player.rope_slot.global_position, rope_thickness, rope_color)
 
 func _physics_process(_delta: float) -> void:
 	_draw_rope()
@@ -34,7 +34,7 @@ func _draw_rope() -> void:
 		else:
 			rope_color = Color(1, 1, 1) # White
 	
-	var line = _create_line_mesh(global_position, player.global_position, rope_thickness, rope_color)
+	var line = _create_line_mesh(global_position, player.rope_slot.global_position, rope_thickness, rope_color)
 	world.add_child(line)
 	previous_rope.queue_free()
 	
@@ -42,27 +42,27 @@ func _draw_rope() -> void:
 	
 
 func _create_line_mesh(ballPos: Vector3, playerPos: Vector3, thickness: float, _color: Color) -> MeshInstance3D:
-	var meshInstance: MeshInstance3D = MeshInstance3D.new()
-	meshInstance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	var mesh_instance: MeshInstance3D = MeshInstance3D.new()
+	mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 
-	var arrayMesh: ArrayMesh = ArrayMesh.new()
-	meshInstance.mesh = arrayMesh
+	var array_mesh: ArrayMesh = ArrayMesh.new()
+	mesh_instance.mesh = array_mesh
 	
-	var ballPos_right: Vector3 = ballPos + ballPos.direction_to(playerPos).cross(Vector3.UP).normalized() * thickness
-	var ballPos_left: Vector3 = ballPos + ballPos.direction_to(playerPos).cross(Vector3.DOWN).normalized() * thickness
-	var playerPos_left: Vector3 = playerPos + playerPos.direction_to(ballPos).cross(Vector3.UP).normalized() * thickness
-	var playerPos_right: Vector3 = playerPos + playerPos.direction_to(ballPos).cross(Vector3.DOWN).normalized() * thickness
+	var ballPos_left: Vector3 = ballPos + ballPos.direction_to(playerPos).cross(Vector3.UP).normalized() * thickness
+	var ballPos_right: Vector3 = ballPos + ballPos.direction_to(playerPos).cross(Vector3.DOWN).normalized() * thickness
+	var playerPos_right: Vector3 = playerPos + playerPos.direction_to(ballPos).cross(Vector3.UP).normalized() * thickness
+	var playerPos_left: Vector3 = playerPos + playerPos.direction_to(ballPos).cross(Vector3.DOWN).normalized() * thickness
 
-	var meshData: Array = []
-	meshData.resize(int(ArrayMesh.ARRAY_MAX))
-	var verts : PackedVector3Array = [
-		ballPos_left, ballPos, playerPos_left, 
-		playerPos_left, ballPos, playerPos,
-		playerPos, ballPos, ballPos_right,
-		ballPos_right, playerPos_right, playerPos
-	]
-	meshData[int(Mesh.ARRAY_VERTEX)] = verts
-	arrayMesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, meshData)
+	var mesh_data: Array = []
+	mesh_data.resize(ArrayMesh.ARRAY_MAX)
+	var verts = PackedVector3Array([
+				ballPos_left, ballPos, playerPos_left, 
+				playerPos_left, ballPos, playerPos,
+				playerPos, ballPos, ballPos_right,
+				ballPos_right, playerPos_right, playerPos
+			])
+	mesh_data[Mesh.ARRAY_VERTEX] = verts
+	array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, mesh_data)
 
-	return meshInstance
+	return mesh_instance
 
