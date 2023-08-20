@@ -6,7 +6,7 @@ public partial class ControlUI : Control
 
 	Control StickCircleContainer;
 	Control StickButtonContainer;
-
+	[Export] float maxDistance = 2f;
 	bool IsScreenPressed = false;
 	Viewport GameViewport;
 
@@ -27,6 +27,12 @@ public partial class ControlUI : Control
 
 		if (IsScreenPressed) {
 			StickButtonContainer.Position = mousePosition;
+			if(StickCircleContainer.Position.DistanceTo(mousePosition) > maxDistance)
+			{
+				Vector2 direction = StickCircleContainer.Position.DirectionTo(mousePosition).Normalized();
+				StickButtonContainer.Position = StickCircleContainer.Position + (direction* maxDistance);
+
+			}
 		}
 
 		if (Input.IsActionJustPressed("LeftClick")) {
