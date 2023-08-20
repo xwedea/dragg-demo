@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bfx54y75ia2vg"]
 
-[ext_resource type="Script" path="res://src/Ball.cs" id="1_6vaml"]
+[ext_resource type="Script" path="res://src/gdscript/ball.gd" id="1_jiem4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_30x3u"]
 
@@ -23,7 +23,7 @@ axis_lock_linear_y = true
 physics_material_override = SubResource("PhysicsMaterial_30x3u")
 continuous_cd = true
 linear_damp = 5.0
-script = ExtResource("1_6vaml")
+script = ExtResource("1_jiem4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

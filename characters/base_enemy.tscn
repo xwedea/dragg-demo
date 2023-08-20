@@ -1,6 +1,6 @@
 [gd_scene load_steps=55 format=3 uid="uid://c3bo0ps5tay8y"]
 
-[ext_resource type="Script" path="res://src/BaseEnemy.cs" id="1_0ckw8"]
+[ext_resource type="Script" path="res://src/gdscript/base_enemy.gd" id="1_pnrgx"]
 [ext_resource type="Material" uid="uid://b5yiyxu0o7yhi" path="res://characters/enemy_head_material.tres" id="2_rnx1n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3fcd"]
@@ -3872,7 +3872,7 @@ radius = 0.60687
 height = 1.67225
 
 [node name="BaseEnemy" type="CharacterBody3D"]
-script = ExtResource("1_0ckw8")
+script = ExtResource("1_pnrgx")
 
 [node name="CapsuleCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.82589, 0)
@@ -4010,5 +4010,5 @@ wait_time = 2.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[connection signal="body_entered" from="HitBox" to="." method="OnHitBoxBodyEntered"]
-[connection signal="timeout" from="DeathTimer" to="." method="OnDeathTimerTimeout"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

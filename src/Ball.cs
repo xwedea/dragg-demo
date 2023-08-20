@@ -13,13 +13,13 @@ public partial class Ball : RigidBody3D
 	[Export] bool OverrideRopeColor = false;
 
 	Node3D World;
-	BaseCharacter Player;
+	Node3D Player;
 	MeshInstance3D PreviousRope;
 
 	public override void _Ready()
 	{
 		World = GetTree().Root.GetNode<Node3D>("World3D");
-		Player = World.GetNode<BaseCharacter>("BaseCharacter");	
+		Player = World.GetNode<Node3D>("BaseCharacter");	
 
 		if (!OverrideRopeColor) RopeColor = Colors.Red;
 		PreviousRope = LineDrawer.CreateLineMesh(GlobalPosition, Player.GlobalPosition, RopeThickness, RopeColor);

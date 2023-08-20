@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=3 uid="uid://b14uq6kn8i7r0"]
 
-[ext_resource type="Script" path="res://src/ControlUI.cs" id="1_7nrdo"]
+[ext_resource type="Script" path="res://src/gdscript/control_ui.gd" id="1_5x4yr"]
 [ext_resource type="Texture2D" uid="uid://diyyau0xc031n" path="res://assets/images/stick-button.png" id="2_1iuhe"]
 [ext_resource type="Texture2D" uid="uid://4nwkxqmk8uw1" path="res://assets/images/stick-circle.png" id="3_y2g8e"]
-[ext_resource type="Script" path="res://src/GameCamera.cs" id="4_a2o1i"]
+[ext_resource type="Script" path="res://src/gdscript/game_camera.gd" id="4_cpp03"]
 [ext_resource type="PackedScene" uid="uid://bumxigukd3hh2" path="res://characters/base_character.tscn" id="5_1nxl5"]
 [ext_resource type="PackedScene" uid="uid://bfx54y75ia2vg" path="res://ball/ball.tscn" id="6_ydc3q"]
 [ext_resource type="PackedScene" uid="uid://c3bo0ps5tay8y" path="res://characters/base_enemy.tscn" id="7_cwvuu"]
@@ -37,7 +37,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_7nrdo")
+script = ExtResource("1_5x4yr")
+maxDistance = 60.0
 
 [node name="StickButtonContainer" type="Control" parent="ControlUI"]
 anchors_preset = 0
@@ -96,10 +97,10 @@ environment = SubResource("Environment_dwyoh")
 [node name="GameCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, -12.3796, 8.3593, 6.27124)
 current = true
-script = ExtResource("4_a2o1i")
+script = ExtResource("4_cpp03")
 
 [node name="BaseCharacter" parent="." instance=ExtResource("5_1nxl5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9934, 0.567883, -0.534044)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9934, 1.5059, -0.534044)
 
 [node name="Ball" parent="." instance=ExtResource("6_ydc3q")]
 transform = Transform3D(0.866244, -0.499622, 0, 0.499622, 0.866244, 0, 0, 0, 1, -13.0799, 1.97766, -6.67017)

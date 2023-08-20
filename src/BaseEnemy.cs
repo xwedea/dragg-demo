@@ -12,7 +12,7 @@ public partial class BaseEnemy : CharacterBody3D
 	Node3D World;
 	Timer DeathTimer;
 	NavigationAgent3D NavAgent;
-	BaseCharacter Player;
+	Node3D Player;
 
 	public override void _Ready()
 	{
@@ -21,7 +21,7 @@ public partial class BaseEnemy : CharacterBody3D
 		World = GetTree().Root.GetNode<Node3D>("World3D");
 		NavAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 		DeathTimer = GetNode<Timer>("DeathTimer");
-		Player = World.GetNode<BaseCharacter>("BaseCharacter");
+		Player = World.GetNode<Node3D>("BaseCharacter");
 	
 	}
 
