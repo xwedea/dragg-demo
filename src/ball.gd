@@ -1,8 +1,9 @@
 class_name Ball extends RigidBody3D
 
 @export var max_kick_distance: float = 8
+@export var hit_force: float = 2
 @export var line_length: float = 5
-@export var pull_force: float = 10
+@export var pull_force: float = 3
 @export var rope_thickness: float = 0.1
 @export var rope_color: Color
 @export var override_rope_color: bool = false
@@ -33,13 +34,13 @@ func _draw_rope() -> void:
 			rope_color = Color(1, 0.5, 0.0) # Orange
 		else:
 			rope_color = Color(1, 1, 1) # White
-	
+
 	var line = _create_line_mesh(global_position, player.rope_slot.global_position, rope_thickness, rope_color)
 	world.add_child(line)
 	previous_rope.queue_free()
-	
+
 	previous_rope = line
-	
+
 
 func _create_line_mesh(ballPos: Vector3, playerPos: Vector3, thickness: float, _color: Color) -> MeshInstance3D:
 	var mesh_instance: MeshInstance3D = MeshInstance3D.new()

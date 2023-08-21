@@ -30,7 +30,6 @@ override_rope_color = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_1ktb4")
-transparency = 0.36
 mesh = SubResource("SphereMesh_ko2w7")
 surface_material_override/0 = SubResource("StandardMaterial3D_cfagf")
 

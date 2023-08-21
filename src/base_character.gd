@@ -63,8 +63,8 @@ func _get_dragged() -> void:
 	var distance = position.distance_to(ball.position);
 	if (distance > ball.line_length):
 		var to_ball = position.direction_to(ball.position).normalized();
-		var force = 3;
-		var dragImpulse = to_ball * force;
+		to_ball.y = 0;
+		var dragImpulse = to_ball * ball.pull_force;
 		velocity += dragImpulse;
 			
 
