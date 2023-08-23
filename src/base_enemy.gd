@@ -1,23 +1,39 @@
 class_name BaseEnemy extends CharacterBody3D
 
-@export var death_threshold: float = 15.0
+@export var death_threshold: float = 10
 var is_dead: bool = false
 var is_knocked_out = false
+var is_ball_colliding = false
 
-var world: Node3D
-var death_timer: Timer
-var knock_out_timer: Timer
-var nav_agent: NavigationAgent3D
-var player: BaseCharacter
+var world : Node3D
+var ball : Ball
+var death_timer : Timer
+var knock_out_timer : Timer
+var nav_agent : NavigationAgent3D
+var player : BaseCharacter
+var anim_player : AnimationPlayer
+var model : Node3D
+var collision_shape : CollisionShape3D
 
 func _ready():
 	world = get_tree().root.get_node("World3D") as Node3D
+	player = world.get_node("BaseCharacter") as BaseCharacter
+	ball = world.get_node("Ball") as Ball
+	
 	nav_agent = get_node("NavigationAgent3D") as NavigationAgent3D
 	death_timer = get_node("DeathTimer") as Timer
 	knock_out_timer = get_node("KnockOutTimer") as Timer
-	player = world.get_node("BaseCharacter") as BaseCharacter
+	model = get_node("Model") as Node3D
+	collision_shape = get_node("CapsuleCollision") as CollisionShape3D
+	anim_player = model.get_node("AnimationPlayer") as AnimationPlayer
+	anim_player.play("Run")
+
 
 func _physics_process(_delta: float) -> void:
+	# if is_ball_colliding && ball.linear_velocity.length() > death_threshold:
+	if is_ball_colliding && ball.is_just_kicked:
+		_handle_ball_hit()
+
 	if !is_dead and !is_knocked_out:
 		nav_agent.target_position = player.global_position
 		var nextPathPosition: Vector3 = nav_agent.get_next_path_position()
@@ -27,25 +43,44 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	look_at(player.global_position)
 
+
 func _on_HitBox_body_entered(body: Node3D) -> void:
 	if is_dead:
 		return
 		
 	if body is Ball:
-		var ball = body as Ball
-		var ball_velocity_length = ball.linear_velocity.length()
-		var impulse_direction = ball.global_position.direction_to(global_position)
-		var impulse = impulse_direction * ball.linear_velocity.length() * ball.hit_force
-		_get_knocked_out(0.5)
+		is_ball_colliding = true
+		_handle_ball_hit()
 
-		if ball_velocity_length > death_threshold:
-			impulse = impulse * 1.5
-			impulse.y += 15
-			is_dead = true
-			death_timer.start()
-			global_rotation = Vector3(20, 20, 20)
 
-		velocity += impulse
+func _on_hit_box_body_exited(body):
+	if body is Ball:
+		is_ball_colliding = false
+
+
+func _handle_ball_hit():
+	var ball_velocity_length = ball.linear_velocity.length()
+	var impulse_direction = ball.global_position.direction_to(global_position)
+	var impulse = impulse_direction * ball.linear_velocity.length() * ball.hit_force
+	_get_knocked_out(0.5)
+
+	if ball.is_just_kicked || ball_velocity_length > death_threshold:
+		_die()
+
+	velocity += impulse
+
+
+func _die():
+	is_dead = true
+	velocity.y += randi_range(5, 10)
+	death_timer.start()
+	# collision_shape.disabled = true
+	call_deferred("_disable_collision")
+	anim_player.play("Defeat")
+
+func _disable_collision():
+	collision_shape.disabled = true
+	
 
 func _get_knocked_out(duration: float) -> void:
 	is_knocked_out = true

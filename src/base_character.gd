@@ -2,7 +2,8 @@ class_name BaseCharacter extends CharacterBody3D
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@export var walk_speed : float = 5
+@export var walk_speed : int = 5
+@export var kick_force : int = 150
 
 var is_moving : bool = false
 var stick_center : Vector2
@@ -19,7 +20,7 @@ func _ready():
 	model = get_node("Model") as Node3D
 	ball = world.get_node("Ball") as Ball
 	rope_slot = get_node("RopeSlot") as Node3D
-	anim_player = model.get_node("AnimationPlayer")
+	anim_player = model.get_node("AnimationPlayer") as AnimationPlayer 
 	anim_player.play("Idle")
 	
 
@@ -47,16 +48,6 @@ func _physics_process(delta):
 	if (direction.length() > 0 && velocity.length() > 0.5):
 		var faceDirection = transform.origin + velocity.normalized() * 10;
 		model.look_at(faceDirection);
-
-	
-func _kick() -> void:
-	var distance : float = position.distance_to(ball.position);
-	if (distance < ball.max_kick_distance): 
-		var to_ball = position.direction_to(ball.position);
-		to_ball.y = 0;
-		var force = 120/distance;
-		var ballImpulse = force * to_ball;
-		ball.apply_impulse(ballImpulse);
 
 
 func _get_dragged() -> void: 
@@ -93,4 +84,7 @@ func _handle_stick() -> void:
 		stick_center = get_viewport().get_mouse_position();
 	elif (Input.is_action_just_released("LeftClick")):
 		is_moving = false;
-		_kick();
+
+		var distance : float = position.distance_to(ball.position);
+		if (distance < ball.max_kick_distance): 
+			ball.kick(distance)

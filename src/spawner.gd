@@ -1,6 +1,6 @@
 extends Node
 
-var spawn_range : float = 15
+@export var spawn_range : float = 15
 
 var player : BaseCharacter
 var world : Node3D

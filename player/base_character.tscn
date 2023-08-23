@@ -3861,7 +3861,6 @@ _data = {
 [node name="BaseCharacter" type="CharacterBody3D"]
 floor_max_angle = 0.349066
 script = ExtResource("1_cgmpx")
-walk_speed = 8.0
 
 [node name="CapsuleCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

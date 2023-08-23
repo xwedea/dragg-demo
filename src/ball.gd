@@ -8,13 +8,18 @@ class_name Ball extends RigidBody3D
 @export var rope_color: Color
 @export var override_rope_color: bool = false
 
+var is_just_kicked : bool = false
+
 var world: Node3D
 var player: BaseCharacter
-var previous_rope: MeshInstance3D
+var previous_rope : MeshInstance3D
+var kick_timer : Timer
+
 
 func _ready():
 	world = get_tree().root.get_node("World3D") as Node3D
 	player = world.get_node("BaseCharacter") as BaseCharacter
+	kick_timer = get_node("KickTimer") as Timer
 	
 	if !override_rope_color:
 		rope_color = Color(1, 0, 0) # Red
@@ -22,6 +27,17 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	_draw_rope()
+
+
+func kick(distance):
+	is_just_kicked = true
+	kick_timer.start()
+
+	var to_ball = player.position.direction_to(position);
+	to_ball.y = 0;
+	var force = player.kick_force/distance;
+	var ballImpulse = force * to_ball;
+	apply_impulse(ballImpulse);
 
 func _draw_rope() -> void:
 	if !override_rope_color:
@@ -67,3 +83,6 @@ func _create_line_mesh(ballPos: Vector3, playerPos: Vector3, thickness: float, _
 
 	return mesh_instance
 
+
+func _on_kick_timer_timeout():
+	is_just_kicked = false
