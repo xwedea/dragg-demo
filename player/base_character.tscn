@@ -1,8 +1,19 @@
-[gd_scene load_steps=51 format=3 uid="uid://bumxigukd3hh2"]
+[gd_scene load_steps=54 format=3 uid="uid://bumxigukd3hh2"]
 
 [ext_resource type="Script" path="res://src/base_character.gd" id="1_cgmpx"]
+[ext_resource type="Shape3D" uid="uid://cm1ribfcwerdl" path="res://player/base_character_capsule.tres" id="2_c7loy"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s0fwv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rku0g"]
+viewport_path = NodePath("HealthBar3D/SubViewport")
+
+[sub_resource type="Theme" id="Theme_0uda0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54ay4"]
+bg_color = Color(0.854902, 0, 0.0941176, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oso7y"]
 resource_name = "White"
@@ -3862,9 +3873,32 @@ _data = {
 floor_max_angle = 0.349066
 script = ExtResource("1_cgmpx")
 
+[node name="HealthBar3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.661428, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_rku0g")
+
+[node name="SubViewport" type="SubViewport" parent="HealthBar3D"]
+disable_3d = true
+transparent_bg = true
+
+[node name="HealthBar" type="ProgressBar" parent="HealthBar3D/SubViewport"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_right = 81.0
+offset_bottom = 27.0
+grow_horizontal = 2
+theme = SubResource("Theme_0uda0")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_54ay4")
+value = 100.0
+show_percentage = false
+
 [node name="CapsuleCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_s0fwv")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.826024, 0)
+shape = ExtResource("2_c7loy")
 
 [node name="Model" type="Node3D" parent="."]
 
@@ -3988,3 +4022,19 @@ transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 
 
 [node name="RopeSlot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.397204, 0)
+
+[node name="HitBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.826024, 0)
+shape = ExtResource("2_c7loy")
+
+[node name="HitTimer" type="Timer" parent="HitBox"]
+wait_time = 0.5
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="timeout" from="HitBox/HitTimer" to="." method="_on_hit_timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

@@ -1,6 +1,6 @@
 class_name BaseEnemy extends CharacterBody3D
 
-@export var death_threshold: float = 10
+@export var death_threshold: float = 30
 var is_dead: bool = false
 var is_knocked_out = false
 var is_ball_colliding = false
@@ -45,7 +45,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_HitBox_body_entered(body: Node3D) -> void:
-	if is_dead:
+	if is_dead || is_knocked_out:
 		return
 		
 	if body is Ball:
@@ -61,10 +61,10 @@ func _on_hit_box_body_exited(body):
 func _handle_ball_hit():
 	var ball_velocity_length = ball.linear_velocity.length()
 	var impulse_direction = ball.global_position.direction_to(global_position)
-	var impulse = impulse_direction * ball.linear_velocity.length() * ball.hit_force
+	var impulse = impulse_direction * ball_velocity_length * ball.hit_force
 	_get_knocked_out(0.5)
 
-	if ball.is_just_kicked || ball_velocity_length > death_threshold:
+	if ball.is_just_kicked || impulse.length() > death_threshold:
 		_die()
 
 	velocity += impulse
