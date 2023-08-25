@@ -30,7 +30,6 @@ func _ready():
 
 
 func _physics_process(_delta: float) -> void:
-	# if is_ball_colliding && ball.linear_velocity.length() > death_threshold:
 	if is_ball_colliding && ball.is_just_kicked:
 		_handle_ball_hit()
 

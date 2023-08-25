@@ -27,14 +27,17 @@ func _ready():
 	model = get_node("Model") as Node3D
 	ball = world.get_node("Ball") as Ball
 	rope_slot = get_node("RopeSlot") as Node3D
-	health_bar = get_node("HealthBar3D/SubViewport/HealthBar") as ProgressBar
 	hit_timer = get_node("HitBox/HitTimer") as Timer
 	death_timer = get_node("DeathTimer") as Timer
 	anim_player = model.get_node("AnimationPlayer") as AnimationPlayer 
 	anim_player.play("Idle")
 	
+	var sub_viewport = get_node("HealthBar3D/SubViewport") as SubViewport
+	sub_viewport.set_update_mode(SubViewport.UPDATE_WHEN_PARENT_VISIBLE)
+	health_bar = get_node("HealthBar3D/SubViewport/HealthBar") as ProgressBar	
 	health = max_health
 	health_bar.value = health
+	
 
 func _physics_process(delta):
 	if is_dead:

@@ -27,6 +27,5 @@ func spawn_enemy() -> BaseEnemy:
 	return new_enemy
 	
 func _on_spawn_timer_timeout():
-	var enemy = spawn_enemy()
-	print(enemy.position)
+	spawn_enemy()
 	spawn_timer.start()
