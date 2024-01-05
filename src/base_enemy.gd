@@ -14,6 +14,7 @@ var player : BaseCharacter
 var anim_player : AnimationPlayer
 var model : Node3D
 var collision_shape : CollisionShape3D
+var hit_audio : AudioStreamPlayer
 
 func _ready():
 	world = get_tree().root.get_node("World3D") as Node3D
@@ -27,6 +28,8 @@ func _ready():
 	collision_shape = get_node("CapsuleCollision") as CollisionShape3D
 	anim_player = model.get_node("AnimationPlayer") as AnimationPlayer
 	anim_player.play("Run")
+
+	hit_audio = get_node("HitAudio") as AudioStreamPlayer
 
 
 func _physics_process(_delta: float) -> void:
@@ -58,12 +61,14 @@ func _on_hit_box_body_exited(body):
 
 
 func _handle_ball_hit():
+
 	var ball_velocity_length = ball.linear_velocity.length()
 	var impulse_direction = ball.global_position.direction_to(global_position)
 	var impulse = impulse_direction * ball_velocity_length * ball.hit_force
 	_get_knocked_out(0.5)
 
 	if ball.is_just_kicked || impulse.length() > death_threshold:
+		hit_audio.play()
 		_die()
 
 	velocity += impulse
