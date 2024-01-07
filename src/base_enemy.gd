@@ -5,22 +5,21 @@ var is_dead: bool = false
 var is_knocked_out = false
 var is_ball_colliding = false
 
-var world : Node3D
-var ball : Ball
-var death_timer : Timer
-var knock_out_timer : Timer
-var nav_agent : NavigationAgent3D
-var player : BaseCharacter
-var anim_player : AnimationPlayer
-var model : Node3D
-var collision_shape : CollisionShape3D
-var hit_audio : AudioStreamPlayer
+var world: World
+var ball: Ball
+var death_timer: Timer
+var knock_out_timer: Timer
+var nav_agent: NavigationAgent3D
+var player: BaseCharacter
+var anim_player: AnimationPlayer
+var model: Node3D
+var collision_shape: CollisionShape3D
+var hit_audio: AudioStreamPlayer
 
 func _ready():
-	world = get_tree().root.get_node("World3D") as Node3D
+	world = get_tree().root.get_node("World3D") as World
 	player = world.get_node("BaseCharacter") as BaseCharacter
 	ball = world.get_node("Ball") as Ball
-	
 	nav_agent = get_node("NavigationAgent3D") as NavigationAgent3D
 	death_timer = get_node("DeathTimer") as Timer
 	knock_out_timer = get_node("KnockOutTimer") as Timer
@@ -81,6 +80,7 @@ func _die():
 	# collision_shape.disabled = true
 	call_deferred("_disable_collision")
 	anim_player.play("Defeat")
+	world.handle_enemy_death(position)
 
 func _disable_collision():
 	collision_shape.disabled = true

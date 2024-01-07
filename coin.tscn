@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsk3m3rwoxqmy"]
+
+[ext_resource type="PackedScene" uid="uid://dnjuaerrd3b46" path="res://coin.glb" id="1_apsmd"]
+
+[node name="Coin" type="Node3D"]
+transform = Transform3D(0.415233, 0.908936, -0.0376357, -0.829982, 0.395453, 0.39338, 0.372441, -0.132108, 0.918605, 0, 0, 0)
+
+[node name="CoinMesh" parent="." instance=ExtResource("1_apsmd")]
+transform = Transform3D(0.3, -2.79397e-09, -7.45058e-09, -1.39698e-08, 0.3, 3.72529e-09, 1.49012e-08, -7.45058e-09, 0.3, -0.052593, 0.0250584, 0.0249271)

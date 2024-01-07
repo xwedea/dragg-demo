@@ -8,12 +8,12 @@ class_name Ball extends RigidBody3D
 @export var rope_color: Color
 @export var override_rope_color: bool = false
 
-var is_just_kicked : bool = false
+var is_just_kicked: bool = false
 
 var world: Node3D
 var player: BaseCharacter
-var previous_rope : MeshInstance3D
-var kick_timer : Timer
+var previous_rope: MeshInstance3D
+var kick_timer: Timer
 
 
 func _ready():
