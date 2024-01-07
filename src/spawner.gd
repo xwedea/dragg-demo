@@ -10,7 +10,7 @@ var enemy_scene = load("res://enemy/base_enemy.tscn")
 
 func _ready():
 	world = get_tree().root.get_node("World3D") as Node3D
-	player = world.get_node("BaseCharacter") as BaseCharacter
+	player = world.get_node("Player") as BaseCharacter
 	spawn_timer = get_node("SpawnTimer") as Timer
 	spawn_timer.start()
 

@@ -71,6 +71,10 @@ MoveLeft={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_11="pullable"
+
 [rendering]
 
 renderer/rendering_method="mobile"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bumxigukd3hh2"]
+[gd_scene load_steps=54 format=3 uid="uid://bumxigukd3hh2"]
 
 [ext_resource type="Script" path="res://src/base_character.gd" id="1_cgmpx"]
 [ext_resource type="Shape3D" uid="uid://cm1ribfcwerdl" path="res://player/base_character_capsule.tres" id="2_c7loy"]
@@ -3880,6 +3880,10 @@ _data = {
 "Wave": SubResource("Animation_s6odf")
 }
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qn6cf"]
+height = 0.194177
+radius = 2.71564
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_wcaxl"]
 viewport_path = NodePath("HealthBar3D/SubViewport")
 
@@ -3890,6 +3894,13 @@ script = ExtResource("1_cgmpx")
 [node name="CapsuleCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.826024, 0)
 shape = ExtResource("2_c7loy")
+
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.997, 17.6399)
+metadata/_edit_group_ = true
+
+[node name="Camera3D" type="Camera3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0, 0, 0)
 
 [node name="Model" type="Node3D" parent="."]
 
@@ -4004,12 +4015,23 @@ libraries = {
 "": SubResource("AnimationLibrary_r83nj")
 }
 
-[node name="CameraController" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.997, 17.6399)
-metadata/_edit_group_ = true
+[node name="HitBox" type="Area3D" parent="."]
+collision_mask = 1025
 
-[node name="Camera3D" type="Camera3D" parent="CameraController"]
-transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.826024, 0)
+shape = ExtResource("2_c7loy")
+
+[node name="HitTimer" type="Timer" parent="HitBox"]
+wait_time = 0.5
+
+[node name="PullArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129166, 0, 0.00196552)
+collision_mask = 1024
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PullArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.116331, 0)
+shape = SubResource("CylinderShape3D_qn6cf")
 
 [node name="HealthBar3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.661428, 0)
@@ -4022,21 +4044,14 @@ transparent_bg = true
 
 [node name="HealthBar" parent="HealthBar3D/SubViewport" instance=ExtResource("2_hc3sf")]
 
-[node name="HitBox" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.826024, 0)
-shape = ExtResource("2_c7loy")
-
-[node name="HitTimer" type="Timer" parent="HitBox"]
-wait_time = 0.5
-
 [node name="RopeSlot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.397204, 0)
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 2.0
 
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="timeout" from="HitBox/HitTimer" to="." method="_on_hit_timer_timeout"]
+[connection signal="area_entered" from="PullArea" to="." method="_on_pull_area_area_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

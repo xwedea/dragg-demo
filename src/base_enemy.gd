@@ -18,7 +18,7 @@ var hit_audio: AudioStreamPlayer
 
 func _ready():
 	world = get_tree().root.get_node("World3D") as World
-	player = world.get_node("BaseCharacter") as BaseCharacter
+	player = world.get_node("Player") as BaseCharacter
 	ball = world.get_node("Ball") as Ball
 	nav_agent = get_node("NavigationAgent3D") as NavigationAgent3D
 	death_timer = get_node("DeathTimer") as Timer

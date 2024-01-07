@@ -1,12 +1,19 @@
 class_name World extends Node3D
 
-var coin_scene: Resource = preload("res://coin.tscn")
+var coin_scene: Resource = preload("res://objects/coin/coin.tscn")
+var coin_collect_audio: AudioStreamPlayer
+
+
+func _ready():
+	coin_collect_audio = get_node("Audio/CoinCollectAudio")
+
 
 func handle_enemy_death(enemy_pos: Vector3):
-	print("AAAA")
 	var coin = coin_scene.instantiate()
 	coin.position = enemy_pos
-	# coin.position.y = 1
+	coin.position.y = 0.5
 	add_child(coin)
 
-	print(coin.position)
+
+func play_coin_collect_audio():
+	coin_collect_audio.play()

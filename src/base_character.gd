@@ -2,28 +2,28 @@ class_name BaseCharacter extends CharacterBody3D
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@export var walk_speed : int = 5
-@export var kick_force : int = 150
-@export var max_health : int = 100
+@export var walk_speed: int = 5
+@export var kick_force: int = 150
+@export var max_health: int = 100
 
-var health : float
-var just_got_damaged : bool = false
-var is_moving : bool = false
-var is_dead : bool = false
-var stick_center : Vector2
+var health: float
+var just_got_damaged: bool = false
+var is_moving: bool = false
+var is_dead: bool = false
+var stick_center: Vector2
 
-var world : Node3D
-var model : Node3D
-var ball : Ball
-var anim_player : AnimationPlayer
-var rope_slot : Node3D
-var health_bar : ProgressBar
-var hit_timer : Timer
-var death_timer : Timer
+var world: World
+var model: Node3D
+var ball: Ball
+var anim_player: AnimationPlayer
+var rope_slot: Node3D
+var health_bar: ProgressBar
+var hit_timer: Timer
+var death_timer: Timer
 
 
 func _ready():
-	world = get_tree().root.get_node("World3D") as Node3D
+	world = get_tree().root.get_node("World3D") as World
 	model = get_node("Model") as Node3D
 	ball = world.get_node("Ball") as Ball
 	rope_slot = get_node("RopeSlot") as Node3D
@@ -123,7 +123,8 @@ func _on_hit_box_body_entered(body:Node3D):
 		health -= 35
 		health_bar.value = health
 		if health <= 0:
-			_die()
+			_die()		
+		
 
 
 func _on_hit_timer_timeout():
@@ -134,3 +135,17 @@ func _on_death_timer_timeout():
 	# get_tree().change_scene("res://world/development_world.tscn")
 	get_tree().reload_current_scene()
 
+
+func _on_pull_area_area_entered(area:Area3D):
+	var object = area.get_parent() as Pullable
+	object.start_pulling()
+
+
+func _on_hit_box_area_entered(area:Area3D):
+	if is_dead: return
+	
+	var area_parent = area.get_parent()
+	if area_parent is Pullable:
+		world.play_coin_collect_audio()
+		area_parent.queue_free()
+		

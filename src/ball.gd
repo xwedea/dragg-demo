@@ -18,7 +18,7 @@ var kick_timer: Timer
 
 func _ready():
 	world = get_tree().root.get_node("World3D") as Node3D
-	player = world.get_node("BaseCharacter") as BaseCharacter
+	player = world.get_node("Player") as BaseCharacter
 	kick_timer = get_node("KickTimer") as Timer
 	
 	if !override_rope_color:
