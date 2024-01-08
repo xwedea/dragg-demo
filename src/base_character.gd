@@ -126,13 +126,11 @@ func _on_hit_box_body_entered(body:Node3D):
 			_die()		
 		
 
-
 func _on_hit_timer_timeout():
 	just_got_damaged = false
 
 
 func _on_death_timer_timeout():
-	# get_tree().change_scene("res://world/development_world.tscn")
 	get_tree().reload_current_scene()
 
 
@@ -147,5 +145,6 @@ func _on_hit_box_area_entered(area:Area3D):
 	var area_parent = area.get_parent()
 	if area_parent is Pullable:
 		world.play_coin_collect_audio()
+		world.coins_collected += 1
 		area_parent.queue_free()
 		

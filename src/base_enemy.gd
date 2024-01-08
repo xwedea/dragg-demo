@@ -67,8 +67,9 @@ func _handle_ball_hit():
 	_get_knocked_out(0.5)
 
 	if ball.is_just_kicked || impulse.length() > death_threshold:
-		hit_audio.play()
-		_die()
+		if not is_dead:
+			hit_audio.play()
+			_die()
 
 	velocity += impulse
 
