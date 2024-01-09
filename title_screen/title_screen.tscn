@@ -1,17 +1,17 @@
 [gd_scene load_steps=14 format=3 uid="uid://b0brk53uqwo01"]
 
 [ext_resource type="Script" path="res://src/title_screen.gd" id="1_54m68"]
-[ext_resource type="AudioStream" uid="uid://ckg3w6p6m1wfv" path="res://dragg-assets/audio/background.mp3" id="2_bh75g"]
+[ext_resource type="AudioStream" uid="uid://ckg3w6p6m1wfv" path="res://assets-dragg/audio/background.mp3" id="2_bh75g"]
 [ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="2_s0s0v"]
-[ext_resource type="Texture2D" uid="uid://c6pm34p45f6f4" path="res://dragg-assets/Sprite/Component/Frame/Frame_ItemFrame01_Color_Yellow.png" id="3_80ao6"]
+[ext_resource type="Texture2D" uid="uid://c6pm34p45f6f4" path="res://assets-dragg/Sprite/Component/Frame/Frame_ItemFrame01_Color_Yellow.png" id="3_80ao6"]
 [ext_resource type="PackedScene" path="res://ui/main_button.tscn" id="5_d8ukc"]
-[ext_resource type="Texture2D" uid="uid://beirmrhi6dupy" path="res://dragg-assets/blue_ui/CGB01-green_XL_pillShaped_btn.png" id="6_6vdst"]
+[ext_resource type="Texture2D" uid="uid://beirmrhi6dupy" path="res://assets-dragg/blue_ui/CGB01-green_XL_pillShaped_btn.png" id="6_6vdst"]
 [ext_resource type="PackedScene" uid="uid://c8r8ppavklys4" path="res://ui/button_label.tscn" id="6_r2kfx"]
-[ext_resource type="Texture2D" uid="uid://d0nrr6hsbe6yn" path="res://dragg-assets/blue_ui_clicked/green_XL_pillShaped_pressed.png" id="7_4xs8j"]
+[ext_resource type="Texture2D" uid="uid://d0nrr6hsbe6yn" path="res://assets-dragg/blue_ui_clicked/green_XL_pillShaped_pressed.png" id="7_4xs8j"]
 [ext_resource type="LabelSettings" uid="uid://cbf27dffxmfw4" path="res://ui/resources/button_label_XL.tres" id="7_od38w"]
 [ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="8_glmpu"]
-[ext_resource type="Texture2D" uid="uid://bgb6g8essdppg" path="res://dragg-assets/blue_ui/CGB01-blue_L_pillShaped_btn.png" id="8_pshpe"]
-[ext_resource type="Texture2D" uid="uid://csve3qkyisghe" path="res://dragg-assets/blue_ui_clicked/blue_L_pillShaped_pressed.png" id="11_hs4dd"]
+[ext_resource type="Texture2D" uid="uid://bgb6g8essdppg" path="res://assets-dragg/blue_ui/CGB01-blue_L_pillShaped_btn.png" id="8_pshpe"]
+[ext_resource type="Texture2D" uid="uid://csve3qkyisghe" path="res://assets-dragg/blue_ui_clicked/blue_L_pillShaped_pressed.png" id="11_hs4dd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lv0bh"]
 font_size = 200
