@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://owk041bgsx5c"]
+[gd_scene load_steps=3 format=3 uid="uid://vc1u3hdumrtu"]
 
 [ext_resource type="Script" path="res://src/main_button.gd" id="1_tyd1r"]
-[ext_resource type="AudioStream" uid="uid://bs43433qmf4j7" path="res://dragg-assets/audio/punchy-taps-ui-5-183901.mp3" id="2_gmbl5"]
+[ext_resource type="AudioStream" uid="uid://bs43433qmf4j7" path="res://assets-dragg/audio/punchy-taps-ui-5-183901.mp3" id="2_gmbl5"]
 
 [node name="MainButton" type="TextureButton"]
 anchors_preset = 8

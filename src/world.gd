@@ -4,13 +4,15 @@ var coin_scene: Resource = preload("res://objects/coin/coin.tscn")
 
 var coins_collected = 0
 
-var coin_collect_audio: AudioStreamPlayer
-var background_audio: AudioStreamPlayer
+@onready var count_label := $UI/ControlTopLeft/TextureRect/CoinLabel as Label
+@onready var coin_collect_audio := $Audio/CoinCollectAudio as AudioStreamPlayer
+@onready var background_audio := $Audio/BackgroundAudio as AudioStreamPlayer
 
 func _ready():
-	coin_collect_audio = get_node("Audio/CoinCollectAudio")
-	background_audio = get_node("Audio/BackgroundAudio")
 	background_audio.play()
+
+func _process(_delta):
+	count_label.text = str(coins_collected)
 
 func handle_enemy_death(enemy_pos: Vector3):
 	var coin = coin_scene.instantiate()
@@ -21,3 +23,7 @@ func handle_enemy_death(enemy_pos: Vector3):
 
 func play_coin_collect_audio():
 	coin_collect_audio.play()
+
+
+func _on_main_button_pressed():
+	get_tree().change_scene_to_file("res://title_screen/title_screen.tscn")

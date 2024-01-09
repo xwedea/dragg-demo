@@ -4,13 +4,13 @@
 [ext_resource type="AudioStream" uid="uid://ckg3w6p6m1wfv" path="res://assets-dragg/audio/background.mp3" id="2_bh75g"]
 [ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="2_s0s0v"]
 [ext_resource type="Texture2D" uid="uid://c6pm34p45f6f4" path="res://assets-dragg/Sprite/Component/Frame/Frame_ItemFrame01_Color_Yellow.png" id="3_80ao6"]
-[ext_resource type="PackedScene" path="res://ui/main_button.tscn" id="5_d8ukc"]
+[ext_resource type="PackedScene" uid="uid://vc1u3hdumrtu" path="res://ui/main_button.tscn" id="5_d8ukc"]
 [ext_resource type="Texture2D" uid="uid://beirmrhi6dupy" path="res://assets-dragg/blue_ui/CGB01-green_XL_pillShaped_btn.png" id="6_6vdst"]
 [ext_resource type="PackedScene" uid="uid://c8r8ppavklys4" path="res://ui/button_label.tscn" id="6_r2kfx"]
 [ext_resource type="Texture2D" uid="uid://d0nrr6hsbe6yn" path="res://assets-dragg/blue_ui_clicked/green_XL_pillShaped_pressed.png" id="7_4xs8j"]
 [ext_resource type="LabelSettings" uid="uid://cbf27dffxmfw4" path="res://ui/resources/button_label_XL.tres" id="7_od38w"]
 [ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="8_glmpu"]
-[ext_resource type="Texture2D" uid="uid://bgb6g8essdppg" path="res://assets-dragg/blue_ui/CGB01-blue_L_pillShaped_btn.png" id="8_pshpe"]
+[ext_resource type="Texture2D" uid="uid://cvkooyl8yryql" path="res://assets-dragg/blue_ui/CGB01-orange_L_pillShaped_btn.png" id="10_vsvox"]
 [ext_resource type="Texture2D" uid="uid://csve3qkyisghe" path="res://assets-dragg/blue_ui_clicked/blue_L_pillShaped_pressed.png" id="11_hs4dd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lv0bh"]
@@ -64,10 +64,10 @@ label_settings = ExtResource("7_od38w")
 
 [node name="TutorialButton" parent="." instance=ExtResource("5_d8ukc")]
 offset_left = 287.0
-offset_top = 1958.0
+offset_top = 2000.0
 offset_right = 799.0
-offset_bottom = 2086.0
-texture_normal = ExtResource("8_pshpe")
+offset_bottom = 2128.0
+texture_normal = ExtResource("10_vsvox")
 texture_pressed = ExtResource("11_hs4dd")
 metadata/_edit_group_ = true
 
@@ -79,10 +79,10 @@ label_settings = ExtResource("8_glmpu")
 
 [node name="CreditsButton" parent="." instance=ExtResource("5_d8ukc")]
 offset_left = 286.0
-offset_top = 2114.0
+offset_top = 2150.0
 offset_right = 798.0
-offset_bottom = 2242.0
-texture_normal = ExtResource("8_pshpe")
+offset_bottom = 2278.0
+texture_normal = ExtResource("10_vsvox")
 texture_pressed = ExtResource("11_hs4dd")
 metadata/_edit_group_ = true
 
