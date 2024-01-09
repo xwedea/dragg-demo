@@ -1,15 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0brk53uqwo01"]
+[gd_scene load_steps=14 format=3 uid="uid://b0brk53uqwo01"]
 
 [ext_resource type="Script" path="res://src/title_screen.gd" id="1_54m68"]
-[ext_resource type="AudioStream" uid="uid://ckg3w6p6m1wfv" path="res://dragg-assets/audio/background.mp3" id="2_kttye"]
+[ext_resource type="AudioStream" uid="uid://ckg3w6p6m1wfv" path="res://dragg-assets/audio/background.mp3" id="2_bh75g"]
 [ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="2_s0s0v"]
 [ext_resource type="Texture2D" uid="uid://c6pm34p45f6f4" path="res://dragg-assets/Sprite/Component/Frame/Frame_ItemFrame01_Color_Yellow.png" id="3_80ao6"]
-[ext_resource type="Texture2D" uid="uid://2tm615rai7ik" path="res://dragg-assets/blue_ui/CGB01-orange_XL_rounded_btn.png" id="5_btwxx"]
-[ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/main_button.tscn" id="5_d8ukc"]
+[ext_resource type="PackedScene" path="res://ui/main_button.tscn" id="5_d8ukc"]
+[ext_resource type="Texture2D" uid="uid://beirmrhi6dupy" path="res://dragg-assets/blue_ui/CGB01-green_XL_pillShaped_btn.png" id="6_6vdst"]
 [ext_resource type="PackedScene" uid="uid://c8r8ppavklys4" path="res://ui/button_label.tscn" id="6_r2kfx"]
+[ext_resource type="Texture2D" uid="uid://d0nrr6hsbe6yn" path="res://dragg-assets/blue_ui_clicked/green_XL_pillShaped_pressed.png" id="7_4xs8j"]
 [ext_resource type="LabelSettings" uid="uid://cbf27dffxmfw4" path="res://ui/resources/button_label_XL.tres" id="7_od38w"]
 [ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="8_glmpu"]
-[ext_resource type="Texture2D" uid="uid://d12tq0nsagtd2" path="res://dragg-assets/blue_ui/CGB01-orange_L_rounded_btn.png" id="8_wm8fe"]
+[ext_resource type="Texture2D" uid="uid://bgb6g8essdppg" path="res://dragg-assets/blue_ui/CGB01-blue_L_pillShaped_btn.png" id="8_pshpe"]
+[ext_resource type="Texture2D" uid="uid://csve3qkyisghe" path="res://dragg-assets/blue_ui_clicked/blue_L_pillShaped_pressed.png" id="11_hs4dd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lv0bh"]
+font_size = 200
+font_color = Color(0, 0, 0, 1)
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_54m68")
@@ -19,32 +25,36 @@ offset_left = -891.0
 offset_top = -1152.0
 offset_right = 2333.0
 offset_bottom = 3415.0
-color = Color(0.356863, 1, 0.443137, 0.713726)
 
 [node name="TitleAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_kttye")
+stream = ExtResource("2_bh75g")
 
-[node name="FrameItemFrame01ColorYellow" type="Sprite2D" parent="."]
+[node name="TitleFrame" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(538, 351)
 scale = Vector2(4.95621, 1.58777)
 texture = ExtResource("3_80ao6")
 
 [node name="TitleLabel" type="Label" parent="."]
-offset_top = 222.0
-offset_right = 1078.0
-offset_bottom = 468.0
+offset_left = 4.0
+offset_top = 341.0
+offset_right = 1082.0
+offset_bottom = 587.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_s0s0v")
 theme_override_font_sizes/font_size = 200
 text = "DRAGG"
+label_settings = SubResource("LabelSettings_lv0bh")
 horizontal_alignment = 1
 
 [node name="PlayButton" parent="." instance=ExtResource("5_d8ukc")]
-offset_left = 411.0
-offset_top = 1517.0
-offset_right = 667.0
-offset_bottom = 1773.0
-texture_normal = ExtResource("5_btwxx")
+offset_left = 285.0
+offset_top = 1340.0
+offset_right = 793.0
+offset_bottom = 1848.0
+texture_normal = ExtResource("6_6vdst")
+texture_pressed = ExtResource("7_4xs8j")
+stretch_mode = 0
 metadata/_edit_group_ = true
 
 [node name="ButtonLabel" parent="PlayButton" instance=ExtResource("6_r2kfx")]
@@ -57,7 +67,8 @@ offset_left = 287.0
 offset_top = 1958.0
 offset_right = 799.0
 offset_bottom = 2086.0
-texture_normal = ExtResource("8_wm8fe")
+texture_normal = ExtResource("8_pshpe")
+texture_pressed = ExtResource("11_hs4dd")
 metadata/_edit_group_ = true
 
 [node name="ButtonLabel" parent="TutorialButton" instance=ExtResource("6_r2kfx")]
@@ -71,7 +82,8 @@ offset_left = 286.0
 offset_top = 2114.0
 offset_right = 798.0
 offset_bottom = 2242.0
-texture_normal = ExtResource("8_wm8fe")
+texture_normal = ExtResource("8_pshpe")
+texture_pressed = ExtResource("11_hs4dd")
 metadata/_edit_group_ = true
 
 [node name="ButtonLabel" parent="CreditsButton" instance=ExtResource("6_r2kfx")]

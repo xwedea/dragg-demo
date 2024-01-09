@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8r8ppavklys4"]
 
 [ext_resource type="LabelSettings" uid="uid://djhradakb5gnu" path="res://ui/resources/button_label_L.tres" id="1_s4051"]
-[ext_resource type="Script" path="res://src/ButtonLabel.gd" id="1_xu4w0"]
+[ext_resource type="Script" path="res://src/button_label.gd" id="1_xu4w0"]
 
 [node name="ButtonLabel" type="Label"]
 anchors_preset = 8
