@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/pullable.gd" id="1_s4kvi"]
 [ext_resource type="PackedScene" uid="uid://dnjuaerrd3b46" path="res://objects/coin/coin.glb" id="2_m6hka"]
-[ext_resource type="AudioStream" uid="uid://dhdcl8ho45ex7" path="res://assets/audio/collectcoin-6075.mp3" id="3_s24nf"]
+[ext_resource type="AudioStream" uid="uid://dhdcl8ho45ex7" path="res://dragg-assets/audio/collectcoin-6075.mp3" id="3_s24nf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_324sr"]
 radius = 0.3

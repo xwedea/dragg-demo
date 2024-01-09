@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://src/spawner.gd" id="1_ojbat"]
 [ext_resource type="Script" path="res://src/world.gd" id="1_qmkdd"]
 [ext_resource type="Script" path="res://src/game_camera.gd" id="4_isc8j"]
-[ext_resource type="Texture2D" uid="uid://cki8hmnrdbr1a" path="res://assets/images/smallcircle.png" id="4_xwvsk"]
+[ext_resource type="Texture2D" uid="uid://cki8hmnrdbr1a" path="res://dragg-assets/images/smallcircle.png" id="4_xwvsk"]
 [ext_resource type="PackedScene" uid="uid://bumxigukd3hh2" path="res://player/base_character.tscn" id="5_1nxl5"]
-[ext_resource type="Texture2D" uid="uid://bxe6l8pow7ypw" path="res://assets/images/bigcircle.png" id="5_thexg"]
+[ext_resource type="Texture2D" uid="uid://bxe6l8pow7ypw" path="res://dragg-assets/images/bigcircle.png" id="5_thexg"]
 [ext_resource type="PackedScene" uid="uid://bfx54y75ia2vg" path="res://ball/ball.tscn" id="6_ydc3q"]
 [ext_resource type="PackedScene" uid="uid://c3bo0ps5tay8y" path="res://enemy/base_enemy.tscn" id="7_cwvuu"]
-[ext_resource type="AudioStream" uid="uid://dhdcl8ho45ex7" path="res://assets/audio/collectcoin-6075.mp3" id="10_0nkcv"]
+[ext_resource type="AudioStream" uid="uid://dhdcl8ho45ex7" path="res://dragg-assets/audio/collectcoin-6075.mp3" id="10_0nkcv"]
 
 [sub_resource type="FontVariation" id="FontVariation_fofvi"]
 
@@ -180,5 +180,8 @@ mesh = SubResource("CylinderMesh_cb2s3")
 
 [node name="CoinCollectAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("10_0nkcv")
+
+[node name="BackgroundAudio" type="AudioStreamPlayer" parent="Audio"]
+volume_db = -10.0
 
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]

@@ -1,32 +1,77 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0brk53uqwo01"]
+[gd_scene load_steps=10 format=3 uid="uid://b0brk53uqwo01"]
 
 [ext_resource type="Script" path="res://src/title_screen.gd" id="1_54m68"]
+[ext_resource type="AudioStream" uid="uid://ckg3w6p6m1wfv" path="res://dragg-assets/audio/background.mp3" id="2_kttye"]
+[ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="2_s0s0v"]
+[ext_resource type="Texture2D" uid="uid://2tm615rai7ik" path="res://dragg-assets/blue_ui/CGB01-orange_XL_rounded_btn.png" id="5_btwxx"]
+[ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/main_button.tscn" id="5_d8ukc"]
+[ext_resource type="PackedScene" uid="uid://c8r8ppavklys4" path="res://ui/button_label.tscn" id="6_r2kfx"]
+[ext_resource type="LabelSettings" uid="uid://cbf27dffxmfw4" path="res://ui/resources/button_label_XL.tres" id="7_od38w"]
+[ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="8_glmpu"]
+[ext_resource type="Texture2D" uid="uid://d12tq0nsagtd2" path="res://dragg-assets/blue_ui/CGB01-orange_L_rounded_btn.png" id="8_wm8fe"]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_54m68")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -1046.0
-offset_top = -1156.0
-offset_right = 2178.0
-offset_bottom = 3411.0
-color = Color(0.356863, 1, 0.443137, 1)
+offset_left = -939.0
+offset_top = -1160.0
+offset_right = 2285.0
+offset_bottom = 3407.0
+color = Color(0.356863, 1, 0.443137, 0.713726)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-size_flags_vertical = 0
+[node name="TitleAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kttye")
 
-[node name="PlayButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 327.0
-offset_top = 1907.0
-offset_right = 773.0
-offset_bottom = 2104.0
-theme_override_font_sizes/font_size = 64
-action_mode = 0
+[node name="TitleLabel" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 546.0
+offset_right = 1079.0
+offset_bottom = 792.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_s0s0v")
+theme_override_font_sizes/font_size = 200
+text = "dragg"
+horizontal_alignment = 1
+
+[node name="PlayButton" parent="." instance=ExtResource("5_d8ukc")]
+offset_left = 411.0
+offset_top = 1517.0
+offset_right = 667.0
+offset_bottom = 1773.0
+texture_normal = ExtResource("5_btwxx")
+metadata/_edit_group_ = true
+
+[node name="ButtonLabel" parent="PlayButton" instance=ExtResource("6_r2kfx")]
+layout_mode = 1
 text = "GO"
+label_settings = ExtResource("7_od38w")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="TutorialButton" parent="." instance=ExtResource("5_d8ukc")]
+offset_left = 287.0
+offset_top = 1958.0
+offset_right = 799.0
+offset_bottom = 2086.0
+texture_normal = ExtResource("8_wm8fe")
+metadata/_edit_group_ = true
 
-[connection signal="pressed" from="Control/PlayButton" to="." method="_on_play_button_pressed"]
+[node name="ButtonLabel" parent="TutorialButton" instance=ExtResource("6_r2kfx")]
+layout_mode = 1
+text = "TUTORIAL
+"
+label_settings = ExtResource("8_glmpu")
+
+[node name="CreditsButton" parent="." instance=ExtResource("5_d8ukc")]
+offset_left = 286.0
+offset_top = 2114.0
+offset_right = 798.0
+offset_bottom = 2242.0
+texture_normal = ExtResource("8_wm8fe")
+metadata/_edit_group_ = true
+
+[node name="ButtonLabel" parent="CreditsButton" instance=ExtResource("6_r2kfx")]
+layout_mode = 1
+text = "CREDITS"
+label_settings = ExtResource("8_glmpu")
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

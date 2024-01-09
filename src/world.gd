@@ -5,11 +5,12 @@ var coin_scene: Resource = preload("res://objects/coin/coin.tscn")
 var coins_collected = 0
 
 var coin_collect_audio: AudioStreamPlayer
-
+var background_audio: AudioStreamPlayer
 
 func _ready():
 	coin_collect_audio = get_node("Audio/CoinCollectAudio")
-
+	background_audio = get_node("Audio/BackgroundAudio")
+	background_audio.play()
 
 func handle_enemy_death(enemy_pos: Vector3):
 	var coin = coin_scene.instantiate()

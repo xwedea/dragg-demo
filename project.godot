@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="dragg"
-run/main_scene="res://world/development_world.tscn"
+run/main_scene="res://title_screen/title_screen.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://assets/images/icon.svg"
+config/icon="res://dragg-assets/images/icon.svg"
 
 [display]
 

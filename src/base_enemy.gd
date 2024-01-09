@@ -25,10 +25,11 @@ func _ready():
 	knock_out_timer = get_node("KnockOutTimer") as Timer
 	model = get_node("Model") as Node3D
 	collision_shape = get_node("CapsuleCollision") as CollisionShape3D
+	hit_audio = get_node("HitAudio") as AudioStreamPlayer
+
 	anim_player = model.get_node("AnimationPlayer") as AnimationPlayer
 	anim_player.play("Run")
-
-	hit_audio = get_node("HitAudio") as AudioStreamPlayer
+	
 
 
 func _physics_process(_delta: float) -> void:

@@ -1,16 +1,16 @@
 extends Node2D
 
-var control: Control
-var play_button: Button
-var tutorial_button: Button
-
+var play_button: TextureButton
+var tutorial_button: TextureButton
+var title_audio: AudioStreamPlayer
 
 func _ready():
-	control = get_node("Control") as Control
-	play_button = control.get_node("PlayButton")
-
-
+	play_button = get_node("PlayButton")
+	title_audio = get_node("TitleAudio")
+	title_audio.play()
 
 
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("res://world/development_world.tscn")
+
+

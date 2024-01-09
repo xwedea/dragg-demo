@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/base_enemy.gd" id="1_es1re"]
 [ext_resource type="Material" uid="uid://b5yiyxu0o7yhi" path="res://enemy/enemy_head_material.tres" id="2_jbxgm"]
-[ext_resource type="AudioStream" uid="uid://bbiga5acuttje" path="res://assets/audio/hard-slap-46388.mp3" id="3_80btt"]
+[ext_resource type="AudioStream" uid="uid://bbiga5acuttje" path="res://dragg-assets/audio/hard-slap-46388.mp3" id="3_50kur"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3fcd"]
 radius = 0.393939
@@ -4037,7 +4037,7 @@ wait_time = 2.0
 [node name="KnockOutTimer" type="Timer" parent="."]
 
 [node name="HitAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_80btt")
+stream = ExtResource("3_50kur")
 volume_db = -15.0
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
