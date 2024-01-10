@@ -1,11 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://b14uq6kn8i7r0"]
+[gd_scene load_steps=28 format=3 uid="uid://b14uq6kn8i7r0"]
 
 [ext_resource type="Script" path="res://src/control_sticks.gd" id="1_4y8b4"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="1_ojbat"]
 [ext_resource type="Script" path="res://src/world.gd" id="1_qmkdd"]
-[ext_resource type="PackedScene" uid="uid://vc1u3hdumrtu" path="res://ui/main_button.tscn" id="2_6ekdf"]
+[ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/main_button.tscn" id="2_6ekdf"]
 [ext_resource type="Script" path="res://src/game_ui.gd" id="2_emipb"]
-[ext_resource type="Texture2D" uid="uid://bkgjoj47q6vxu" path="res://assets-dragg/blue_ui/CGB01-yellow_S_pillShaped_btn.png" id="2_mupou"]
 [ext_resource type="Texture2D" uid="uid://chnqaif0pj2bq" path="res://assets-dragg/blue_ui/CGB01-orange_M_pillShaped_btn.png" id="3_mdccy"]
 [ext_resource type="Script" path="res://src/button_label.gd" id="4_40cpl"]
 [ext_resource type="Script" path="res://src/game_camera.gd" id="4_isc8j"]
@@ -14,10 +13,15 @@
 [ext_resource type="Texture2D" uid="uid://bxe6l8pow7ypw" path="res://assets-dragg/images/bigcircle.png" id="5_thexg"]
 [ext_resource type="PackedScene" uid="uid://bfx54y75ia2vg" path="res://ball/ball.tscn" id="6_ydc3q"]
 [ext_resource type="PackedScene" uid="uid://c3bo0ps5tay8y" path="res://enemy/base_enemy.tscn" id="7_cwvuu"]
+[ext_resource type="Texture2D" uid="uid://c3ykad5rl80o2" path="res://assets-dragg/ui/Icon_Gold.Png" id="7_eyfe2"]
 [ext_resource type="AudioStream" uid="uid://dhdcl8ho45ex7" path="res://assets-dragg/audio/collectcoin-6075.mp3" id="10_vihk2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qidyi"]
 font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fjwxq"]
+font_size = 52
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_fofvi"]
@@ -64,9 +68,9 @@ grow_horizontal = 0
 [node name="MainButton" parent="UI/ControlTopRight" instance=ExtResource("2_6ekdf")]
 z_index = 2
 layout_mode = 1
-offset_left = -221.0
+offset_left = -291.0
 offset_top = 102.0
-offset_right = -93.0
+offset_right = -35.0
 offset_bottom = 230.0
 texture_normal = ExtResource("3_mdccy")
 
@@ -86,37 +90,80 @@ z_index = 2
 layout_mode = 3
 anchors_preset = 0
 
-[node name="TextureRect" type="TextureRect" parent="UI/ControlTopLeft"]
-layout_mode = 0
-offset_left = 58.0
-offset_top = 100.0
-offset_right = 314.0
-offset_bottom = 228.0
-texture = ExtResource("3_mdccy")
-expand_mode = 1
+[node name="ControlTimer" type="Control" parent="UI/ControlTopLeft"]
+anchors_preset = 0
+offset_left = 157.0
+offset_top = 140.0
+offset_right = 197.0
+offset_bottom = 180.0
+metadata/_edit_group_ = true
 
-[node name="CoinTexture" type="TextureRect" parent="UI/ControlTopLeft/TextureRect"]
-layout_mode = 0
-offset_left = 27.0
-offset_top = 31.0
-offset_right = 93.0
-offset_bottom = 97.0
-texture = ExtResource("2_mupou")
-expand_mode = 1
-
-[node name="CoinLabel" type="Label" parent="UI/ControlTopLeft/TextureRect"]
+[node name="TextureRect" type="TextureRect" parent="UI/ControlTopLeft/ControlTimer"]
+visible = false
 layout_mode = 1
-offset_left = 71.0
-offset_top = 9.0
-offset_right = 242.0
-offset_bottom = 146.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -64.0
+offset_right = 128.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_mdccy")
+
+[node name="TimerLabel" type="Label" parent="UI/ControlTopLeft/ControlTimer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -36.0
+offset_right = 88.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:12"
+label_settings = SubResource("LabelSettings_fjwxq")
+
+[node name="ControlCoin" type="Control" parent="UI/ControlTopLeft"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 150.0
+offset_top = 280.0
+offset_right = 190.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CoinLabel" type="Label" parent="UI/ControlTopLeft/ControlCoin"]
+layout_mode = 1
+offset_left = -16.0
+offset_top = -31.0
+offset_right = 156.0
+offset_bottom = 72.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_fofvi")
 theme_override_font_sizes/font_size = 100
-text = "33"
+text = "2"
 label_settings = SubResource("LabelSettings_2fruv")
-horizontal_alignment = 1
-justification_flags = 227
+
+[node name="CoinTexture" type="TextureRect" parent="UI/ControlTopLeft/ControlCoin"]
+layout_mode = 0
+offset_left = -87.0
+offset_top = -11.0
+offset_right = -22.0
+offset_bottom = 54.0
+texture = ExtResource("7_eyfe2")
+expand_mode = 1
 
 [node name="ControlTopCenter" type="Control" parent="UI"]
 layout_mode = 3

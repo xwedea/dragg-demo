@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://ckg3w6p6m1wfv" path="res://assets-dragg/audio/background.mp3" id="2_bh75g"]
 [ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="2_s0s0v"]
 [ext_resource type="Texture2D" uid="uid://c6pm34p45f6f4" path="res://assets-dragg/Sprite/Component/Frame/Frame_ItemFrame01_Color_Yellow.png" id="3_80ao6"]
-[ext_resource type="PackedScene" uid="uid://vc1u3hdumrtu" path="res://ui/main_button.tscn" id="5_d8ukc"]
+[ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/main_button.tscn" id="5_d8ukc"]
 [ext_resource type="Texture2D" uid="uid://beirmrhi6dupy" path="res://assets-dragg/blue_ui/CGB01-green_XL_pillShaped_btn.png" id="6_6vdst"]
 [ext_resource type="PackedScene" uid="uid://c8r8ppavklys4" path="res://ui/button_label.tscn" id="6_r2kfx"]
 [ext_resource type="Texture2D" uid="uid://d0nrr6hsbe6yn" path="res://assets-dragg/blue_ui_clicked/green_XL_pillShaped_pressed.png" id="7_4xs8j"]
@@ -21,10 +21,10 @@ font_color = Color(0, 0, 0, 1)
 script = ExtResource("1_54m68")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -891.0
-offset_top = -1152.0
-offset_right = 2333.0
-offset_bottom = 3415.0
+offset_left = -969.0
+offset_top = -902.0
+offset_right = 2255.0
+offset_bottom = 3665.0
 
 [node name="TitleAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_bh75g")
