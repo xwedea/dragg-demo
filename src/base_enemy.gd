@@ -1,35 +1,25 @@
 class_name BaseEnemy extends CharacterBody3D
 
+@onready var world := get_tree().root.get_node("World3D") as World
+@onready var ball := world.get_node("Ball") as Ball
+@onready var death_timer := get_node("DeathTimer") as Timer
+@onready var knock_out_timer := get_node("KnockOutTimer") as Timer
+@onready var nav_agent := get_node("NavigationAgent3D") as NavigationAgent3D
+@onready var player= world.get_node("Player") as BaseCharacter
+@onready var model := get_node("Model") as Node3D
+@onready var anim_player := model.get_node("AnimationPlayer") as AnimationPlayer
+@onready var collision_shape := get_node("CapsuleCollision") as CollisionShape3D
+@onready var hit_audio := get_node("HitAudio") as AudioStreamPlayer
+
 @export var death_threshold: float = 30
+
 var is_dead: bool = false
 var is_knocked_out = false
 var is_ball_colliding = false
 
-var world: World
-var ball: Ball
-var death_timer: Timer
-var knock_out_timer: Timer
-var nav_agent: NavigationAgent3D
-var player: BaseCharacter
-var anim_player: AnimationPlayer
-var model: Node3D
-var collision_shape: CollisionShape3D
-var hit_audio: AudioStreamPlayer
 
 func _ready():
-	world = get_tree().root.get_node("World3D") as World
-	player = world.get_node("Player") as BaseCharacter
-	ball = world.get_node("Ball") as Ball
-	nav_agent = get_node("NavigationAgent3D") as NavigationAgent3D
-	death_timer = get_node("DeathTimer") as Timer
-	knock_out_timer = get_node("KnockOutTimer") as Timer
-	model = get_node("Model") as Node3D
-	collision_shape = get_node("CapsuleCollision") as CollisionShape3D
-	hit_audio = get_node("HitAudio") as AudioStreamPlayer
-
-	anim_player = model.get_node("AnimationPlayer") as AnimationPlayer
 	anim_player.play("Run")
-	
 
 
 func _physics_process(_delta: float) -> void:

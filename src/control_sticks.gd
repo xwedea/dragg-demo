@@ -1,21 +1,17 @@
 extends Control
 
+@onready var world := get_tree().root.get_node("World3D") as World
+@onready var stick_circle_container := get_node("StickCircleContainer") as Control
+@onready var stick_button_container := get_node("StickButtonContainer") as Control
+@onready var game_viewport := get_viewport()
+
 @export var max_distance: float = 47
 
-var world: World
-var stick_circle_container: Control
-var stick_button_container: Control
 var is_screen_pressed: bool = false
-var game_viewport: Viewport
+
 
 func _ready():
-	game_viewport = get_viewport()
-	world = get_tree().root.get_node("World3D") as World
-	stick_circle_container = get_node("StickCircleContainer") as Control
-	stick_button_container = get_node("StickButtonContainer") as Control
-	
 	visible = false
-
 
 
 func _process(_delta: float) -> void:

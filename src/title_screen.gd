@@ -1,12 +1,11 @@
 extends Node2D
 
-var play_button: TextureButton
-var tutorial_button: TextureButton
-var title_audio: AudioStreamPlayer
+@onready var play_button := get_node("PlayButton")
+@onready var tutorial_button := get_node("TutorialButton")
+@onready var title_audio := get_node("TitleAudio")
+
 
 func _ready():
-	play_button = get_node("PlayButton")
-	title_audio = get_node("TitleAudio")
 	title_audio.play()
 
 

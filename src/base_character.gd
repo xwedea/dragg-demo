@@ -1,40 +1,32 @@
 class_name BaseCharacter extends CharacterBody3D
 
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var world := get_tree().root.get_node("World3D") as World
+@onready var model := get_node("Model") as Node3D
+@onready var ball= world.get_node("Ball") as Ball
+@onready var anim_player := model.get_node("AnimationPlayer") as AnimationPlayer 
+@onready var rope_slot := get_node("RopeSlot") as Node3D
+@onready var health_bar := get_node("HealthBar3D/SubViewport/HealthBar") as ProgressBar	
+@onready var hit_timer := get_node("HitBox/HitTimer") as Timer
+@onready var death_timer := get_node("DeathTimer") as Timer
 
 @export var walk_speed: int = 5
 @export var kick_force: int = 150
 @export var max_health: int = 100
 
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var health: float
 var just_got_damaged: bool = false
 var is_moving: bool = false
 var is_dead: bool = false
 var stick_center: Vector2
 
-var world: World
-var model: Node3D
-var ball: Ball
-var anim_player: AnimationPlayer
-var rope_slot: Node3D
-var health_bar: ProgressBar
-var hit_timer: Timer
-var death_timer: Timer
-
 
 func _ready():
-	world = get_tree().root.get_node("World3D") as World
-	model = get_node("Model") as Node3D
-	ball = world.get_node("Ball") as Ball
-	rope_slot = get_node("RopeSlot") as Node3D
-	hit_timer = get_node("HitBox/HitTimer") as Timer
-	death_timer = get_node("DeathTimer") as Timer
-	anim_player = model.get_node("AnimationPlayer") as AnimationPlayer 
 	anim_player.play("Idle")
 	
 	var sub_viewport = get_node("HealthBar3D/SubViewport") as SubViewport
 	sub_viewport.set_update_mode(SubViewport.UPDATE_WHEN_PARENT_VISIBLE)
-	health_bar = get_node("HealthBar3D/SubViewport/HealthBar") as ProgressBar	
+
 	health = max_health
 	health_bar.value = health
 	

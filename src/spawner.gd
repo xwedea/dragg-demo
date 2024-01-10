@@ -2,18 +2,14 @@ extends Node
 
 @export var spawn_range : float = 15
 
-var player : BaseCharacter
-var world : Node3D
-var spawn_timer : Timer
+@onready var world := get_tree().root.get_node("World3D") as Node3D
+@onready var player := world.get_node("Player") as BaseCharacter
+@onready var spawn_timer := get_node("SpawnTimer") as Timer
 
-var enemy_scene = load("res://enemy/base_enemy.tscn")
+static var enemy_scene := preload("res://enemy/base_enemy.tscn")
 
 func _ready():
-	world = get_tree().root.get_node("World3D") as Node3D
-	player = world.get_node("Player") as BaseCharacter
-	spawn_timer = get_node("SpawnTimer") as Timer
 	spawn_timer.start()
-
 
 func spawn_enemy() -> BaseEnemy:
 	var random_x = randf_range(-1, 1)
@@ -26,6 +22,7 @@ func spawn_enemy() -> BaseEnemy:
 	world.get_node("Enemies").add_child(new_enemy)
 	return new_enemy
 	
+
 func _on_spawn_timer_timeout():
 	spawn_enemy()
 	spawn_timer.start()
