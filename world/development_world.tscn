@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b14uq6kn8i7r0"]
+[gd_scene load_steps=30 format=3 uid="uid://b14uq6kn8i7r0"]
 
 [ext_resource type="Script" path="res://src/control_sticks.gd" id="1_4y8b4"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="1_ojbat"]
@@ -6,11 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/main_button.tscn" id="2_6ekdf"]
 [ext_resource type="Script" path="res://src/game_ui.gd" id="2_emipb"]
 [ext_resource type="Texture2D" uid="uid://chnqaif0pj2bq" path="res://assets-dragg/blue_ui/CGB01-orange_M_pillShaped_btn.png" id="3_mdccy"]
+[ext_resource type="Texture2D" uid="uid://tw0h5ghcdso0" path="res://assets-dragg/blue_ui/Btn_OtherButton_Hexagon01_Red.png" id="4_07w3t"]
 [ext_resource type="Script" path="res://src/button_label.gd" id="4_40cpl"]
 [ext_resource type="Script" path="res://src/game_camera.gd" id="4_isc8j"]
 [ext_resource type="Texture2D" uid="uid://cki8hmnrdbr1a" path="res://assets-dragg/images/smallcircle.png" id="4_xwvsk"]
 [ext_resource type="PackedScene" uid="uid://bumxigukd3hh2" path="res://player/base_character.tscn" id="5_1nxl5"]
 [ext_resource type="Texture2D" uid="uid://bxe6l8pow7ypw" path="res://assets-dragg/images/bigcircle.png" id="5_thexg"]
+[ext_resource type="Texture2D" uid="uid://dyi4h6xsxnpjd" path="res://assets-dragg/ui/pause_icon.png" id="6_hd83x"]
 [ext_resource type="PackedScene" uid="uid://bfx54y75ia2vg" path="res://ball/ball.tscn" id="6_ydc3q"]
 [ext_resource type="PackedScene" uid="uid://c3bo0ps5tay8y" path="res://enemy/base_enemy.tscn" id="7_cwvuu"]
 [ext_resource type="Texture2D" uid="uid://c3ykad5rl80o2" path="res://assets-dragg/ui/Icon_Gold.Png" id="7_eyfe2"]
@@ -68,22 +70,26 @@ grow_horizontal = 0
 [node name="MainButton" parent="UI/ControlTopRight" instance=ExtResource("2_6ekdf")]
 z_index = 2
 layout_mode = 1
-offset_left = -291.0
-offset_top = 102.0
-offset_right = -35.0
-offset_bottom = 230.0
-texture_normal = ExtResource("3_mdccy")
+offset_left = -234.0
+offset_top = 51.0
+offset_right = 22.0
+offset_bottom = 250.0
+texture_normal = ExtResource("4_07w3t")
 
 [node name="ButtonLabel" type="Label" parent="UI/ControlTopRight/MainButton"]
 layout_mode = 0
-offset_left = 54.0
-offset_top = 30.0
-offset_right = 204.0
-offset_bottom = 99.0
-text = "MENU"
+offset_left = 9.0
+offset_top = 50.0
+offset_right = 159.0
+offset_bottom = 119.0
 label_settings = SubResource("LabelSettings_qidyi")
 horizontal_alignment = 1
 script = ExtResource("4_40cpl")
+
+[node name="PauseIcon" type="Sprite2D" parent="UI/ControlTopRight/MainButton"]
+position = Vector2(81, 95)
+scale = Vector2(0.17041, 0.17041)
+texture = ExtResource("6_hd83x")
 
 [node name="ControlTimer" type="Control" parent="UI/ControlTopRight"]
 anchors_preset = 0
