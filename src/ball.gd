@@ -23,7 +23,7 @@ func _ready():
 
 
 func _physics_process(_delta: float) -> void:
-	_draw_rope()
+	pass
 
 
 func kick(distance):
