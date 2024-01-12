@@ -1,0 +1,144 @@
+[gd_scene load_steps=19 format=3 uid="uid://cot21xrmvhxwc"]
+
+[ext_resource type="Script" path="res://src/title_control.gd" id="1_3bk7o"]
+[ext_resource type="Script" path="res://src/title_world.gd" id="1_bon2a"]
+[ext_resource type="AudioStream" uid="uid://ckg3w6p6m1wfv" path="res://assets-dragg/audio/background.mp3" id="2_ictak"]
+[ext_resource type="PackedScene" uid="uid://dqs42752pogi1" path="res://title_screen/title_character.tscn" id="2_r7edk"]
+[ext_resource type="PackedScene" uid="uid://cvl6ulq22krv5" path="res://title_screen/title_enemy.tscn" id="3_nii8r"]
+[ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="3_yy0f0"]
+[ext_resource type="Texture2D" uid="uid://duhqfo61ptw54" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue_Shaded.png" id="7_vm383"]
+[ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/button_control.tscn" id="10_fu3f0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lv0bh"]
+font_size = 200
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_wdtfe"]
+
+[sub_resource type="Environment" id="Environment_dwyoh"]
+background_mode = 2
+sky = SubResource("Sky_wdtfe")
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_4n7di"]
+vertices = PackedVector3Array(-99.5, 1, -99.5, -99.5, 1, 99.5, 99.5, 1, 99.5, 99.5, 1, -99.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vr4iw"]
+size = Vector3(99.9469, 1, 100.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqj47"]
+albedo_color = Color(0.356863, 1, 0.443137, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tglxd"]
+size = Vector3(10000, 1, 10000)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vjoxl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rhm6q"]
+albedo_color = Color(0.788235, 0.341176, 0.976471, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cb2s3"]
+
+[node name="World3D" type="Node3D"]
+script = ExtResource("1_bon2a")
+
+[node name="TitleControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3bk7o")
+
+[node name="TitleLabel" type="Label" parent="TitleControl"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 341.0
+offset_right = 1082.0
+offset_bottom = 587.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_yy0f0")
+theme_override_font_sizes/font_size = 200
+text = "DRAGG"
+label_settings = SubResource("LabelSettings_lv0bh")
+horizontal_alignment = 1
+
+[node name="PlayButton" parent="TitleControl" instance=ExtResource("10_fu3f0")]
+layout_mode = 1
+offset_left = 551.0
+offset_top = 1950.0
+offset_right = 551.0
+offset_bottom = 1950.0
+
+[node name="TextureButton" parent="TitleControl/PlayButton" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.5
+offset_top = -99.5
+offset_right = 82.5
+offset_bottom = 99.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(84, 94.6667)
+texture_pressed = ExtResource("7_vm383")
+
+[node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ictak")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.725735, 0.687975, 0, -0.687975, 0.725735, 0, 20.902, 0)
+shadow_enabled = true
+shadow_blur = 2.5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dwyoh")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.503395, 0)
+navigation_mesh = SubResource("NavigationMesh_4n7di")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_vr4iw")
+
+[node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_kqj47")
+mesh = SubResource("BoxMesh_tglxd")
+skeleton = NodePath("../../..")
+
+[node name="TitleCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.790155, 0.612907, 0, -0.612907, 0.790155, 0, 2.667, 2.409)
+current = true
+
+[node name="Enemies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.47888, 0, -7.85967)
+
+[node name="BaseEnemy" parent="Enemies" instance=ExtResource("3_nii8r")]
+
+[node name="BaseEnemy3" parent="Enemies" instance=ExtResource("3_nii8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.667392, 0, 1.39917)
+
+[node name="BaseEnemy2" parent="Enemies" instance=ExtResource("3_nii8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04868, -4.76837e-07, 0.896923)
+
+[node name="TitleCharacter" parent="." instance=ExtResource("2_r7edk")]
+transform = Transform3D(-0.99512, 0, -0.0986772, 0, 1, 0, 0.0986772, 0, -0.99512, 0, 0, 0)
+
+[node name="Obstacle" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.43792, 1.00304, -2.86286)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
+shape = SubResource("CylinderShape3D_vjoxl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle"]
+material_override = SubResource("StandardMaterial3D_rhm6q")
+mesh = SubResource("CylinderMesh_cb2s3")
+
+[connection signal="pressed" from="TitleControl/PlayButton/TextureButton" to="TitleControl" method="_on_play_button_pressed"]
+
+[editable path="TitleControl/PlayButton"]

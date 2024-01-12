@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cw5e22i0akvq5"]
+
+[ext_resource type="FontFile" uid="uid://cxk6i33q176fg" path="res://ui/fonts/supercell-magic-webfont.ttf" id="1_d2lff"]
+
+[resource]
+default_font = ExtResource("1_d2lff")

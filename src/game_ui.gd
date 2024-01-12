@@ -26,3 +26,9 @@ func _update_timer(delta):
 	timer_label.text = minutes_formatted + ":" + seconds_formatted # + milliseconds_formatted
 
 
+
+
+func _on_pause_button_pressed():
+	print("x")
+	get_tree().change_scene_to_file("res://title_screen/title_world.tscn")
+

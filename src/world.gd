@@ -27,4 +27,4 @@ func play_coin_collect_audio():
 
 
 func _on_main_button_pressed():
-	get_tree().change_scene_to_file("res://title_screen/title_screen.tscn")
+	get_tree().change_scene_to_file("res://title_screen/title_world.tscn")

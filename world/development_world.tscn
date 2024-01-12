@@ -1,36 +1,30 @@
-[gd_scene load_steps=30 format=3 uid="uid://b14uq6kn8i7r0"]
+[gd_scene load_steps=26 format=3 uid="uid://b14uq6kn8i7r0"]
+
 
 [ext_resource type="Script" path="res://src/control_sticks.gd" id="1_4y8b4"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="1_ojbat"]
 [ext_resource type="Script" path="res://src/world.gd" id="1_qmkdd"]
-[ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/main_button.tscn" id="2_6ekdf"]
+[ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/button_control.tscn" id="2_6ekdf"]
 [ext_resource type="Script" path="res://src/game_ui.gd" id="2_emipb"]
-[ext_resource type="Texture2D" uid="uid://chnqaif0pj2bq" path="res://assets-dragg/blue_ui/CGB01-orange_M_pillShaped_btn.png" id="3_mdccy"]
-[ext_resource type="Texture2D" uid="uid://tw0h5ghcdso0" path="res://assets-dragg/blue_ui/Btn_OtherButton_Hexagon01_Red.png" id="4_07w3t"]
-[ext_resource type="Script" path="res://src/button_label.gd" id="4_40cpl"]
+
+
 [ext_resource type="Script" path="res://src/game_camera.gd" id="4_isc8j"]
+[ext_resource type="Theme" uid="uid://cw5e22i0akvq5" path="res://casual_theme.tres" id="4_keggv"]
 [ext_resource type="Texture2D" uid="uid://cki8hmnrdbr1a" path="res://assets-dragg/images/smallcircle.png" id="4_xwvsk"]
 [ext_resource type="PackedScene" uid="uid://bumxigukd3hh2" path="res://player/base_character.tscn" id="5_1nxl5"]
 [ext_resource type="Texture2D" uid="uid://bxe6l8pow7ypw" path="res://assets-dragg/images/bigcircle.png" id="5_thexg"]
-[ext_resource type="Texture2D" uid="uid://dyi4h6xsxnpjd" path="res://assets-dragg/ui/pause_icon.png" id="6_hd83x"]
+[ext_resource type="Texture2D" uid="uid://ib2sw7w2nkts" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Circle01_n.png" id="5_yc4vh"]
 [ext_resource type="PackedScene" uid="uid://bfx54y75ia2vg" path="res://ball/ball.tscn" id="6_ydc3q"]
 [ext_resource type="PackedScene" uid="uid://c3bo0ps5tay8y" path="res://enemy/base_enemy.tscn" id="7_cwvuu"]
 [ext_resource type="Texture2D" uid="uid://c3ykad5rl80o2" path="res://assets-dragg/ui/Icon_Gold.Png" id="7_eyfe2"]
 [ext_resource type="AudioStream" uid="uid://dhdcl8ho45ex7" path="res://assets-dragg/audio/collectcoin-6075.mp3" id="10_vihk2"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_qidyi"]
-font_size = 50
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_fjwxq"]
 font_size = 52
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="FontVariation" id="FontVariation_fofvi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2fruv"]
-font_size = 64
-font_color = Color(0, 0, 0, 1)
+font_size = 52
+
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4n7di"]
 vertices = PackedVector3Array(-99.5, 1, -99.5, -99.5, 1, 99.5, 99.5, 1, 99.5, 99.5, 1, -99.5)
@@ -61,47 +55,72 @@ script = ExtResource("1_qmkdd")
 script = ExtResource("2_emipb")
 
 [node name="ControlTopRight" type="Control" parent="UI"]
+z_index = 10
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
+theme = ExtResource("4_keggv")
 
-[node name="MainButton" parent="UI/ControlTopRight" instance=ExtResource("2_6ekdf")]
-z_index = 2
+[node name="PauseButton" parent="UI/ControlTopRight" instance=ExtResource("2_6ekdf")]
 layout_mode = 1
-offset_left = -234.0
-offset_top = 51.0
-offset_right = 22.0
-offset_bottom = 250.0
-texture_normal = ExtResource("4_07w3t")
+offset_left = -167.0
+offset_top = 204.0
+offset_right = -167.0
+offset_bottom = 204.0
 
-[node name="ButtonLabel" type="Label" parent="UI/ControlTopRight/MainButton"]
-visible = false
-layout_mode = 0
-offset_left = 9.0
-offset_top = 50.0
-offset_right = 159.0
-offset_bottom = 119.0
-label_settings = SubResource("LabelSettings_qidyi")
+[node name="TextureButton" parent="UI/ControlTopRight/PauseButton" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.5
+offset_top = -99.5
+offset_right = 82.5
+offset_bottom = 99.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(85, 95)
+
+[node name="Label" parent="UI/ControlTopRight/PauseButton" index="1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -59.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "II"
+
 horizontal_alignment = 1
-script = ExtResource("4_40cpl")
 
-[node name="PauseTexture" type="TextureRect" parent="UI/ControlTopRight/MainButton"]
+[node name="ControlTopLeft" type="Control" parent="UI"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("4_keggv")
+
+[node name="Panel" type="Panel" parent="UI/ControlTopLeft"]
 layout_mode = 0
-offset_left = 41.0
-offset_top = 55.0
-offset_right = 122.0
-offset_bottom = 136.0
-texture = ExtResource("6_hd83x")
-expand_mode = 1
+offset_left = 785.0
+offset_top = 329.0
+offset_right = 1040.0
+offset_bottom = 529.0
+
 
 [node name="ControlTimer" type="Control" parent="UI/ControlTopRight"]
 anchors_preset = 0
-offset_left = -127.0
-offset_top = 269.0
-offset_right = -87.0
-offset_bottom = 309.0
+offset_left = 973.0
+offset_top = 357.0
+offset_right = 1013.0
+offset_bottom = 397.0
+
 metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="UI/ControlTopRight/ControlTimer"]
@@ -112,13 +131,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -64.0
-offset_right = 128.0
-offset_bottom = 64.0
+offset_left = -101.0
+offset_top = -74.0
+offset_right = 155.0
+offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_mdccy")
+texture = ExtResource("5_yc4vh")
+stretch_mode = 2
 
 [node name="TimerLabel" type="Label" parent="UI/ControlTopRight/ControlTimer"]
 layout_mode = 1
@@ -127,15 +147,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -117.0
-offset_top = -36.0
-offset_right = 17.0
-offset_bottom = 36.0
+offset_left = -339.0
+offset_top = -39.0
+offset_right = 33.0
+offset_bottom = 39.0
+
 grow_horizontal = 2
 grow_vertical = 2
-text = "12:12"
+text = "00:00"
 label_settings = SubResource("LabelSettings_fjwxq")
-horizontal_alignment = 1
+horizontal_alignment = 2
+
 
 [node name="ControlCoin" type="Control" parent="UI/ControlTopRight"]
 layout_mode = 1
@@ -144,23 +166,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -137.0
-offset_top = 366.0
-offset_right = -97.0
-offset_bottom = 406.0
+offset_left = 1052.0
+offset_top = 453.0
+offset_right = 1092.0
+offset_bottom = 493.0
+
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CoinLabel" type="Label" parent="UI/ControlTopRight/ControlCoin"]
 layout_mode = 1
-offset_left = -292.0
-offset_top = -17.0
-offset_right = -23.0
-offset_bottom = 71.0
+offset_left = -359.0
+offset_top = -15.0
+offset_right = -95.0
+offset_bottom = 63.0
+theme = ExtResource("4_keggv")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_fofvi")
-theme_override_font_sizes/font_size = 100
-text = "0"
+text = "2"
+
 label_settings = SubResource("LabelSettings_2fruv")
 horizontal_alignment = 2
 
@@ -325,5 +348,7 @@ shape = SubResource("CylinderShape3D_vjoxl")
 material_override = SubResource("StandardMaterial3D_rhm6q")
 mesh = SubResource("CylinderMesh_cb2s3")
 
-[connection signal="pressed" from="UI/ControlTopRight/MainButton" to="." method="_on_main_button_pressed"]
+[connection signal="pressed" from="UI/ControlTopRight/PauseButton/TextureButton" to="UI" method="_on_pause_button_pressed"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
+
+[editable path="UI/ControlTopRight/PauseButton"]
