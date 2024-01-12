@@ -1,7 +1,7 @@
 extends Node
 
 @onready var world := get_tree().root.get_node("World3D") as World
-@onready var control_sticks := get_node("ControlSticks") as Control
+@onready var control_sticks := get_node("ControlSticks") as ControlSticks
 @onready var timer_label := get_node("ControlTopCenter/ControlTimer/TimerLabel") as Label
 @onready var count_label := get_node("ControlTopCenter/ControlCoin/CoinLabel") as Label
 @onready var pause_label := get_node("ControlTopCenter/PauseButton/Label") as Label
@@ -12,6 +12,8 @@ var time := 0.0
 var game_paused := false
 
 func _process(delta):
+	if game_paused: return
+		
 	_update_timer(delta)
 	count_label.text = str(world.coins_collected)	
 
@@ -37,6 +39,10 @@ func _on_pause_button_toggled(toggled_on:bool):
 
 
 func _on_pause_button_mouse_entered():
-	pass # Replace with function body.
+	control_sticks.visible = false
+	control_sticks.disabled = true
 
 
+func _on_pause_button_mouse_exited():
+	control_sticks.visible = true
+	control_sticks.disabled = false

@@ -30,5 +30,3 @@ func _on_main_button_pressed():
 	get_tree().change_scene_to_file("res://title_screen/title_world.tscn")
 
 
-func _on_pause_button_mouse_entered():
-	pass # Replace with function body.

@@ -344,7 +344,6 @@ shape = SubResource("CylinderShape3D_vjoxl")
 material_override = SubResource("StandardMaterial3D_rhm6q")
 mesh = SubResource("CylinderMesh_cb2s3")
 
-[connection signal="mouse_entered" from="UI/ControlTopCenter/PauseButton/TextureButton" to="UI" method="_on_pause_button_mouse_entered"]
 [connection signal="toggled" from="UI/ControlTopCenter/PauseButton/TextureButton" to="UI" method="_on_pause_button_toggled"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 

@@ -1,4 +1,4 @@
-extends Control
+class_name ControlSticks extends Control
 
 @onready var world := get_tree().root.get_node("World3D") as World
 @onready var stick_circle_container := get_node("StickCircleContainer") as Control
@@ -7,17 +7,19 @@ extends Control
 
 @export var max_distance: float = 47
 
-var is_screen_pressed: bool = false
-
+var screen_pressed := false
+var disabled := false
 
 func _ready():
 	visible = false
 
 
 func _process(_delta: float) -> void:
+	if disabled: return
+
 	var mouse_position: Vector2 = game_viewport.get_mouse_position()
 
-	if is_screen_pressed:
+	if screen_pressed:
 		if position.distance_to(mouse_position) <= max_distance:
 			stick_button_container.global_position = mouse_position
 		else:
@@ -25,7 +27,7 @@ func _process(_delta: float) -> void:
 			stick_button_container.global_position = position + direction * max_distance
 
 	if Input.is_action_just_pressed("LeftClick"):
-		is_screen_pressed = true
+		screen_pressed = true
 		position = mouse_position
 		visible = true
 	elif Input.is_action_just_released("LeftClick"):
