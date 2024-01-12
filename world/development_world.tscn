@@ -1,13 +1,10 @@
 [gd_scene load_steps=26 format=3 uid="uid://b14uq6kn8i7r0"]
 
-
 [ext_resource type="Script" path="res://src/control_sticks.gd" id="1_4y8b4"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="1_ojbat"]
 [ext_resource type="Script" path="res://src/world.gd" id="1_qmkdd"]
 [ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/button_control.tscn" id="2_6ekdf"]
 [ext_resource type="Script" path="res://src/game_ui.gd" id="2_emipb"]
-
-
 [ext_resource type="Script" path="res://src/game_camera.gd" id="4_isc8j"]
 [ext_resource type="Theme" uid="uid://cw5e22i0akvq5" path="res://casual_theme.tres" id="4_keggv"]
 [ext_resource type="Texture2D" uid="uid://cki8hmnrdbr1a" path="res://assets-dragg/images/smallcircle.png" id="4_xwvsk"]
@@ -24,7 +21,6 @@ font_size = 52
 
 [sub_resource type="LabelSettings" id="LabelSettings_2fruv"]
 font_size = 52
-
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4n7di"]
 vertices = PackedVector3Array(-99.5, 1, -99.5, -99.5, 1, 99.5, 99.5, 1, 99.5, 99.5, 1, -99.5)
@@ -97,30 +93,21 @@ offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "II"
-
 horizontal_alignment = 1
 
-[node name="ControlTopLeft" type="Control" parent="UI"]
-z_index = 10
-layout_mode = 3
-anchors_preset = 0
-theme = ExtResource("4_keggv")
-
-[node name="Panel" type="Panel" parent="UI/ControlTopLeft"]
+[node name="Panel" type="Panel" parent="UI/ControlTopRight"]
 layout_mode = 0
-offset_left = 785.0
+offset_left = -295.0
 offset_top = 329.0
-offset_right = 1040.0
+offset_right = -40.0
 offset_bottom = 529.0
-
 
 [node name="ControlTimer" type="Control" parent="UI/ControlTopRight"]
 anchors_preset = 0
-offset_left = 973.0
-offset_top = 357.0
-offset_right = 1013.0
-offset_bottom = 397.0
-
+offset_left = -106.0
+offset_top = 367.0
+offset_right = -66.0
+offset_bottom = 407.0
 metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="UI/ControlTopRight/ControlTimer"]
@@ -151,13 +138,11 @@ offset_left = -339.0
 offset_top = -39.0
 offset_right = 33.0
 offset_bottom = 39.0
-
 grow_horizontal = 2
 grow_vertical = 2
 text = "00:00"
 label_settings = SubResource("LabelSettings_fjwxq")
 horizontal_alignment = 2
-
 
 [node name="ControlCoin" type="Control" parent="UI/ControlTopRight"]
 layout_mode = 1
@@ -166,24 +151,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1052.0
-offset_top = 453.0
-offset_right = 1092.0
-offset_bottom = 493.0
-
+offset_left = -101.0
+offset_top = 448.0
+offset_right = -61.0
+offset_bottom = 488.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CoinLabel" type="Label" parent="UI/ControlTopRight/ControlCoin"]
 layout_mode = 1
-offset_left = -359.0
-offset_top = -15.0
-offset_right = -95.0
-offset_bottom = 63.0
+offset_left = -292.0
+offset_top = -12.0
+offset_right = -28.0
+offset_bottom = 66.0
 theme = ExtResource("4_keggv")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "2"
-
 label_settings = SubResource("LabelSettings_2fruv")
 horizontal_alignment = 2
 
@@ -195,18 +178,6 @@ offset_right = 47.0
 offset_bottom = 59.0
 texture = ExtResource("7_eyfe2")
 expand_mode = 1
-
-[node name="ControlTopLeft" type="Control" parent="UI"]
-z_index = 2
-layout_mode = 3
-anchors_preset = 0
-
-[node name="ControlTopCenter" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
 
 [node name="ControlSticks" type="Control" parent="UI"]
 visible = false
