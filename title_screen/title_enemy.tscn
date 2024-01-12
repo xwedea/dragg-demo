@@ -19,7 +19,7 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(0.150814, 0.196667, 0.213322, 1)
 roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_6w2gt"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_33akb"]
 resource_name = "character_skeleton_minion_Cube7650"
 _blend_shape_names = PackedStringArray("Angry", "Happy")
 _surfaces = [{
@@ -52,7 +52,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vk2tj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yila"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4upy"]
@@ -77,7 +77,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_rcrmx"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_2jq2l"]
 resource_name = "character_skeleton_minion_Cube7652"
 _surfaces = [{
 "aabb": AABB(-0.22671, -0.0649419, -0.0575415, 0.453443, 0.129884, 0.09911),
@@ -111,7 +111,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_p44p3"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_o87go"]
 resource_name = "character_skeleton_minion_Cube7651"
 _surfaces = [{
 "aabb": AABB(-0.273626, -0.152352, -0.0570074, 0.547252, 0.319053, 0.398222),
@@ -130,7 +130,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_05aw5")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwxjg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fsqb"]
 albedo_color = Color(1, 0.462745, 0.192157, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftih3"]
@@ -194,7 +194,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ekist"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_cy4kg"]
 resource_name = "character_skeleton_minion_Cube7654"
 _surfaces = [{
 "aabb": AABB(-0.323516, 0.0390465, -0.338574, 0.660778, 0.204223, 0.670998),
@@ -285,7 +285,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_tpgoj"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_tmg20"]
 resource_name = "character_skeleton_minion_Cube7655"
 _surfaces = [{
 "aabb": AABB(0.10525, -0.406885, -0.120756, 0.223064, 0.131593, 0.241521),
@@ -343,7 +343,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_i56ud"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_0bcio"]
 resource_name = "character_skeleton_minion_Cube7653"
 _surfaces = [{
 "aabb": AABB(-0.328313, -0.406885, -0.120756, 0.223064, 0.131593, 0.241521),
@@ -3957,21 +3957,21 @@ bone_idx = 1
 
 [node name="character_skeleton_minion_head" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/Head"]
 material_override = ExtResource("2_ai7vc")
-mesh = SubResource("ArrayMesh_6w2gt")
+mesh = SubResource("ArrayMesh_33akb")
 skeleton = NodePath("")
 blend_shapes/Angry = 0.0
 blend_shapes/Happy = 0.0
 
 [node name="character_skeleton_minion_eyes" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/Head/character_skeleton_minion_head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62939e-06, 0.424515, 0.258715)
-material_override = SubResource("StandardMaterial3D_vk2tj")
-mesh = SubResource("ArrayMesh_rcrmx")
+material_override = SubResource("StandardMaterial3D_1yila")
+mesh = SubResource("ArrayMesh_2jq2l")
 skeleton = NodePath("")
 
 [node name="character_skeleton_minion_jaw" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/Head/character_skeleton_minion_head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.126701, 0.0399227)
 material_override = ExtResource("2_ai7vc")
-mesh = SubResource("ArrayMesh_p44p3")
+mesh = SubResource("ArrayMesh_o87go")
 skeleton = NodePath("")
 
 [node name="Body" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
@@ -3980,8 +3980,8 @@ bone_idx = 0
 
 [node name="character_skeleton_minion_body" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/Body"]
 transform = Transform3D(1, 3.57977e-09, 0, -3.88536e-09, 1, 0, -4.65661e-10, 3.72529e-09, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_rwxjg")
-mesh = SubResource("ArrayMesh_ekist")
+material_override = SubResource("StandardMaterial3D_4fsqb")
+mesh = SubResource("ArrayMesh_cy4kg")
 skeleton = NodePath("")
 
 [node name="ArmLeft" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
@@ -3992,7 +3992,7 @@ bone_idx = 2
 [node name="character_skeleton_minion_armLeft" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/ArmLeft"]
 transform = Transform3D(-3.86997e-10, 2.53319e-07, -0.999999, 0.471936, -0.881633, -2.53319e-07, -0.881633, -0.471936, -3.86997e-10, 0, 0, 0)
 material_override = ExtResource("2_ai7vc")
-mesh = SubResource("ArrayMesh_tpgoj")
+mesh = SubResource("ArrayMesh_tmg20")
 skeleton = NodePath("")
 
 [node name="ArmRight" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
@@ -4003,7 +4003,7 @@ bone_idx = 4
 [node name="character_skeleton_minion_armRight" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/ArmRight"]
 transform = Transform3D(-1.44519e-08, -2.79594e-07, -0.999999, -0.471936, -0.881633, 2.79594e-07, -0.881633, 0.471936, -1.44519e-08, 0, 0, 0)
 material_override = ExtResource("2_ai7vc")
-mesh = SubResource("ArrayMesh_i56ud")
+mesh = SubResource("ArrayMesh_0bcio")
 skeleton = NodePath("")
 
 [node name="HandSlotLeft" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]

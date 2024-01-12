@@ -1,15 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://cot21xrmvhxwc"]
+[gd_scene load_steps=19 format=3 uid="uid://cot21xrmvhxwc"]
 
 [ext_resource type="Script" path="res://src/title_control.gd" id="1_3bk7o"]
-[ext_resource type="Theme" uid="uid://cw5e22i0akvq5" path="res://casual_theme.tres" id="1_hfutg"]
+[ext_resource type="Script" path="res://src/title_world.gd" id="1_bon2a"]
 [ext_resource type="AudioStream" uid="uid://ckg3w6p6m1wfv" path="res://assets-dragg/audio/background.mp3" id="2_ictak"]
 [ext_resource type="PackedScene" uid="uid://dqs42752pogi1" path="res://title_screen/title_character.tscn" id="2_r7edk"]
 [ext_resource type="PackedScene" uid="uid://cvl6ulq22krv5" path="res://title_screen/title_enemy.tscn" id="3_nii8r"]
 [ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="3_yy0f0"]
-[ext_resource type="Script" path="res://src/button_control.gd" id="5_fms4i"]
-[ext_resource type="AudioStream" uid="uid://bs43433qmf4j7" path="res://assets-dragg/audio/punchy-taps-ui-5-183901.mp3" id="8_qdiop"]
-[ext_resource type="Texture2D" uid="uid://d0iyg5kkk51iu" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue.png" id="9_l1vrd"]
-[ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="11_t3fhq"]
+[ext_resource type="Texture2D" uid="uid://duhqfo61ptw54" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue_Shaded.png" id="7_vm383"]
+[ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/button_control.tscn" id="10_fu3f0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lv0bh"]
 font_size = 200
@@ -42,15 +40,12 @@ albedo_color = Color(0.788235, 0.341176, 0.976471, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_cb2s3"]
 
 [node name="World3D" type="Node3D"]
+script = ExtResource("1_bon2a")
 
 [node name="TitleControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_3bk7o")
-
-[node name="TitleAudio" type="AudioStreamPlayer" parent="TitleControl"]
-stream = ExtResource("2_ictak")
-volume_db = -80.0
 
 [node name="TitleLabel" type="Label" parent="TitleControl"]
 layout_mode = 0
@@ -65,23 +60,14 @@ text = "DRAGG"
 label_settings = SubResource("LabelSettings_lv0bh")
 horizontal_alignment = 1
 
-[node name="ButtonControl" type="Control" parent="TitleControl"]
+[node name="PlayButton" parent="TitleControl" instance=ExtResource("10_fu3f0")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = 551.0
-offset_top = 1971.0
+offset_top = 1950.0
 offset_right = 551.0
-offset_bottom = 1971.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_hfutg")
-script = ExtResource("5_fms4i")
+offset_bottom = 1950.0
 
-[node name="TextureButton" type="TextureButton" parent="TitleControl/ButtonControl"]
+[node name="TextureButton" parent="TitleControl/PlayButton" index="0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,28 +80,12 @@ offset_right = 82.5
 offset_bottom = 99.5
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(82, 99)
-theme = ExtResource("1_hfutg")
-texture_normal = ExtResource("9_l1vrd")
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(84, 94.6667)
+texture_pressed = ExtResource("7_vm383")
 
-[node name="Label" type="Label" parent="TitleControl/ButtonControl"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -79.0
-offset_top = -59.0
-offset_right = 79.0
-offset_bottom = 59.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "GO"
-label_settings = ExtResource("11_t3fhq")
-
-[node name="TapAudio" type="AudioStreamPlayer" parent="TitleControl/ButtonControl"]
-stream = ExtResource("8_qdiop")
+[node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ictak")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.725735, 0.687975, 0, -0.687975, 0.725735, 0, 20.902, 0)
@@ -141,7 +111,7 @@ mesh = SubResource("BoxMesh_tglxd")
 skeleton = NodePath("../../..")
 
 [node name="TitleCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.795473, 0.605988, 0, -0.605988, 0.795473, 0, 2.502, 2.719)
+transform = Transform3D(1, 0, 0, 0, 0.790155, 0.612907, 0, -0.612907, 0.790155, 0, 2.667, 2.409)
 current = true
 
 [node name="Enemies" type="Node3D" parent="."]
@@ -169,83 +139,6 @@ shape = SubResource("CylinderShape3D_vjoxl")
 material_override = SubResource("StandardMaterial3D_rhm6q")
 mesh = SubResource("CylinderMesh_cb2s3")
 
-[node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
+[connection signal="pressed" from="TitleControl/PlayButton/TextureButton" to="TitleControl" method="_on_play_button_pressed"]
 
-[node name="TitleControl2" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_3bk7o")
-
-[node name="TitleAudio" type="AudioStreamPlayer" parent="TitleControl2"]
-stream = ExtResource("2_ictak")
-volume_db = -80.0
-
-[node name="TitleLabel" type="Label" parent="TitleControl2"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 341.0
-offset_right = 1082.0
-offset_bottom = 587.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_yy0f0")
-theme_override_font_sizes/font_size = 200
-text = "DRAGG"
-label_settings = SubResource("LabelSettings_lv0bh")
-horizontal_alignment = 1
-
-[node name="ButtonControl" type="Control" parent="TitleControl2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 551.0
-offset_top = 1971.0
-offset_right = 551.0
-offset_bottom = 1971.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_hfutg")
-script = ExtResource("5_fms4i")
-
-[node name="TextureButton" type="TextureButton" parent="TitleControl2/ButtonControl"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -82.5
-offset_top = -99.5
-offset_right = 82.5
-offset_bottom = 99.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(82, 99)
-theme = ExtResource("1_hfutg")
-texture_normal = ExtResource("9_l1vrd")
-
-[node name="Label" type="Label" parent="TitleControl2/ButtonControl"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -79.0
-offset_top = -59.0
-offset_right = 79.0
-offset_bottom = 59.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "GO"
-label_settings = ExtResource("11_t3fhq")
-
-[node name="TapAudio" type="AudioStreamPlayer" parent="TitleControl2/ButtonControl"]
-stream = ExtResource("8_qdiop")
-
-[connection signal="button_down" from="TitleControl/ButtonControl/TextureButton" to="TitleControl/ButtonControl" method="_on_texture_button_button_down"]
-[connection signal="button_up" from="TitleControl/ButtonControl/TextureButton" to="TitleControl/ButtonControl" method="_on_texture_button_button_up"]
-[connection signal="button_down" from="TitleControl2/ButtonControl/TextureButton" to="TitleControl2/ButtonControl" method="_on_texture_button_button_down"]
-[connection signal="button_up" from="TitleControl2/ButtonControl/TextureButton" to="TitleControl2/ButtonControl" method="_on_texture_button_button_up"]
+[editable path="TitleControl/PlayButton"]
