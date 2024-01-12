@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b14uq6kn8i7r0"]
+[gd_scene load_steps=30 format=3 uid="uid://b14uq6kn8i7r0"]
 
 [ext_resource type="Script" path="res://src/control_sticks.gd" id="1_4y8b4"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="1_ojbat"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bfx54y75ia2vg" path="res://ball/ball.tscn" id="6_ydc3q"]
 [ext_resource type="PackedScene" uid="uid://c3bo0ps5tay8y" path="res://enemy/base_enemy.tscn" id="7_cwvuu"]
 [ext_resource type="Texture2D" uid="uid://c3ykad5rl80o2" path="res://assets-dragg/ui/Icon_Gold.Png" id="7_eyfe2"]
+[ext_resource type="Texture2D" uid="uid://vbnkq27gcx0y" path="res://assets-dragg/ui/continuewhite.png" id="8_8vepc"]
 [ext_resource type="AudioStream" uid="uid://dhdcl8ho45ex7" path="res://assets-dragg/audio/collectcoin-6075.mp3" id="10_vihk2"]
 [ext_resource type="Texture2D" uid="uid://cra7lhrdam17n" path="res://assets-dragg/casual_ui/label/Label_TitleFlag02_Red.png" id="16_2jioe"]
 
@@ -53,6 +54,7 @@ albedo_color = Color(0.788235, 0.341176, 0.976471, 1)
 script = ExtResource("1_qmkdd")
 
 [node name="UI" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("2_emipb")
 
 [node name="ControlTopCenter" type="Control" parent="UI"]
@@ -87,7 +89,6 @@ offset_top = 327.0
 offset_right = 404.0
 offset_bottom = 327.0
 pivot_offset = Vector2(6, 0)
-metadata/_edit_group_ = true
 
 [node name="TextureButton" parent="UI/ControlTopCenter/PauseButton" index="0"]
 layout_mode = 1
@@ -103,6 +104,7 @@ offset_bottom = 73.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(66, 71.5)
+toggle_mode = true
 texture_normal = ExtResource("5_yc4vh")
 
 [node name="Label" parent="UI/ControlTopCenter/PauseButton" index="1"]
@@ -113,6 +115,17 @@ offset_bottom = 29.0
 text = "II"
 label_settings = SubResource("LabelSettings_w0gk0")
 horizontal_alignment = 1
+
+[node name="ContinueIcon" type="TextureRect" parent="UI/ControlTopCenter/PauseButton"]
+visible = false
+layout_mode = 0
+offset_left = -32.0
+offset_top = -41.0
+offset_right = 44.0
+offset_bottom = 35.0
+mouse_filter = 2
+texture = ExtResource("8_8vepc")
+expand_mode = 1
 
 [node name="ControlTimer" type="Control" parent="UI/ControlTopCenter"]
 anchors_preset = 0
@@ -331,7 +344,8 @@ shape = SubResource("CylinderShape3D_vjoxl")
 material_override = SubResource("StandardMaterial3D_rhm6q")
 mesh = SubResource("CylinderMesh_cb2s3")
 
-[connection signal="pressed" from="UI/ControlTopCenter/PauseButton/TextureButton" to="UI" method="_on_pause_button_pressed"]
+[connection signal="mouse_entered" from="UI/ControlTopCenter/PauseButton/TextureButton" to="UI" method="_on_pause_button_mouse_entered"]
+[connection signal="toggled" from="UI/ControlTopCenter/PauseButton/TextureButton" to="UI" method="_on_pause_button_toggled"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 
 [editable path="UI/ControlTopCenter/PauseButton"]
