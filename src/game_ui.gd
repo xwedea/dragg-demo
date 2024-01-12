@@ -1,8 +1,8 @@
 extends Node
 
 @onready var world := get_tree().root.get_node("World3D") as World
-@onready var timer_label := get_node("ControlTopLeft/ControlTimer/TimerLabel") as Label
-@onready var count_label := get_node("ControlTopLeft/ControlCoin/CoinLabel") as Label
+@onready var timer_label := get_node("ControlTopRight/ControlTimer/TimerLabel") as Label
+@onready var count_label := get_node("ControlTopRight/ControlCoin/CoinLabel") as Label
 
 
 var time := 0.0

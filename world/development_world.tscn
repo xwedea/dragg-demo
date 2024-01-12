@@ -1,10 +1,13 @@
 [gd_scene load_steps=26 format=3 uid="uid://b14uq6kn8i7r0"]
 
+
 [ext_resource type="Script" path="res://src/control_sticks.gd" id="1_4y8b4"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="1_ojbat"]
 [ext_resource type="Script" path="res://src/world.gd" id="1_qmkdd"]
 [ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/button_control.tscn" id="2_6ekdf"]
 [ext_resource type="Script" path="res://src/game_ui.gd" id="2_emipb"]
+
+
 [ext_resource type="Script" path="res://src/game_camera.gd" id="4_isc8j"]
 [ext_resource type="Theme" uid="uid://cw5e22i0akvq5" path="res://casual_theme.tres" id="4_keggv"]
 [ext_resource type="Texture2D" uid="uid://cki8hmnrdbr1a" path="res://assets-dragg/images/smallcircle.png" id="4_xwvsk"]
@@ -22,12 +25,13 @@ font_size = 52
 [sub_resource type="LabelSettings" id="LabelSettings_2fruv"]
 font_size = 52
 
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_4n7di"]
 vertices = PackedVector3Array(-99.5, 1, -99.5, -99.5, 1, 99.5, 99.5, 1, 99.5, 99.5, 1, -99.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vr4iw"]
-size = Vector3(99.9469, 1, 100.02)
+size = Vector3(199.925, 1, 199.42)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqj47"]
 albedo_color = Color(0.356863, 1, 0.443137, 1)
@@ -93,6 +97,7 @@ offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "II"
+
 horizontal_alignment = 1
 
 [node name="ControlTopLeft" type="Control" parent="UI"]
@@ -108,15 +113,17 @@ offset_top = 329.0
 offset_right = 1040.0
 offset_bottom = 529.0
 
-[node name="ControlTimer" type="Control" parent="UI/ControlTopLeft"]
+
+[node name="ControlTimer" type="Control" parent="UI/ControlTopRight"]
 anchors_preset = 0
 offset_left = 973.0
 offset_top = 357.0
 offset_right = 1013.0
 offset_bottom = 397.0
+
 metadata/_edit_group_ = true
 
-[node name="TextureRect" type="TextureRect" parent="UI/ControlTopLeft/ControlTimer"]
+[node name="TextureRect" type="TextureRect" parent="UI/ControlTopRight/ControlTimer"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -133,7 +140,7 @@ grow_vertical = 2
 texture = ExtResource("5_yc4vh")
 stretch_mode = 2
 
-[node name="TimerLabel" type="Label" parent="UI/ControlTopLeft/ControlTimer"]
+[node name="TimerLabel" type="Label" parent="UI/ControlTopRight/ControlTimer"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -144,13 +151,15 @@ offset_left = -339.0
 offset_top = -39.0
 offset_right = 33.0
 offset_bottom = 39.0
+
 grow_horizontal = 2
 grow_vertical = 2
 text = "00:00"
 label_settings = SubResource("LabelSettings_fjwxq")
 horizontal_alignment = 2
 
-[node name="ControlCoin" type="Control" parent="UI/ControlTopLeft"]
+
+[node name="ControlCoin" type="Control" parent="UI/ControlTopRight"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -161,10 +170,11 @@ offset_left = 1052.0
 offset_top = 453.0
 offset_right = 1092.0
 offset_bottom = 493.0
+
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CoinLabel" type="Label" parent="UI/ControlTopLeft/ControlCoin"]
+[node name="CoinLabel" type="Label" parent="UI/ControlTopRight/ControlCoin"]
 layout_mode = 1
 offset_left = -359.0
 offset_top = -15.0
@@ -173,17 +183,23 @@ offset_bottom = 63.0
 theme = ExtResource("4_keggv")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "2"
+
 label_settings = SubResource("LabelSettings_2fruv")
 horizontal_alignment = 2
 
-[node name="CoinTexture" type="TextureRect" parent="UI/ControlTopLeft/ControlCoin"]
+[node name="CoinTexture" type="TextureRect" parent="UI/ControlTopRight/ControlCoin"]
 layout_mode = 0
-offset_left = -87.0
-offset_top = -11.0
-offset_right = -22.0
-offset_bottom = 54.0
+offset_left = -18.0
+offset_top = -6.0
+offset_right = 47.0
+offset_bottom = 59.0
 texture = ExtResource("7_eyfe2")
 expand_mode = 1
+
+[node name="ControlTopLeft" type="Control" parent="UI"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
 
 [node name="ControlTopCenter" type="Control" parent="UI"]
 layout_mode = 3
@@ -261,6 +277,7 @@ navigation_mesh = SubResource("NavigationMesh_4n7di")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153954, 0, 0.14551)
 shape = SubResource("BoxShape3D_vr4iw")
 
 [node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
