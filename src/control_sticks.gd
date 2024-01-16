@@ -8,14 +8,13 @@ class_name ControlSticks extends Control
 @export var max_distance: float = 47
 
 var screen_pressed := false
-var disabled := false
 
 func _ready():
 	visible = false
 
 
 func _process(_delta: float) -> void:
-	if disabled: return
+	if world.game_paused: return
 
 	var mouse_position: Vector2 = game_viewport.get_mouse_position()
 

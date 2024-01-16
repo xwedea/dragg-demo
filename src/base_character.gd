@@ -15,11 +15,10 @@ class_name BaseCharacter extends CharacterBody3D
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var health: float
-var just_got_damaged: bool = false
-var is_moving: bool = false
-var is_dead: bool = false
-var stick_center: Vector2
-
+var just_got_damaged := false
+var is_moving := false 
+var is_dead := false
+var stick_center: Vector2 # 
 
 func _ready():
 	anim_player.play("Idle")
@@ -89,12 +88,15 @@ func _get_movement() -> Vector3:
 
 
 func _handle_stick() -> void:
-	if (Input.is_action_just_pressed("LeftClick")):
+	if get_tree().paused: return
+	if world.movement_disabled: return
+
+	if Input.is_action_just_pressed("LeftClick"):
 		is_moving = true;
 		stick_center = get_viewport().get_mouse_position();
-	elif (Input.is_action_just_released("LeftClick")):
+	elif Input.is_action_just_released("LeftClick"):
 		is_moving = false;
-
+	
 		var distance : float = position.distance_to(ball.position);
 		if (distance < ball.max_kick_distance):
 			ball.kick(distance)

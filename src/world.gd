@@ -5,7 +5,8 @@ class_name World extends Node3D
 
 var coin_scene: Resource = preload("res://objects/coin/coin.tscn")
 var coins_collected = 0
-
+var game_paused := false
+var movement_disabled := false
 
 func _ready():
 	background_audio.play()
