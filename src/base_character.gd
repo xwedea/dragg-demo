@@ -34,8 +34,6 @@ func _physics_process(delta):
 	if is_dead:
 		return
 
-	_handle_stick(); 
-
 	var vel = velocity;
 
 	if (!is_on_floor()):
@@ -91,22 +89,22 @@ func _handle_stick() -> void:
 	if get_tree().paused: return
 	if world.movement_disabled: return
 
-	if Input.is_action_just_pressed("LeftClick"):
-		is_moving = true;
-		stick_center = get_viewport().get_mouse_position();
-	elif Input.is_action_just_released("LeftClick"):
-		is_moving = false;
+func handle_left_mouse_click():
+	is_moving = true;
+	stick_center = get_viewport().get_mouse_position();
+
+func handle_left_mouse_release():
+	is_moving = false;
 	
-		var distance : float = position.distance_to(ball.position);
-		if (distance < ball.max_kick_distance):
-			ball.kick(distance)
+	var distance : float = position.distance_to(ball.position);
+	if (distance < ball.max_kick_distance):
+		ball.kick(distance)
 
 
 func _die():
 	is_dead = true
 	anim_player.play("Defeat")
 	death_timer.start()
-
 
 func _on_hit_box_body_entered(body:Node3D):
 	if just_got_damaged || is_dead: return
@@ -117,7 +115,7 @@ func _on_hit_box_body_entered(body:Node3D):
 		health -= 35
 		health_bar.value = health
 		if health <= 0:
-			_die()		
+			_die()
 		
 
 func _on_hit_timer_timeout():

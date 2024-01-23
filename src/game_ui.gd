@@ -1,4 +1,4 @@
-extends Node
+class_name UserInterfaceNode extends Node
 
 @onready var world := get_tree().root.get_node("World3D") as World
 @onready var player := world.get_node("Player") as BaseCharacter
@@ -12,7 +12,7 @@ extends Node
 var time := 0.0
 
 func _process(delta):
-	if world.game_paused: return
+	if world.state == world.GAMESTATE.PAUSED: return
 		
 	_update_timer(delta)
 	count_label.text = str(world.coins_collected)	
@@ -27,13 +27,12 @@ func _update_timer(delta):
 	seconds_label.text = "%02d" % seconds
 
 func _on_pause_button_toggled(toggled_on:bool):
-	world.game_paused = toggled_on
 	get_tree().paused = toggled_on
 	pause_label.visible = !toggled_on
 	continue_icon.visible = toggled_on
 
-	if toggled_on: 
-		world.movement_disabled = true
+	if toggled_on:
+		world.state = world.GAMESTATE.PAUSED
 	else:
-		world.movement_disabled = false
+		world.state = world.GAMESTATE.PLAYING
 
