@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/button_control.tscn" id="2_6ekdf"]
 [ext_resource type="Script" path="res://src/game_ui.gd" id="2_emipb"]
 [ext_resource type="Script" path="res://src/game_camera.gd" id="4_isc8j"]
-[ext_resource type="Theme" uid="uid://cw5e22i0akvq5" path="res://casual_theme.tres" id="4_keggv"]
+[ext_resource type="Theme" uid="uid://cw5e22i0akvq5" path="res://ui/resources/casual_theme.tres" id="4_keggv"]
 [ext_resource type="Texture2D" uid="uid://cki8hmnrdbr1a" path="res://assets-dragg/images/smallcircle.png" id="4_xwvsk"]
 [ext_resource type="PackedScene" uid="uid://bumxigukd3hh2" path="res://player/base_character.tscn" id="5_1nxl5"]
 [ext_resource type="Texture2D" uid="uid://8uf0rdu0ukjc" path="res://assets-dragg/casual_ui/label/Label_TitleFlag02_Purple.png" id="5_7bo8m"]

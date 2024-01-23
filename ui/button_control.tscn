@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://owk041bgsx5c"]
 
-[ext_resource type="Theme" uid="uid://cw5e22i0akvq5" path="res://casual_theme.tres" id="1_naw3f"]
+[ext_resource type="Theme" uid="uid://cw5e22i0akvq5" path="res://ui/resources/casual_theme.tres" id="1_naw3f"]
 [ext_resource type="Script" path="res://src/button_control.gd" id="2_7kb6c"]
 [ext_resource type="Texture2D" uid="uid://d0iyg5kkk51iu" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue.png" id="3_wit6j"]
 [ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="4_j4mnc"]
