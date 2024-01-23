@@ -3,7 +3,8 @@ extends Node
 @onready var world := get_tree().root.get_node("World3D") as World
 @onready var player := world.get_node("Player") as BaseCharacter
 @onready var control_sticks := get_node("ControlSticks") as ControlSticks
-@onready var timer_label := get_node("ControlTopCenter/ControlTimer/TimerLabel") as Label
+@onready var minutes_label := get_node("ControlTopCenter/ControlTimer/Minutes") as Label
+@onready var seconds_label := get_node("ControlTopCenter/ControlTimer/Seconds") as Label
 @onready var count_label := get_node("ControlTopCenter/ControlCoin/CoinLabel") as Label
 @onready var pause_label := get_node("ControlTopCenter/PauseButton/Label") as Label
 @onready var continue_icon := get_node("ControlTopCenter/PauseButton/ContinueIcon") as TextureRect
@@ -18,15 +19,12 @@ func _process(delta):
 
 
 func _update_timer(delta):
-	time += delta
+	time += delta * 10
 	var seconds = fmod(time, 60)
 	var minutes = fmod(time, 3600) / 60
 
-	var minutes_formatted = "%02d" % minutes
-	var seconds_formatted = "%02d" % seconds
-
-	timer_label.text = minutes_formatted + ":" + seconds_formatted # + milliseconds_formatted
-
+	minutes_label.text = "%02d" % minutes
+	seconds_label.text = "%02d" % seconds
 
 func _on_pause_button_toggled(toggled_on:bool):
 	world.game_paused = toggled_on

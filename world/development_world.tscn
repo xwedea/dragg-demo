@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b14uq6kn8i7r0"]
+[gd_scene load_steps=32 format=3 uid="uid://b14uq6kn8i7r0"]
 
 [ext_resource type="Script" path="res://src/control_sticks.gd" id="1_4y8b4"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="1_ojbat"]
@@ -28,6 +28,10 @@ font_size = 36
 
 [sub_resource type="LabelSettings" id="LabelSettings_2fruv"]
 font_size = 52
+
+[sub_resource type="LabelSettings" id="LabelSettings_ko6rh"]
+font_size = 120
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4n7di"]
 vertices = PackedVector3Array(-99.5, 1, -99.5, -99.5, 1, 99.5, 99.5, 1, 99.5, 99.5, 1, -99.5)
@@ -70,17 +74,17 @@ theme = ExtResource("4_keggv")
 [node name="SmallPanel" type="TextureRect" parent="UI/ControlTopCenter"]
 layout_mode = 0
 offset_left = -132.0
-offset_top = 195.0
+offset_top = 298.0
 offset_right = 138.0
-offset_bottom = 430.0
+offset_bottom = 533.0
 texture = ExtResource("16_2jioe")
 
 [node name="BigPanel" type="TextureRect" parent="UI/ControlTopCenter"]
 layout_mode = 0
 offset_left = -133.0
-offset_top = 61.0
+offset_top = 164.0
 offset_right = 137.0
-offset_bottom = 305.0
+offset_bottom = 408.0
 texture = ExtResource("5_7bo8m")
 expand_mode = 1
 
@@ -134,44 +138,54 @@ expand_mode = 1
 [node name="ControlTimer" type="Control" parent="UI/ControlTopCenter"]
 anchors_preset = 0
 offset_left = 70.0
-offset_top = 315.0
+offset_top = 418.0
 offset_right = 110.0
-offset_bottom = 355.0
-metadata/_edit_group_ = true
+offset_bottom = 458.0
 
-[node name="TextureRect" type="TextureRect" parent="UI/ControlTopCenter/ControlTimer"]
-visible = false
+[node name="Minutes" type="Label" parent="UI/ControlTopCenter/ControlTimer"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -101.0
-offset_top = -74.0
-offset_right = 155.0
-offset_bottom = 71.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_yc4vh")
-stretch_mode = 2
-
-[node name="TimerLabel" type="Label" parent="UI/ControlTopCenter/ControlTimer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -222.0
+offset_left = -168.0
 offset_top = -33.0
-offset_right = 48.0
+offset_right = -98.0
 offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "00:00"
+text = "00"
 label_settings = SubResource("LabelSettings_fjwxq")
-horizontal_alignment = 1
+horizontal_alignment = 2
+
+[node name="Colon" type="Label" parent="UI/ControlTopCenter/ControlTimer"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -76.0
+offset_top = -17.0
+offset_right = -100.0
+offset_bottom = 37.0
+grow_horizontal = 2
+text = ":"
+label_settings = SubResource("LabelSettings_fjwxq")
+
+[node name="Seconds" type="Label" parent="UI/ControlTopCenter/ControlTimer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -33.0
+offset_right = -9.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "00"
+label_settings = SubResource("LabelSettings_fjwxq")
 
 [node name="ControlCoin" type="Control" parent="UI/ControlTopCenter"]
 layout_mode = 1
@@ -181,9 +195,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -10.0
-offset_top = 74.0
+offset_top = 177.0
 offset_right = 30.0
-offset_bottom = 114.0
+offset_bottom = 217.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -207,6 +221,35 @@ offset_right = 47.0
 offset_bottom = 76.0
 texture = ExtResource("7_eyfe2")
 expand_mode = 1
+
+[node name="ControlCenter" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_keggv")
+
+[node name="CountdownLabel" type="Label" parent="UI/ControlCenter"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = 203.0
+offset_right = 59.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ko6rh")
+horizontal_alignment = 1
 
 [node name="ControlSticks" type="Control" parent="UI"]
 visible = false
