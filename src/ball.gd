@@ -27,6 +27,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func kick(distance):
+	distance = 2
 	is_just_kicked = true
 	kick_timer.start()
 
