@@ -8,8 +8,15 @@ class_name UserInterfaceNode extends Node
 @onready var count_label := get_node("ControlTopCenter/ControlCoin/CoinLabel") as Label
 @onready var pause_label := get_node("ControlTopCenter/PauseButton/Label") as Label
 @onready var continue_icon := get_node("ControlTopCenter/PauseButton/ContinueIcon") as TextureRect
+@onready var pause_menu := get_node("ControlCenter/ControlPauseMenu") as Control
+@onready var title_world := load("res://title_screen/title_world.tscn") as PackedScene
 
 var time := 0.0
+
+
+func _ready():
+	pause_menu.visible = false
+
 
 func _process(delta):
 	if world.state == world.GAMESTATE.PAUSED: return
@@ -30,9 +37,15 @@ func _on_pause_button_toggled(toggled_on:bool):
 	get_tree().paused = toggled_on
 	pause_label.visible = !toggled_on
 	continue_icon.visible = toggled_on
+	pause_menu.visible = toggled_on
 
 	if toggled_on:
 		world.state = world.GAMESTATE.PAUSED
 	else:
 		world.state = world.GAMESTATE.PLAYING
 
+
+func _on_end_button_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_packed(title_world)
+	

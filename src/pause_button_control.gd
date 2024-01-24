@@ -5,5 +5,10 @@ extends ButtonControl
 
 func _on_texture_button_button_up():
 	super()
+
+func _on_texture_button_button_down():
+	super()
+
+
 	
 

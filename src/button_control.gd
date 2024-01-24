@@ -14,3 +14,5 @@ func _on_texture_button_button_down():
 
 func _on_texture_button_button_up():
 	scale = Vector2(1, 1)
+
+

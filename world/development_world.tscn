@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://src/pause_button_control.gd" id="7_m6dtd"]
 [ext_resource type="Texture2D" uid="uid://vbnkq27gcx0y" path="res://assets-dragg/ui/continuewhite.png" id="8_8vepc"]
 [ext_resource type="AudioStream" uid="uid://dhdcl8ho45ex7" path="res://assets-dragg/audio/collectcoin-6075.mp3" id="10_vihk2"]
+[ext_resource type="Texture2D" uid="uid://dpk6u2ncm4sl4" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Red.png" id="11_v51ol"]
 [ext_resource type="Texture2D" uid="uid://cra7lhrdam17n" path="res://assets-dragg/casual_ui/label/Label_TitleFlag02_Red.png" id="16_2jioe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_w0gk0"]
@@ -28,10 +29,6 @@ font_size = 36
 
 [sub_resource type="LabelSettings" id="LabelSettings_2fruv"]
 font_size = 52
-
-[sub_resource type="LabelSettings" id="LabelSettings_ko6rh"]
-font_size = 120
-font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4n7di"]
 vertices = PackedVector3Array(-99.5, 1, -99.5, -99.5, 1, 99.5, 99.5, 1, 99.5, 99.5, 1, -99.5)
@@ -233,23 +230,38 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_keggv")
 
-[node name="CountdownLabel" type="Label" parent="UI/ControlCenter"]
+[node name="ControlPauseMenu" type="Control" parent="UI/ControlCenter"]
 visible = false
+anchors_preset = 0
+offset_top = 660.0
+offset_right = 40.0
+offset_bottom = 700.0
+
+[node name="EndButtonControl" parent="UI/ControlCenter/ControlPauseMenu" instance=ExtResource("2_6ekdf")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="TextureButton" parent="UI/ControlCenter/ControlPauseMenu/EndButtonControl" index="0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = 203.0
-offset_right = 59.0
-offset_bottom = 381.0
+offset_left = -214.5
+offset_top = -258.5
+offset_right = 214.5
+offset_bottom = 258.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "0"
-label_settings = SubResource("LabelSettings_ko6rh")
-horizontal_alignment = 1
+texture_normal = ExtResource("11_v51ol")
+stretch_mode = 0
+
+[node name="Label" parent="UI/ControlCenter/ControlPauseMenu/EndButtonControl" index="1"]
+text = "END"
 
 [node name="ControlSticks" type="Control" parent="UI"]
 visible = false
@@ -392,6 +404,8 @@ material_override = SubResource("StandardMaterial3D_rhm6q")
 mesh = SubResource("CylinderMesh_cb2s3")
 
 [connection signal="toggled" from="UI/ControlTopCenter/PauseButton/TextureButton" to="UI" method="_on_pause_button_toggled"]
+[connection signal="pressed" from="UI/ControlCenter/ControlPauseMenu/EndButtonControl/TextureButton" to="UI" method="_on_end_button_pressed"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 
 [editable path="UI/ControlTopCenter/PauseButton"]
+[editable path="UI/ControlCenter/ControlPauseMenu/EndButtonControl"]
