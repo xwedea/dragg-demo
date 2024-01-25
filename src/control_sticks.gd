@@ -25,12 +25,13 @@ func _process(_delta: float) -> void:
 		else:
 			var direction = (mouse_position - position).normalized()
 			stick_button_container.global_position = position + direction * max_distance
-
+	
 
 func handle_left_mouse_click():
+	position = game_viewport.get_mouse_position()
 	screen_pressed = true
-	position = mouse_position
 	visible = true
 
 func handle_left_mouse_release():
+	screen_pressed = false
 	visible = false

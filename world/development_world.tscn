@@ -264,11 +264,12 @@ stretch_mode = 0
 text = "END"
 
 [node name="ControlSticks" type="Control" parent="UI"]
-visible = false
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
+offset_left = -1080.0
+offset_right = -1080.0
 grow_horizontal = 0
 script = ExtResource("1_4y8b4")
 max_distance = 180.0
