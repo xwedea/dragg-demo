@@ -9,7 +9,7 @@ var getting_pulled: bool = false
 func _process(delta):
 	if getting_pulled:
 		var weight =  12 * delta
-		position = position.move_toward(player.position, weight)
+		position = position.move_toward(player.position + Vector3(0, 1, 0), weight)
 
 
 func start_pulling():
