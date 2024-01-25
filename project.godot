@@ -73,6 +73,7 @@ MoveLeft={
 
 [layer_names]
 
+3d_physics/layer_2="player"
 3d_physics/layer_11="pullable"
 
 [rendering]

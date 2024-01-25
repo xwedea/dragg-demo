@@ -350,17 +350,17 @@ shadow_blur = 2.5
 environment = SubResource("Environment_dwyoh")
 
 [node name="GameCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, -34.5571, 8.3593, -4.00721)
+transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, -34.5571, 8.3593, -7.47806)
 current = true
 script = ExtResource("4_isc8j")
 
-[node name="Player" parent="." instance=ExtResource("5_1nxl5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9934, 0.514858, -0.534044)
-wall_min_slide_angle = 0.785398
-
 [node name="Ball" parent="." instance=ExtResource("6_ydc3q")]
 transform = Transform3D(0.866244, -0.499622, 0, 0.499622, 0.866244, 0, 0, 0, 1, -13.0799, 1.51805, -6.67017)
-axis_lock_linear_y = false
+pull_force = 2
+
+[node name="Player" parent="." instance=ExtResource("5_1nxl5")]
+transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0, 1, -12.9934, 0.514859, -4.00489)
+wall_min_slide_angle = 0.785398
 
 [node name="Enemies" type="Node3D" parent="."]
 

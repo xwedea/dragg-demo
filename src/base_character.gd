@@ -9,9 +9,9 @@ class_name BaseCharacter extends CharacterBody3D
 @onready var hit_timer := get_node("HitBox/HitTimer") as Timer
 @onready var death_timer := get_node("DeathTimer") as Timer
 
-@export var walk_speed: int = 5
-@export var kick_force: int = 150
-@export var max_health: int = 100
+@export var walk_speed := 5
+@export var kick_force := 150
+@export var max_health := 100
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var health: float
@@ -57,13 +57,18 @@ func _physics_process(delta):
 		model.look_at(faceDirection);
 
 
-func _get_dragged() -> void: 
+func _get_dragged() -> void:
+	if is_moving: return
+	if ball.player_in_active_area: return
+
 	var distance = position.distance_to(ball.position);
-	if (distance > ball.line_length):
-		var to_ball = position.direction_to(ball.position).normalized();
-		to_ball.y = 0;
-		var dragImpulse = to_ball * ball.pull_force;
-		velocity += dragImpulse;
+	var to_ball = position.direction_to(ball.position).normalized();
+	to_ball.y = 0;
+	var distance_to_target = max(distance, 1)
+	var multiplier = log(distance_to_target)
+	var dragImpulse = to_ball * (ball.pull_force * multiplier)
+
+	velocity += dragImpulse;
 			
 
 func _handle_animations() -> void:
@@ -78,7 +83,7 @@ func _handle_animations() -> void:
 
 	
 func _get_movement() -> Vector3:
-	if (!is_moving):
+	if !is_moving or !is_on_floor:
 		return Vector3.ZERO;
 		
 	var stick_direction = stick_center.direction_to(get_viewport().get_mouse_position());

@@ -3,23 +3,21 @@ class_name Ball extends RigidBody3D
 @onready var world := get_tree().root.get_node("World3D") as World
 @onready var player := world.get_node("Player") as BaseCharacter
 @onready var kick_timer := get_node("KickTimer") as Timer
-@onready var previous_rope := _create_line_mesh(global_position, player.rope_slot.global_position, rope_thickness, rope_color)
 
-@export var max_kick_distance: float = 8
-@export var hit_force: float = 2
-@export var line_length: float = 5
-@export var pull_force: float = 3
-@export var rope_thickness: float = 0.1
+@export var max_kick_distance := 8
+@export var hit_force := 2
+@export var line_length := 5
+@export var pull_force := 3
+@export var rope_thickness := 0.1
 @export var rope_color: Color
 @export var override_rope_color := false
 
-var is_just_kicked: bool = false
-
+var is_just_kicked := false
+var player_in_active_area := false
 
 func _ready():
 	if !override_rope_color:
 		rope_color = Color(1, 0, 0) # Red
-	previous_rope = _create_line_mesh(global_position, player.rope_slot.global_position, rope_thickness, rope_color)
 
 
 func _physics_process(_delta: float) -> void:
@@ -38,23 +36,23 @@ func kick(distance):
 	apply_impulse(ballImpulse);
 
 
-func _draw_rope() -> void:
-	if !override_rope_color:
-		var distance = global_position.distance_to(player.global_position)
-		if distance < max_kick_distance / 2:
-			rope_color = Color(1, 0, 0) # Red
-		elif distance < max_kick_distance / 1.3:
-			rope_color = Color(1, 0.27, 0.0) # OrangeRed
-		elif distance < max_kick_distance:
-			rope_color = Color(1, 0.5, 0.0) # Orange
-		else:
-			rope_color = Color(1, 1, 1) # White
+# func _draw_rope() -> void:
+# 	if !override_rope_color:
+# 		var distance = global_position.distance_to(player.global_position)
+# 		if distance < max_kick_distance / 2:
+# 			rope_color = Color(1, 0, 0) # Red
+# 		elif distance < max_kick_distance / 1.3:
+# 			rope_color = Color(1, 0.27, 0.0) # OrangeRed
+# 		elif distance < max_kick_distance:
+# 			rope_color = Color(1, 0.5, 0.0) # Orange
+# 		else:
+# 			rope_color = Color(1, 1, 1) # White
 
-	var line = _create_line_mesh(global_position, player.rope_slot.global_position, rope_thickness, rope_color)
-	world.add_child(line)
-	previous_rope.queue_free()
+# 	var line = _create_line_mesh(global_position, player.rope_slot.global_position, rope_thickness, rope_color)
+# 	world.add_child(line)
+# 	previous_rope.queue_free()
 
-	previous_rope = line
+# 	previous_rope = line
 
 
 func _create_line_mesh(ballPos: Vector3, playerPos: Vector3, thickness: float, _color: Color) -> MeshInstance3D:
@@ -85,3 +83,13 @@ func _create_line_mesh(ballPos: Vector3, playerPos: Vector3, thickness: float, _
 
 func _on_kick_timer_timeout():
 	is_just_kicked = false
+
+
+func _on_active_area_body_entered(body:Node3D):
+	player_in_active_area = true
+	print("enter")
+
+
+func _on_active_area_body_exited(body:Node3D):
+	player_in_active_area = false
+	print("exit")

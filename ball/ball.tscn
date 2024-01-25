@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfx54y75ia2vg"]
+[gd_scene load_steps=9 format=3 uid="uid://bfx54y75ia2vg"]
 
 [ext_resource type="Script" path="res://src/ball.gd" id="1_mtp84"]
 
@@ -18,16 +18,15 @@ material = SubResource("StandardMaterial3D_akye7")
 [sub_resource type="SphereShape3D" id="SphereShape3D_vfd8j"]
 radius = 1.00431
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_odu3c"]
+radius = 1.50014
+
 [node name="Ball" type="RigidBody3D"]
 axis_lock_linear_y = true
 physics_material_override = SubResource("PhysicsMaterial_30x3u")
 continuous_cd = true
 linear_damp = 5.0
 script = ExtResource("1_mtp84")
-line_length = 10.0
-pull_force = 5.0
-rope_thickness = 0.05
-override_rope_color = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -44,4 +43,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51188, 0, 0)
 [node name="KickTimer" type="Timer" parent="."]
 wait_time = 0.1
 
+[node name="ActiveArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActiveArea"]
+shape = SubResource("SphereShape3D_odu3c")
+
 [connection signal="timeout" from="KickTimer" to="." method="_on_kick_timer_timeout"]
+[connection signal="body_entered" from="ActiveArea" to="." method="_on_active_area_body_entered"]
+[connection signal="body_exited" from="ActiveArea" to="." method="_on_active_area_body_exited"]
