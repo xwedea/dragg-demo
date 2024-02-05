@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cot21xrmvhxwc"]
+[gd_scene load_steps=20 format=3 uid="uid://cot21xrmvhxwc"]
 
 [ext_resource type="Script" path="res://src/title_control.gd" id="1_3bk7o"]
 [ext_resource type="Script" path="res://src/title_world.gd" id="1_bon2a"]
@@ -6,12 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://dqs42752pogi1" path="res://title_screen/title_character.tscn" id="2_r7edk"]
 [ext_resource type="PackedScene" uid="uid://cvl6ulq22krv5" path="res://title_screen/title_enemy.tscn" id="3_nii8r"]
 [ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="3_yy0f0"]
+[ext_resource type="FontFile" uid="uid://cxk6i33q176fg" path="res://ui/fonts/supercell-magic-webfont.ttf" id="4_ppego"]
 [ext_resource type="Texture2D" uid="uid://duhqfo61ptw54" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue_Shaded.png" id="7_vm383"]
 [ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/button_control.tscn" id="10_fu3f0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lv0bh"]
-font_size = 200
-font_color = Color(0, 0, 0, 1)
+font = ExtResource("4_ppego")
+font_size = 150
 
 [sub_resource type="Sky" id="Sky_wdtfe"]
 
@@ -50,9 +51,9 @@ script = ExtResource("1_3bk7o")
 [node name="TitleLabel" type="Label" parent="TitleControl"]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 341.0
+offset_top = 221.0
 offset_right = 1082.0
-offset_bottom = 587.0
+offset_bottom = 516.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_yy0f0")
 theme_override_font_sizes/font_size = 200
