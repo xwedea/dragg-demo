@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b14uq6kn8i7r0"]
+[gd_scene load_steps=29 format=3 uid="uid://b14uq6kn8i7r0"]
 
 [ext_resource type="Script" path="res://src/control_sticks.gd" id="1_4y8b4"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="1_ojbat"]
@@ -44,13 +44,6 @@ albedo_color = Color(0.356863, 1, 0.443137, 1)
 size = Vector3(200, 1, 200)
 
 [sub_resource type="Environment" id="Environment_dwyoh"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_vjoxl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rhm6q"]
-albedo_color = Color(0.788235, 0.341176, 0.976471, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_cb2s3"]
 
 [node name="World3D" type="Node3D"]
 script = ExtResource("1_qmkdd")
@@ -365,18 +358,7 @@ wall_min_slide_angle = 0.785398
 [node name="Enemies" type="Node3D" parent="."]
 
 [node name="BaseEnemy" parent="Enemies" instance=ExtResource("7_cwvuu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8918, 0.544712, -21.7137)
-
-[node name="Obstacle" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75761, 0.196007)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
-shape = SubResource("CylinderShape3D_vjoxl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle"]
-material_override = SubResource("StandardMaterial3D_rhm6q")
-mesh = SubResource("CylinderMesh_cb2s3")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1156, 0.544712, -16.7772)
 
 [connection signal="toggled" from="UI/ControlTopCenter/PauseButton/TextureButton" to="UI" method="_on_pause_button_toggled"]
 [connection signal="pressed" from="UI/ControlCenter/ControlPauseMenu/EndButtonControl/TextureButton" to="UI" method="_on_end_button_pressed"]

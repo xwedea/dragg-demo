@@ -85,11 +85,9 @@ func _on_kick_timer_timeout():
 	is_just_kicked = false
 
 
-func _on_active_area_body_entered(body:Node3D):
+func _on_active_area_body_entered(_body:Node3D):
 	player_in_active_area = true
-	print("enter")
 
 
-func _on_active_area_body_exited(body:Node3D):
+func _on_active_area_body_exited(_body:Node3D):
 	player_in_active_area = false
-	print("exit")
