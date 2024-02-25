@@ -48,7 +48,9 @@ func kick(distance):
 # 		else:
 # 			rope_color = Color(1, 1, 1) # White
 
+# 	var previous_rope = MeshInstance3D.new()
 # 	var line = _create_line_mesh(global_position, player.rope_slot.global_position, rope_thickness, rope_color)
+	
 # 	world.add_child(line)
 # 	previous_rope.queue_free()
 
