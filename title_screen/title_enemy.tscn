@@ -1,5 +1,6 @@
-[gd_scene load_steps=55 format=3 uid="uid://cvl6ulq22krv5"]
+[gd_scene load_steps=56 format=3 uid="uid://cvl6ulq22krv5"]
 
+[ext_resource type="Script" path="res://src/title_enemy.gd" id="1_r27g0"]
 [ext_resource type="Material" uid="uid://b5yiyxu0o7yhi" path="res://enemy/enemy_head_material.tres" id="2_ai7vc"]
 [ext_resource type="AudioStream" uid="uid://bbiga5acuttje" path="res://assets-dragg/audio/hard-slap-46388.mp3" id="3_80aod"]
 
@@ -3896,10 +3897,15 @@ radius = 0.60687
 height = 1.67225
 
 [node name="TitleEnemy" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_r27g0")
+death_threshold = null
+speed = null
 
 [node name="CapsuleCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.82589, 0)
 shape = SubResource("CapsuleShape3D_b3fcd")
+disabled = true
 
 [node name="Model" type="Node3D" parent="."]
 
@@ -3911,47 +3917,47 @@ bones/0/name = "Body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/0/position = Vector3(0, 0.0168256, 0)
+bones/0/rotation = Quaternion(0.150816, 0.00614577, 0.0402497, 0.987723)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Head"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711598, 0)
 bones/1/enabled = true
-bones/1/position = Vector3(0, 0.7, 0)
-bones/1/rotation = Quaternion(0, 0, 0, 1)
+bones/1/position = Vector3(0, 0.711598, 0)
+bones/1/rotation = Quaternion(-0.0774422, -0.00866838, -0.0398027, 0.996164)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "armLeft"
 bones/2/parent = 0
 bones/2/rest = Transform3D(-1.19209e-07, 0.471936, -0.881633, 2.5332e-07, -0.881633, -0.471936, -1, -2.5332e-07, -1.19209e-07, 0.14, 0.691598, -1.3027e-15)
 bones/2/enabled = true
-bones/2/position = Vector3(0.14, 0.691598, -1.3027e-15)
-bones/2/rotation = Quaternion(-0.685863, -0.172023, 0.685863, -0.172022)
+bones/2/position = Vector3(0.118828, 0.695356, 0.0120218)
+bones/2/rotation = Quaternion(-0.673429, -0.181903, 0.662067, -0.273993)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "handSlotLeft"
 bones/3/parent = 2
 bones/3/rest = Transform3D(1.19209e-07, -1, 3.57628e-07, -0.471936, -3.57628e-07, -0.881633, 0.881633, -8.9407e-08, -0.471936, 1.04314e-15, 0.550922, 1.13735e-08)
 bones/3/enabled = true
 bones/3/position = Vector3(1.04314e-15, 0.550922, 1.13735e-08)
-bones/3/rotation = Quaternion(0.606617, -0.606617, 0.36334, 0.36334)
+bones/3/rotation = Quaternion(0.62457, -0.635965, 0.376588, 0.252275)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "armRight"
 bones/4/parent = 0
 bones/4/rest = Transform3D(-1.19209e-07, -0.471936, -0.881633, -2.23518e-07, -0.881633, 0.471936, -1, 2.23517e-07, -1.19209e-07, -0.14, 0.691598, 8.40813e-15)
 bones/4/enabled = true
-bones/4/position = Vector3(-0.14, 0.691598, 8.40813e-15)
-bones/4/rotation = Quaternion(-0.685863, 0.172023, 0.685863, 0.172023)
+bones/4/position = Vector3(-0.13186, 0.700742, 0.0292476)
+bones/4/rotation = Quaternion(-0.53399, 0.342221, 0.753742, 0.17208)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "handSlotRight"
 bones/5/parent = 4
 bones/5/rest = Transform3D(0, -1, -4.76837e-07, 0.471936, 3.57628e-07, -0.881633, 0.881633, -1.78814e-07, 0.471936, 3.33226e-15, 0.550922, -1.84059e-08)
 bones/5/enabled = true
 bones/5/position = Vector3(3.33226e-15, 0.550922, -1.84059e-08)
-bones/5/rotation = Quaternion(0.36334, -0.36334, 0.606617, 0.606617)
+bones/5/rotation = Quaternion(0.561095, -0.217349, 0.555011, 0.574365)
 bones/5/scale = Vector3(1, 1, 1)
 
 [node name="Head" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+transform = Transform3D(1, 0.000165872, 0.000882352, -3.40906e-05, 0.989092, -0.147297, -0.000897154, 0.147297, 0.989092, -0.0552608, 0.693747, 0.212358)
 bone_name = "Head"
 bone_idx = 1
 
@@ -3975,6 +3981,7 @@ mesh = SubResource("ArrayMesh_o87go")
 skeleton = NodePath("")
 
 [node name="Body" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
+transform = Transform3D(0.996684, -0.0776573, 0.0242812, 0.0813649, 0.951269, -0.297434, -4.00469e-08, 0.298424, 0.954434, 0, 0.0168256, 0)
 bone_name = "Body"
 bone_idx = 0
 
@@ -3985,7 +3992,7 @@ mesh = SubResource("ArrayMesh_cy4kg")
 skeleton = NodePath("")
 
 [node name="ArmLeft" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(-3.57628e-07, 0.471936, -0.881633, 1.35601e-06, -0.881633, -0.471936, -1, -1.35601e-06, -3.57628e-07, 0.14, 0.691598, -1.3027e-15)
+transform = Transform3D(0.0420443, 0.669756, -0.74139, 0.187459, -0.734156, -0.65259, -0.981372, -0.111542, -0.156419, 0.0647264, 0.684389, 0.218985)
 bone_name = "armLeft"
 bone_idx = 2
 
@@ -3996,7 +4003,7 @@ mesh = SubResource("ArrayMesh_tmg20")
 skeleton = NodePath("")
 
 [node name="ArmRight" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(0, -0.471937, -0.881632, 0, -0.881632, 0.471937, -1, 0, 0, -0.14, 0.691598, 8.40813e-15)
+transform = Transform3D(-0.383425, -0.559889, -0.734513, 0.143408, -0.821742, 0.55152, -0.91237, 0.106132, 0.395369, -0.18513, 0.663992, 0.237033)
 bone_name = "armRight"
 bone_idx = 4
 
@@ -4007,12 +4014,12 @@ mesh = SubResource("ArrayMesh_0bcio")
 skeleton = NodePath("")
 
 [node name="HandSlotLeft" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(-1, 3.57628e-07, 7.7486e-07, 7.7486e-07, -1.35601e-06, 1, 3.24652e-07, 1, 1.36428e-06, 0.4, 0.205887, -7.47053e-07)
+transform = Transform3D(-0.995345, 0.0373616, -0.0888432, -0.0900084, -0.0307517, 0.995466, 0.0344602, 0.998828, 0.0339713, 0.43371, 0.279926, 0.157533)
 bone_name = "handSlotLeft"
 bone_idx = 3
 
 [node name="HandSlotRight" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D"]
-transform = Transform3D(-1, 0, 5.96046e-07, 5.96046e-07, 0, 1, 0, 1, 0, -0.4, 0.205887, 5.07587e-15)
+transform = Transform3D(-0.972246, 0.179339, 0.150253, 0.199232, 0.297936, 0.933564, 0.122659, 0.937588, -0.325397, -0.493586, 0.211276, 0.295503)
 bone_name = "handSlotRight"
 bone_idx = 5
 

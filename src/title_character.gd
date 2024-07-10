@@ -1,20 +1,15 @@
 class_name TitleCharacter extends CharacterBody3D
 
-@onready var world := get_tree().root.get_node("World3D") as World
-@onready var model := get_node("Model") as Node3D
-@onready var anim_player := model.get_node("AnimationPlayer") as AnimationPlayer 
-@onready var death_timer := get_node("TurnTimer") as Timer
+@onready var anim_player := get_node("Model/AnimationPlayer") as AnimationPlayer 
+@onready var turn_timer := get_node("TurnTimer") as Timer
+@onready var collision_shape := get_node("CapsuleCollision") as CollisionShape3D
 
-var waved 
+@export var speed_multiplier = 2
+
+var opposite := false
 
 func _ready():
-	anim_player.play("Wave")
+	anim_player.play('Run')
+	collision_shape.disabled = true
 
 
-func _handle_animations() -> void:
-	var current_anim = anim_player.current_animation;
-	
-	if (current_anim != "Wave"):
-		anim_player.play("Wave");
-
-	

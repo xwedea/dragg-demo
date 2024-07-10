@@ -4,5 +4,6 @@ extends Node3D
 
 
 func _ready():
-	background_audio.play()
+	if background_audio:
+		background_audio.play()
 
