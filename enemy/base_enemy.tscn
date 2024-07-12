@@ -11,8 +11,8 @@ height = 1.63386
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oso7y"]
 resource_name = "White"
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.905882, 0.905882, 0.905882, 1)
-roughness = 0.4
+albedo_color = Color(0.796078, 0.121569, 0.25098, 1)
+roughness = 0.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trrwl"]
 resource_name = "Black"
@@ -133,6 +133,7 @@ shadow_mesh = SubResource("ArrayMesh_cornx")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwxjg"]
 albedo_color = Color(1, 0.462745, 0.192157, 1)
+roughness = 0.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftih3"]
 resource_name = "BrownDark"
@@ -3958,7 +3959,6 @@ bone_name = "Head"
 bone_idx = 1
 
 [node name="character_skeleton_minion_head" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/Head"]
-material_override = ExtResource("2_jbxgm")
 mesh = SubResource("ArrayMesh_6w2gt")
 skeleton = NodePath("")
 blend_shapes/Angry = 0.0
@@ -3972,7 +3972,6 @@ skeleton = NodePath("")
 
 [node name="character_skeleton_minion_jaw" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/Head/character_skeleton_minion_head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.126701, 0.0399227)
-material_override = ExtResource("2_jbxgm")
 mesh = SubResource("ArrayMesh_p44p3")
 skeleton = NodePath("")
 

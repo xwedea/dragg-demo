@@ -13,8 +13,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_lv0bh"]
 font = ExtResource("4_ppego")
 font_size = 150
-outline_size = 10
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_wdtfe"]
 
@@ -30,7 +31,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 size = Vector3(99.9469, 1, 100.02)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dov6g"]
-albedo_color = Color(0, 0.894118, 0.501961, 1)
+albedo_color = Color(0.333333, 1, 0.415686, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tglxd"]
 material = SubResource("StandardMaterial3D_dov6g")

@@ -55,7 +55,7 @@ material = SubResource("StandardMaterial3D_6fexx")
 size = Vector3(1000, 1, 1000)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w816k"]
-albedo_color = Color(0, 0.894118, 0.501961, 1)
+albedo_color = Color(0.333333, 1, 0.415686, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_js853"]
 material = SubResource("StandardMaterial3D_w816k")
@@ -1111,6 +1111,7 @@ transform = Transform3D(-17.3933, 88.3033, 1.35022e-05, 5.37508e-13, -1.07288e-0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.67536, -0.150558, -6.70175)
+visible = false
 navigation_mesh = SubResource("NavigationMesh_4dscs")
 
 [connection signal="toggled" from="UI/ControlTopCenter/PauseButton/TextureButton" to="UI" method="_on_pause_button_toggled"]
