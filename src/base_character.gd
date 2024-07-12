@@ -31,6 +31,7 @@ func _ready():
 	
 
 func _physics_process(delta):
+	print(position)
 	if is_dead:
 		return
 
