@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="3_yy0f0"]
 [ext_resource type="FontFile" uid="uid://cxk6i33q176fg" path="res://ui/fonts/supercell-magic-webfont.ttf" id="4_ppego"]
 [ext_resource type="Texture2D" uid="uid://duhqfo61ptw54" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue_Shaded.png" id="7_vm383"]
-[ext_resource type="PackedScene" uid="uid://cnb8hge3tao55" path="res://title_screen/title_scene.tscn" id="8_gt681"]
+[ext_resource type="PackedScene" uid="uid://cnb8hge3tao55" path="res://title/title_scene.tscn" id="8_gt681"]
 [ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/button_control.tscn" id="10_fu3f0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lv0bh"]
@@ -29,10 +29,11 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 [sub_resource type="BoxShape3D" id="BoxShape3D_vr4iw"]
 size = Vector3(99.9469, 1, 100.02)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqj47"]
-albedo_color = Color(0.356863, 1, 0.443137, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dov6g"]
+albedo_color = Color(0, 0.894118, 0.501961, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tglxd"]
+material = SubResource("StandardMaterial3D_dov6g")
 size = Vector3(10000, 1, 10000)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vjoxl"]
@@ -97,7 +98,7 @@ stretch_mode = 0
 
 [node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ictak")
-volume_db = -45.91
+volume_db = -10.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.725735, 0.687975, 0, -0.687975, 0.725735, 0, 20.902, 0)
@@ -118,7 +119,6 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_vr4iw")
 
 [node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
-material_override = SubResource("StandardMaterial3D_kqj47")
 mesh = SubResource("BoxMesh_tglxd")
 skeleton = NodePath("../../..")
 

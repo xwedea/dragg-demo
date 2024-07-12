@@ -9,7 +9,8 @@ class_name TitleCharacter extends CharacterBody3D
 var opposite := false
 
 func _ready():
-	anim_player.play('Run')
-	collision_shape.disabled = true
-
+	randomize()
+	var anim_delay = randf_range(0, 1)
+	await get_tree().create_timer(anim_delay).timeout
+	anim_player.play("Run")
 

@@ -11,9 +11,11 @@ class_name BaseEnemy extends CharacterBody3D
 @onready var collision_shape := get_node("CapsuleCollision") as CollisionShape3D
 @onready var hit_audio := get_node("HitAudio") as AudioStreamPlayer
 
+
 @export var death_threshold := 30
 @export var speed := 100
 
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_dead := false
 var is_knocked_out := false
 var is_ball_colliding := false
@@ -24,7 +26,6 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
-
 	if is_ball_colliding && ball.is_just_kicked:
 		_handle_ball_hit()
 
@@ -33,7 +34,7 @@ func _physics_process(delta: float) -> void:
 		var nextPathPosition: Vector3 = nav_agent.get_next_path_position()
 		var direction: Vector3 = nextPathPosition - global_position
 		velocity = direction.normalized() * speed * delta
-
+	
 	move_and_slide()
 	look_at(player.global_position)
 

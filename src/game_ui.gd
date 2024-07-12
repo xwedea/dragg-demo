@@ -9,7 +9,7 @@ class_name UserInterfaceNode extends Node
 @onready var pause_label := get_node("ControlTopCenter/PauseButton/Label") as Label
 @onready var continue_icon := get_node("ControlTopCenter/PauseButton/ContinueIcon") as TextureRect
 @onready var pause_menu := get_node("ControlCenter/ControlPauseMenu") as Control
-@onready var title_world := load("res://title_screen/title_world.tscn") as PackedScene
+@onready var title_world := load("res://title/title_world.tscn") as PackedScene
 
 var time := 0.0
 

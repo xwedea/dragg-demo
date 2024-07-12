@@ -1,0 +1,78 @@
+[gd_scene load_steps=13 format=3 uid="uid://st7r0u3y05rk"]
+
+[ext_resource type="Script" path="res://src/title_world.gd" id="1_hxhag"]
+[ext_resource type="PackedScene" uid="uid://dqs42752pogi1" path="res://title/title_character.tscn" id="3_ew2vt"]
+[ext_resource type="PackedScene" uid="uid://cvl6ulq22krv5" path="res://title/title_enemy.tscn" id="4_xeod4"]
+
+[sub_resource type="Sky" id="Sky_wdtfe"]
+
+[sub_resource type="Environment" id="Environment_dwyoh"]
+background_mode = 2
+sky = SubResource("Sky_wdtfe")
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_4n7di"]
+vertices = PackedVector3Array(-99.5, 1, -99.5, -99.5, 1, 99.5, 99.5, 1, 99.5, 99.5, 1, -99.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vr4iw"]
+size = Vector3(99.9469, 1, 100.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqj47"]
+albedo_color = Color(0.356863, 1, 0.443137, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tglxd"]
+size = Vector3(10000, 1, 10000)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vjoxl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rhm6q"]
+albedo_color = Color(0.788235, 0.341176, 0.976471, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cb2s3"]
+
+[node name="World3D" type="Node3D"]
+script = ExtResource("1_hxhag")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.725735, 0.687975, 0, -0.687975, 0.725735, 0, 20.902, 0)
+shadow_enabled = true
+shadow_blur = 2.5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dwyoh")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(0.999952, -0.00979114, 0, 0.00979114, 0.999952, 0, 0, 0, 1, 0, -0.503395, 0)
+navigation_mesh = SubResource("NavigationMesh_4n7di")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_vr4iw")
+
+[node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_kqj47")
+mesh = SubResource("BoxMesh_tglxd")
+skeleton = NodePath("../../..")
+
+[node name="TitleCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.790155, 0.612907, 0, -0.612907, 0.790155, 0, 5.14939, 6.29863)
+current = true
+
+[node name="Obstacle" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.43792, 1.00304, -2.86286)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
+shape = SubResource("CylinderShape3D_vjoxl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle"]
+material_override = SubResource("StandardMaterial3D_rhm6q")
+mesh = SubResource("CylinderMesh_cb2s3")
+
+[node name="TitleCharacter" parent="." instance=ExtResource("3_ew2vt")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.15552, 0, 0.446374)
+
+[node name="TitleEnemy" parent="." instance=ExtResource("4_xeod4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.97255, 0, -0.900987)

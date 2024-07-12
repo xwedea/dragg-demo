@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnb8hge3tao55"]
+
+[ext_resource type="PackedScene" uid="uid://dqs42752pogi1" path="res://title/title_character.tscn" id="1_hjype"]
+[ext_resource type="Script" path="res://src/title_scene.gd" id="1_lirtv"]
+[ext_resource type="PackedScene" uid="uid://cvl6ulq22krv5" path="res://title/title_enemy.tscn" id="2_w8xsw"]
+
+[node name="TitleScene" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_lirtv")
+speed = null
+turn_rate = null
+
+[node name="TitleCharacter" parent="." instance=ExtResource("1_hjype")]
+
+[node name="TitleEnemy" parent="." instance=ExtResource("2_w8xsw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34736, 0, 2.81703)
+
+[node name="TitleEnemy2" parent="." instance=ExtResource("2_w8xsw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.914568, 0, 2.81703)
+
+[node name="TurnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]

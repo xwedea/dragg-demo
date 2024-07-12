@@ -22,7 +22,6 @@ radius = 1.00431
 radius = 1.50014
 
 [node name="Ball" type="RigidBody3D"]
-axis_lock_linear_y = true
 physics_material_override = SubResource("PhysicsMaterial_30x3u")
 continuous_cd = true
 linear_damp = 5.0

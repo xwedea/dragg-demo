@@ -1,0 +1,34 @@
+[gd_scene load_steps=11 format=3 uid="uid://b46p3hhfq5jto"]
+
+[ext_resource type="PackedScene" uid="uid://d3bfcxubcp4dk" path="res://environment/trees/dead_oak_a.tscn" id="1_ddvbm"]
+[ext_resource type="PackedScene" uid="uid://ciimmapnhq6uc" path="res://environment/trees/dead_oak_b.tscn" id="2_cpmqe"]
+[ext_resource type="PackedScene" uid="uid://c1mwo0huuu5xt" path="res://environment/trees/dead_spruce_a.tscn" id="3_4xw1q"]
+[ext_resource type="PackedScene" uid="uid://dljixkadildgi" path="res://environment/trees/dead_spruce_b.tscn" id="4_krxal"]
+[ext_resource type="PackedScene" uid="uid://h6x3xj85xe61" path="res://environment/trees/dead_spruce_c.tscn" id="5_qbnrt"]
+[ext_resource type="PackedScene" uid="uid://dxeobn7ba2y31" path="res://environment/trees/oak_tree_a.tscn" id="6_4lfwo"]
+[ext_resource type="PackedScene" uid="uid://csa6c0bn4f16e" path="res://environment/trees/oak_tree_b.tscn" id="7_06gq5"]
+[ext_resource type="PackedScene" uid="uid://cffq3vjywgpou" path="res://environment/trees/spruce_tree_a.tscn" id="8_cvn73"]
+[ext_resource type="PackedScene" uid="uid://div77hswqvroq" path="res://environment/trees/spruce_tree_b.tscn" id="9_ovyu1"]
+[ext_resource type="PackedScene" uid="uid://c3u0m5v611mw0" path="res://environment/trees/spruce_tree_c.tscn" id="10_obpr0"]
+
+[node name="Trees" type="Node3D"]
+
+[node name="DeadOakA" parent="." instance=ExtResource("1_ddvbm")]
+
+[node name="DeadOakB" parent="." instance=ExtResource("2_cpmqe")]
+
+[node name="DeadSpruceA" parent="." instance=ExtResource("3_4xw1q")]
+
+[node name="DeadSpruceB" parent="." instance=ExtResource("4_krxal")]
+
+[node name="DeadSpruceC" parent="." instance=ExtResource("5_qbnrt")]
+
+[node name="OakTreeA" parent="." instance=ExtResource("6_4lfwo")]
+
+[node name="OakTreeB" parent="." instance=ExtResource("7_06gq5")]
+
+[node name="SpruceTreeA" parent="." instance=ExtResource("8_cvn73")]
+
+[node name="SpruceTreeB" parent="." instance=ExtResource("9_ovyu1")]
+
+[node name="SpruceTreeC" parent="." instance=ExtResource("10_obpr0")]
