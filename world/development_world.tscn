@@ -424,11 +424,11 @@ current = true
 script = ExtResource("4_isc8j")
 
 [node name="Ball" parent="." instance=ExtResource("6_ydc3q")]
-transform = Transform3D(0.866244, -0.499622, 0, 0.499622, 0.866244, 0, 0, 0, 1, -12.0954, 2.21664, -20.9426)
+transform = Transform3D(0.866244, -0.499622, 0, 0.499622, 0.866244, 0, 0, 0, 1, 3.29305, 2.21664, 3.68997)
 pull_force = 2
 
 [node name="Player" parent="." instance=ExtResource("5_1nxl5")]
-transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0, 1, -13.9867, 1, -19.1921)
+transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0, 1, 1.40175, 1, 5.44047)
 wall_min_slide_angle = 0.785398
 
 [node name="Enemies" type="Node3D" parent="."]
@@ -1256,6 +1256,15 @@ transform = Transform3D(-1.86987e-06, -42.7776, -1.86987e-06, 0, -1.86987e-06, 4
 
 [node name="Long59" parent="NavigationRegion3D/Fence" instance=ExtResource("36_0xi6g")]
 transform = Transform3D(-1.86987e-06, -42.7776, -1.86987e-06, 0, -1.86987e-06, 42.7776, -42.7776, 1.86987e-06, 8.17345e-14, -100.789, 1.31888, 98.4648)
+
+[node name="DeadOakA3" parent="." instance=ExtResource("34_jse7x")]
+transform = Transform3D(34.7649, 41.3461, 4.92884e-06, 0, -6.43962e-06, 54.0194, 41.3461, -34.7649, -4.1443e-06, 78.021, 0.999996, -32.3542)
+
+[node name="DeadOakA8" parent="." instance=ExtResource("34_jse7x")]
+transform = Transform3D(54.0194, 0, 0, 0, -6.43962e-06, 54.0194, 0, -54.0194, -6.43962e-06, 31.968, 1, -35.0613)
+
+[node name="DeadOakA2" parent="." instance=ExtResource("34_jse7x")]
+transform = Transform3D(54.0194, 0, 0, 0, -6.43962e-06, 54.0194, 0, -54.0194, -6.43962e-06, 30.7437, -14, -24.1823)
 
 [connection signal="toggled" from="UI/ControlTopCenter/PauseButton/TextureButton" to="UI" method="_on_pause_button_toggled"]
 [connection signal="pressed" from="UI/ControlCenter/ControlPauseMenu/EndButtonControl/TextureButton" to="UI" method="_on_end_button_pressed"]
