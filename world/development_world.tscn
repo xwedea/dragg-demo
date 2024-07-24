@@ -993,9 +993,6 @@ transform = Transform3D(-15.4093, -16.035, -1.91152e-06, 3.71667e-13, -2.65108e-
 [node name="OakTreeB16" parent="NavigationRegion3D/Environment" instance=ExtResource("28_7gec7")]
 transform = Transform3D(21.8902, -3.92287, -4.67644e-07, 3.71667e-13, -2.65108e-06, 22.2388, -3.92289, -21.8901, -2.60951e-06, 4.11969, 0.849446, 87.8937)
 
-[node name="OakTreeB17" parent="NavigationRegion3D/Environment" instance=ExtResource("28_7gec7")]
-transform = Transform3D(20.6537, 8.2458, 9.82979e-07, 3.71667e-13, -2.65108e-06, 22.2388, 8.24584, -20.6536, -2.46211e-06, 42.6967, 7.51285, 74.1503)
-
 [node name="OakTreeB7" parent="NavigationRegion3D/Environment" instance=ExtResource("28_7gec7")]
 transform = Transform3D(14.3219, 17.0132, 2.02814e-06, 1.49017e-13, -2.65108e-06, 22.2388, 17.0133, -14.3219, -1.7073e-06, 10.2354, 0.849446, 33.9349)
 
@@ -1055,6 +1052,24 @@ transform = Transform3D(-17.3933, 88.3033, 1.35022e-05, 5.37508e-13, -1.07288e-0
 
 [node name="DeadSpruceB6" parent="NavigationRegion3D/Environment" instance=ExtResource("35_dddyp")]
 transform = Transform3D(-17.3933, 88.3033, 1.35022e-05, 5.37508e-13, -1.07288e-05, 115.44, 88.3033, 17.3933, 2.65955e-06, 79.2755, 0.849442, 7.11597)
+
+[node name="DeadOakA5" parent="NavigationRegion3D/Environment" instance=ExtResource("34_jse7x")]
+transform = Transform3D(34.7649, 41.3461, 4.92884e-06, 0, -6.43962e-06, 54.0194, 41.3461, -34.7649, -4.1443e-06, 83.6964, 0.849438, -39.0559)
+
+[node name="DeadOakA8" parent="NavigationRegion3D/Environment" instance=ExtResource("34_jse7x")]
+transform = Transform3D(54.0194, 0, 0, 0, -6.43962e-06, 54.0194, 0, -54.0194, -6.43962e-06, 37.6434, 0.849442, -41.763)
+
+[node name="DeadOakA6" parent="NavigationRegion3D/Environment" instance=ExtResource("34_jse7x")]
+transform = Transform3D(54.0194, 0, 0, 0, -6.43962e-06, 54.0194, 0, -54.0194, -6.43962e-06, 36.4191, -14.1506, -30.8841)
+
+[node name="DeadSpruceA" parent="NavigationRegion3D/Environment" instance=ExtResource("38_ohg0s")]
+transform = Transform3D(90, 0, 0, 0, -1.07288e-05, 115.44, 0, -90, -1.37616e-05, 24.1066, 0.849442, -40.8826)
+
+[node name="Rock_11" parent="NavigationRegion3D/Environment" instance=ExtResource("38_ijknp")]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 4.70062, 0.849442, 5.53125)
+
+[node name="Rock_18" parent="NavigationRegion3D/Environment" instance=ExtResource("37_7enee")]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0.389508, 0.849442, -15.1853)
 
 [node name="Fence" type="Node3D" parent="NavigationRegion3D"]
 
@@ -1234,24 +1249,6 @@ transform = Transform3D(-1.86987e-06, -42.7776, -1.86987e-06, 0, -1.86987e-06, 4
 
 [node name="Long59" parent="NavigationRegion3D/Fence" instance=ExtResource("36_0xi6g")]
 transform = Transform3D(-1.86987e-06, -42.7776, -1.86987e-06, 0, -1.86987e-06, 42.7776, -42.7776, 1.86987e-06, 8.17345e-14, -100.789, 1.31888, 98.4648)
-
-[node name="DeadOakA3" parent="." instance=ExtResource("34_jse7x")]
-transform = Transform3D(34.7649, 41.3461, 4.92884e-06, 0, -6.43962e-06, 54.0194, 41.3461, -34.7649, -4.1443e-06, 78.021, 0.999996, -32.3542)
-
-[node name="DeadOakA8" parent="." instance=ExtResource("34_jse7x")]
-transform = Transform3D(54.0194, 0, 0, 0, -6.43962e-06, 54.0194, 0, -54.0194, -6.43962e-06, 31.968, 1, -35.0613)
-
-[node name="DeadOakA2" parent="." instance=ExtResource("34_jse7x")]
-transform = Transform3D(54.0194, 0, 0, 0, -6.43962e-06, 54.0194, 0, -54.0194, -6.43962e-06, 30.7437, -14, -24.1823)
-
-[node name="DeadSpruceA" parent="." instance=ExtResource("38_ohg0s")]
-transform = Transform3D(90, 0, 0, 0, -1.07288e-05, 115.44, 0, -90, -1.37616e-05, 18.4312, 1, -34.1808)
-
-[node name="Rock_11" parent="." instance=ExtResource("38_ijknp")]
-transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -0.974735, 1, 12.233)
-
-[node name="Rock_18" parent="." instance=ExtResource("37_7enee")]
-transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -5.28585, 1, -8.48357)
 
 [connection signal="toggled" from="UI/ControlTopCenter/PauseButton/TextureButton" to="UI" method="_on_pause_button_toggled"]
 [connection signal="pressed" from="UI/ControlCenter/ControlPauseMenu/EndButtonControl/TextureButton" to="UI" method="_on_end_button_pressed"]
