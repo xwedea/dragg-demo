@@ -2,15 +2,15 @@ class_name BaseCharacter extends CharacterBody3D
 
 @onready var world := get_tree().root.get_node("World3D") as World
 @onready var model := get_node("Model") as Node3D
-@onready var ball= world.get_node("Ball") as Ball
+@onready var ball := world.get_node("Ball") as Ball
 @onready var anim_player := model.get_node("AnimationPlayer") as AnimationPlayer 
 @onready var rope_slot := get_node("RopeSlot") as Node3D
-@onready var health_bar := get_node("HealthBar3D/SubViewport/HealthBar") as ProgressBar	
+@onready var health_bar := get_node("HealthBar3D/SubViewport/HealthBar") as ProgressBar
 @onready var hit_timer := get_node("HitBox/HitTimer") as Timer
 @onready var death_timer := get_node("DeathTimer") as Timer
 
 @export var walk_speed := 5
-@export var kick_force := 150
+@export var kick_force := 100
 @export var max_health := 100
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -28,10 +28,8 @@ func _ready():
 
 	health = max_health
 	health_bar.value = health
-	
 
 func _physics_process(delta):
-	print(position)
 	if is_dead:
 		return
 
@@ -57,7 +55,6 @@ func _physics_process(delta):
 		var faceDirection = transform.origin + velocity.normalized() * 10;
 		model.look_at(faceDirection);
 
-
 func _get_dragged() -> void:
 	if is_moving: return
 	if ball.player_in_active_area: return
@@ -71,7 +68,6 @@ func _get_dragged() -> void:
 
 	velocity += dragImpulse;
 			
-
 func _handle_animations() -> void:
 	var current_anim = anim_player.current_animation;
 	
@@ -81,7 +77,6 @@ func _handle_animations() -> void:
 	else:
 		if (current_anim != "Idle"):
 			anim_player.play("Idle");
-
 	
 func _get_movement() -> Vector3:
 	if !is_moving or !is_on_floor:
@@ -89,7 +84,6 @@ func _get_movement() -> Vector3:
 		
 	var stick_direction = stick_center.direction_to(get_viewport().get_mouse_position());
 	return Vector3(stick_direction.x, 0, stick_direction.y);
-
 
 func _handle_stick() -> void:
 	if get_tree().paused: return
@@ -104,8 +98,7 @@ func handle_left_mouse_release():
 	
 	var distance : float = position.distance_to(ball.position);
 	if (distance < ball.max_kick_distance):
-		ball.kick(distance)
-
+		ball.kick()
 
 func _die():
 	is_dead = true
@@ -123,7 +116,6 @@ func _on_hit_box_body_entered(body:Node3D):
 		if health <= 0:
 			_die()
 		
-
 func _on_hit_timer_timeout():
 	just_got_damaged = false
 
@@ -131,11 +123,9 @@ func _on_hit_timer_timeout():
 func _on_death_timer_timeout():
 	get_tree().reload_current_scene()
 
-
 func _on_pull_area_area_entered(area:Area3D):
 	var object = area.get_parent() as Pullable
 	object.start_pulling()
-
 
 func _on_hit_box_area_entered(area:Area3D):
 	if is_dead: return
