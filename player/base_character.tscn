@@ -51,6 +51,7 @@ blend_shape_mode = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4upy"]
 resource_name = "Glow"
+vertex_color_use_as_albedo = true
 albedo_color = Color(0.658824, 0.658824, 0.658824, 1)
 metallic = 1.0
 emission_enabled = true
@@ -3889,6 +3890,7 @@ viewport_path = NodePath("HealthBar3D/SubViewport")
 
 [node name="BaseCharacter" type="CharacterBody3D"]
 collision_layer = 3
+axis_lock_linear_y = true
 floor_max_angle = 0.349066
 script = ExtResource("1_cgmpx")
 
