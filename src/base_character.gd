@@ -106,8 +106,6 @@ func handle_left_mouse_release():
 	if (distance < ball.max_kick_distance):
 		ball.kick(distance)
 
-	# ball.kick(distance)
-
 
 func _die():
 	is_dead = true
