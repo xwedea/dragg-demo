@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b14uq6kn8i7r0"]
+[gd_scene load_steps=52 format=3 uid="uid://b14uq6kn8i7r0"]
 
 [ext_resource type="Script" path="res://src/control_sticks.gd" id="1_4y8b4"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="1_ojbat"]
@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://2tfjicgomjq5" path="res://environment/rocks/big_rock_b.tscn" id="24_bk6ii"]
 [ext_resource type="PackedScene" uid="uid://bdfexo7fsioxh" path="res://environment/rocks/rock_1.tscn" id="25_v5g6k"]
 [ext_resource type="PackedScene" uid="uid://jgh8faqld37e" path="res://environment/rocks/rock_2.tscn" id="26_k0dws"]
-[ext_resource type="PackedScene" uid="uid://dxeobn7ba2y31" path="res://environment/trees/oak_tree_a.tscn" id="27_a6qdi"]
 [ext_resource type="PackedScene" uid="uid://csa6c0bn4f16e" path="res://environment/trees/oak_tree_b.tscn" id="28_7gec7"]
 [ext_resource type="PackedScene" uid="uid://cffq3vjywgpou" path="res://environment/trees/spruce_tree_a.tscn" id="29_00nwa"]
 [ext_resource type="Texture2D" uid="uid://cd7tsaecwvlk6" path="res://assets-dragg/lowpolytrees/TreesTexture/SpruceTreeTrunk.png" id="29_s8o8q"]
@@ -495,9 +494,6 @@ transform = Transform3D(236.041, 0, 0, 0, -2.81382e-05, 236.041, 0, -236.041, -2
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 31.4326, 0.849442, -8.21768)
 visible = false
 
-[node name="OakTreeA" parent="NavigationRegion3D/Environment" instance=ExtResource("27_a6qdi")]
-transform = Transform3D(54.0194, 0, 0, 0, -6.43962e-06, 54.0194, 0, -54.0194, -6.43962e-06, 18.1776, 0.849442, 3.58907)
-
 [node name="OakTreeB" parent="NavigationRegion3D/Environment" instance=ExtResource("28_7gec7")]
 transform = Transform3D(22.2389, 0, 0, 0, -2.65108e-06, 22.2388, 0, -22.2388, -2.65108e-06, 16.7057, 0.849442, 12.6656)
 
@@ -714,9 +710,6 @@ transform = Transform3D(-149.063, 6.44047, 6.83503e-07, 0, -1.77862e-05, 132.827
 
 [node name="SpruceTreeC42" parent="NavigationRegion3D/Environment" instance=ExtResource("31_ojque")]
 transform = Transform3D(-149.063, 6.44047, 6.83503e-07, 0, -1.77862e-05, 132.827, 6.44047, 149.063, 1.58194e-05, -28.9797, 0.849438, -64.8418)
-
-[node name="SpruceTreeC43" parent="NavigationRegion3D/Environment" instance=ExtResource("31_ojque")]
-transform = Transform3D(-149.063, 6.44047, 6.83503e-07, 0, -1.77862e-05, 132.827, 6.44047, 149.063, 1.58194e-05, -18.8026, 0.849438, -36.1683)
 
 [node name="SpruceTreeC44" parent="NavigationRegion3D/Environment" instance=ExtResource("31_ojque")]
 transform = Transform3D(-149.063, 6.44047, 6.83503e-07, 0, -1.77862e-05, 132.827, 6.44047, 149.063, 1.58194e-05, 7.14015, 0.849438, -101.344)
@@ -957,15 +950,6 @@ transform = Transform3D(26.2307, 96.4985, 1.15035e-05, 0, -1.19209e-05, 100, 96.
 
 [node name="BigRock17" parent="NavigationRegion3D/Environment" instance=ExtResource("32_fo6q1")]
 transform = Transform3D(-91.4522, 40.4535, 4.82242e-06, 0, -1.19209e-05, 100, 40.4535, 91.4522, 1.09019e-05, 42.8878, 0.84945, -60.3984)
-
-[node name="OakTreeA4" parent="NavigationRegion3D/Environment" instance=ExtResource("27_a6qdi")]
-transform = Transform3D(7.0687, -53.5549, -6.38425e-06, 0, -6.43962e-06, 54.0194, -53.5549, -7.0687, -8.42656e-07, -39.531, 0.849442, 27.4699)
-
-[node name="OakTreeA3" parent="NavigationRegion3D/Environment" instance=ExtResource("27_a6qdi")]
-transform = Transform3D(5.17753, 53.7707, 6.40997e-06, 0, -6.43962e-06, 54.0194, 53.7707, -5.17753, -6.1721e-07, -26.1571, 0.849442, 6.40994)
-
-[node name="OakTreeA2" parent="NavigationRegion3D/Environment" instance=ExtResource("27_a6qdi")]
-transform = Transform3D(22.2538, 49.2226, 5.8678e-06, 0, -6.43962e-06, 54.0194, 49.2226, -22.2538, -2.65286e-06, -6.42414, 0.849442, -4.05744)
 
 [node name="OakTreeB2" parent="NavigationRegion3D/Environment" instance=ExtResource("28_7gec7")]
 transform = Transform3D(14.0565, 17.2331, 2.05435e-06, 0, -2.65108e-06, 22.2388, 17.2332, -14.0565, -1.67567e-06, -8.1945, 0.849442, 19.6733)

@@ -8,81 +8,103 @@
 [ext_resource type="PackedScene" uid="uid://di8hy5l6ky62b" path="res://environment/rocks/rock_3.tscn" id="6_nukdk"]
 [ext_resource type="PackedScene" uid="uid://dds8n6a1ppfx1" path="res://environment/rocks/rock_4.tscn" id="7_1mxa7"]
 [ext_resource type="PackedScene" uid="uid://b32wnlw0yjo6n" path="res://environment/rocks/rock_5.tscn" id="8_5de4p"]
-[ext_resource type="PackedScene" uid="uid://chohoc5un665i" path="res://environment/rocks/rock_6.tscn" id="9_03wfx"]
-[ext_resource type="PackedScene" uid="uid://cilyjheue4kwo" path="res://environment/rocks/rock_7.tscn" id="10_m6moi"]
-[ext_resource type="PackedScene" uid="uid://bu6akfygx0bsr" path="res://environment/rocks/rock_8.tscn" id="11_avol0"]
-[ext_resource type="PackedScene" uid="uid://dcpoj16hb8cvr" path="res://environment/rocks/rock_9.tscn" id="12_cx78c"]
-[ext_resource type="PackedScene" uid="uid://4r8sh07lvo67" path="res://environment/rocks/rock_10.tscn" id="13_41cvt"]
-[ext_resource type="PackedScene" uid="uid://bavdubv1cwcs6" path="res://environment/rocks/rock_11.tscn" id="14_ye0nb"]
-[ext_resource type="PackedScene" uid="uid://cgjxqan8vrtk0" path="res://environment/rocks/rock_12.tscn" id="15_0ni3d"]
-[ext_resource type="PackedScene" uid="uid://cwycxjneyh2qw" path="res://environment/rocks/rock_13.tscn" id="16_77q6x"]
-[ext_resource type="PackedScene" uid="uid://b3c2rs3kii6sg" path="res://environment/rocks/rock_14.tscn" id="17_ko3t2"]
-[ext_resource type="PackedScene" uid="uid://b38rmf7kvulfy" path="res://environment/rocks/rock_15.tscn" id="18_s1qy2"]
-[ext_resource type="PackedScene" uid="uid://b3kf88f6w8cb5" path="res://environment/rocks/rock_16.tscn" id="19_upblx"]
-[ext_resource type="PackedScene" uid="uid://hlpwl4fgv22w" path="res://environment/rocks/rock_17.tscn" id="20_blf5r"]
-[ext_resource type="PackedScene" uid="uid://bssyk07r7anh2" path="res://environment/rocks/rock_18.tscn" id="21_d5gj3"]
-[ext_resource type="PackedScene" uid="uid://63mds8qn01wt" path="res://environment/rocks/rock_19.tscn" id="22_khvyn"]
-[ext_resource type="PackedScene" uid="uid://bwnbc20lvw66u" path="res://environment/rocks/rock_20.tscn" id="23_24128"]
-[ext_resource type="PackedScene" uid="uid://b1d1txoap7him" path="res://environment/rocks/rock_21.tscn" id="24_yrsbt"]
-[ext_resource type="PackedScene" uid="uid://cm0wtjfrdbg3e" path="res://environment/rocks/rock_22.tscn" id="25_i2yar"]
-[ext_resource type="PackedScene" uid="uid://0o5sch7uee4a" path="res://environment/rocks/rock_23.tscn" id="26_m382f"]
-[ext_resource type="PackedScene" uid="uid://ciiv0mh3yfnfk" path="res://environment/rocks/rock_24.tscn" id="27_bq4un"]
-[ext_resource type="PackedScene" uid="uid://dyxk32xh87g2m" path="res://environment/rocks/rock_25.tscn" id="28_i1kcg"]
+[ext_resource type="PackedScene" uid="uid://chohoc5un665i" path="res://environment/rocks/rock_6.tscn" id="9_kheje"]
+[ext_resource type="PackedScene" uid="uid://cilyjheue4kwo" path="res://environment/rocks/rock_7.tscn" id="10_sensh"]
+[ext_resource type="PackedScene" uid="uid://bu6akfygx0bsr" path="res://environment/rocks/rock_8.tscn" id="11_jnv8d"]
+[ext_resource type="PackedScene" uid="uid://dcpoj16hb8cvr" path="res://environment/rocks/rock_9.tscn" id="12_xattf"]
+[ext_resource type="PackedScene" uid="uid://4r8sh07lvo67" path="res://environment/rocks/rock_10.tscn" id="13_vx7ed"]
+[ext_resource type="PackedScene" uid="uid://bavdubv1cwcs6" path="res://environment/rocks/rock_11.tscn" id="14_7ntws"]
+[ext_resource type="PackedScene" uid="uid://cgjxqan8vrtk0" path="res://environment/rocks/rock_12.tscn" id="15_ien52"]
+[ext_resource type="PackedScene" uid="uid://cwycxjneyh2qw" path="res://environment/rocks/rock_13.tscn" id="16_wduj0"]
+[ext_resource type="PackedScene" uid="uid://b3c2rs3kii6sg" path="res://environment/rocks/rock_14.tscn" id="17_lxgyc"]
+[ext_resource type="PackedScene" uid="uid://b38rmf7kvulfy" path="res://environment/rocks/rock_15.tscn" id="18_gheds"]
+[ext_resource type="PackedScene" uid="uid://b3kf88f6w8cb5" path="res://environment/rocks/rock_16.tscn" id="19_fs6no"]
+[ext_resource type="PackedScene" uid="uid://hlpwl4fgv22w" path="res://environment/rocks/rock_17.tscn" id="20_i27ur"]
+[ext_resource type="PackedScene" uid="uid://bssyk07r7anh2" path="res://environment/rocks/rock_18.tscn" id="21_k6hvs"]
+[ext_resource type="PackedScene" uid="uid://63mds8qn01wt" path="res://environment/rocks/rock_19.tscn" id="22_2lnri"]
+[ext_resource type="PackedScene" uid="uid://bwnbc20lvw66u" path="res://environment/rocks/rock_20.tscn" id="23_gplti"]
+[ext_resource type="PackedScene" uid="uid://b1d1txoap7him" path="res://environment/rocks/rock_21.tscn" id="24_hji43"]
+[ext_resource type="PackedScene" uid="uid://cm0wtjfrdbg3e" path="res://environment/rocks/rock_22.tscn" id="25_3ovc5"]
+[ext_resource type="PackedScene" uid="uid://0o5sch7uee4a" path="res://environment/rocks/rock_23.tscn" id="26_hr31o"]
+[ext_resource type="PackedScene" uid="uid://ciiv0mh3yfnfk" path="res://environment/rocks/rock_24.tscn" id="27_6tgpr"]
+[ext_resource type="PackedScene" uid="uid://dyxk32xh87g2m" path="res://environment/rocks/rock_25.tscn" id="28_tsto7"]
 
 [node name="Rocks" type="Node3D"]
 
 [node name="BigRock1" parent="." instance=ExtResource("1_glf6l")]
+visible = false
 
 [node name="BigRock2" parent="." instance=ExtResource("2_latsu")]
+visible = false
 
 [node name="BigRock3" parent="." instance=ExtResource("3_5p5ap")]
+visible = false
 
 [node name="Rock1" parent="." instance=ExtResource("4_t4o21")]
+visible = false
 
 [node name="Rock2" parent="." instance=ExtResource("5_hy2xj")]
+visible = false
 
 [node name="Rock3" parent="." instance=ExtResource("6_nukdk")]
+visible = false
 
 [node name="Rock4" parent="." instance=ExtResource("7_1mxa7")]
+visible = false
 
 [node name="Rock5" parent="." instance=ExtResource("8_5de4p")]
 
-[node name="Rock6" parent="." instance=ExtResource("9_03wfx")]
+[node name="Rock6" parent="." instance=ExtResource("9_kheje")]
+visible = false
 
-[node name="Rock7" parent="." instance=ExtResource("10_m6moi")]
+[node name="Rock7" parent="." instance=ExtResource("10_sensh")]
+visible = false
 
-[node name="Rock8" parent="." instance=ExtResource("11_avol0")]
+[node name="Rock8" parent="." instance=ExtResource("11_jnv8d")]
+visible = false
 
-[node name="Rock9" parent="." instance=ExtResource("12_cx78c")]
+[node name="Rock9" parent="." instance=ExtResource("12_xattf")]
+visible = false
 
-[node name="Rock_10" parent="." instance=ExtResource("13_41cvt")]
+[node name="Rock_10" parent="." instance=ExtResource("13_vx7ed")]
 
-[node name="Rock_11" parent="." instance=ExtResource("14_ye0nb")]
+[node name="Rock_11" parent="." instance=ExtResource("14_7ntws")]
+visible = false
 
-[node name="Rock_12" parent="." instance=ExtResource("15_0ni3d")]
+[node name="Rock_12" parent="." instance=ExtResource("15_ien52")]
 
-[node name="Rock_13" parent="." instance=ExtResource("16_77q6x")]
+[node name="Rock_13" parent="." instance=ExtResource("16_wduj0")]
+visible = false
 
-[node name="Rock_14" parent="." instance=ExtResource("17_ko3t2")]
+[node name="Rock_14" parent="." instance=ExtResource("17_lxgyc")]
+visible = false
 
-[node name="Rock_15" parent="." instance=ExtResource("18_s1qy2")]
+[node name="Rock_15" parent="." instance=ExtResource("18_gheds")]
+visible = false
 
-[node name="Rock_16" parent="." instance=ExtResource("19_upblx")]
+[node name="Rock_16" parent="." instance=ExtResource("19_fs6no")]
 
-[node name="Rock_17" parent="." instance=ExtResource("20_blf5r")]
+[node name="Rock_17" parent="." instance=ExtResource("20_i27ur")]
+visible = false
 
-[node name="Rock_18" parent="." instance=ExtResource("21_d5gj3")]
+[node name="Rock_18" parent="." instance=ExtResource("21_k6hvs")]
+visible = false
 
-[node name="Rock_19" parent="." instance=ExtResource("22_khvyn")]
+[node name="Rock_19" parent="." instance=ExtResource("22_2lnri")]
 
-[node name="Rock_20" parent="." instance=ExtResource("23_24128")]
+[node name="Rock_20" parent="." instance=ExtResource("23_gplti")]
+visible = false
 
-[node name="Rock_21" parent="." instance=ExtResource("24_yrsbt")]
+[node name="Rock_21" parent="." instance=ExtResource("24_hji43")]
+visible = false
 
-[node name="Rock_22" parent="." instance=ExtResource("25_i2yar")]
+[node name="Rock_22" parent="." instance=ExtResource("25_3ovc5")]
+visible = false
 
-[node name="Rock_23" parent="." instance=ExtResource("26_m382f")]
+[node name="Rock_23" parent="." instance=ExtResource("26_hr31o")]
+visible = false
 
-[node name="Rock_24" parent="." instance=ExtResource("27_bq4un")]
+[node name="Rock_24" parent="." instance=ExtResource("27_6tgpr")]
+visible = false
 
-[node name="Rock_25" parent="." instance=ExtResource("28_i1kcg")]
+[node name="Rock_25" parent="." instance=ExtResource("28_tsto7")]
