@@ -26,7 +26,7 @@ func _process(delta):
 
 
 func _update_timer(delta):
-	time += delta * 10
+	time += delta
 	var seconds = fmod(time, 60)
 	var minutes = fmod(time, 3600) / 60
 
