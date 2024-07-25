@@ -28,7 +28,7 @@ func _unhandled_input(_event):
 func handle_enemy_death(enemy_pos: Vector3):
 	var coin = coin_scene.instantiate()
 	coin.position = enemy_pos
-	coin.position.y = 1
+	coin.position.y = 1.25
 	add_child(coin)
 
 
