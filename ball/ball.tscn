@@ -90,6 +90,7 @@ visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Arrow"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, -3.53615)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_2cpyf")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_qcjxh")

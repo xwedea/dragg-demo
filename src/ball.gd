@@ -31,9 +31,10 @@ func _physics_process(_delta: float) -> void:
 
 	arrow.visible = distance_to_player <= max_kick_distance
 	arrow.position = position + player_to_ball * arrow_distance
-	arrow.scale.z = 1/distance_to_player
-
+	# arrow.position.y = 1
+	# print(arrow.position)
 	arrow.look_at(arrow.position + player_to_ball)
+	arrow.scale.z = 1/distance_to_player
 	
 func kick():
 	is_just_kicked = true
