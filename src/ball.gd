@@ -31,11 +31,10 @@ func _physics_process(_delta: float) -> void:
 
 	arrow.visible = distance_to_player <= max_kick_distance
 	arrow.position = position + player_to_ball * arrow_distance
-	# arrow.position.y = 1
-	# print(arrow.position)
 	arrow.look_at(arrow.position + player_to_ball)
 	arrow.scale.z = 1/distance_to_player
-	
+
+
 func kick():
 	is_just_kicked = true
 	kick_timer.start()
@@ -83,13 +82,12 @@ func _on_active_area_body_exited(_body:Node3D):
 # 	var array_mesh: ArrayMesh = ArrayMesh.new()
 # 	mesh_instance.mesh = array_mesh
 	
+# 	var mesh_data: Array = []
+# 	mesh_data.resize(ArrayMesh.ARRAY_MAX)
 # 	var ballPos_left: Vector3 = ballPos + ballPos.direction_to(playerPos).cross(Vector3.UP).normalized() * thickness
 # 	var ballPos_right: Vector3 = ballPos + ballPos.direction_to(playerPos).cross(Vector3.DOWN).normalized() * thickness
 # 	var playerPos_right: Vector3 = playerPos + playerPos.direction_to(ballPos).cross(Vector3.UP).normalized() * thickness
 # 	var playerPos_left: Vector3 = playerPos + playerPos.direction_to(ballPos).cross(Vector3.DOWN).normalized() * thickness
-
-# 	var mesh_data: Array = []
-# 	mesh_data.resize(ArrayMesh.ARRAY_MAX)
 # 	var verts = PackedVector3Array([
 # 				ballPos_left, ballPos, playerPos_left, 
 # 				playerPos_left, ballPos, playerPos,
