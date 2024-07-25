@@ -427,7 +427,7 @@ transform = Transform3D(0.866244, -0.499622, 0, 0.499622, 0.866244, 0, 0, 0, 1, 
 pull_force = 2
 
 [node name="Player" parent="." instance=ExtResource("5_1nxl5")]
-transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0, 1, 1.40175, 1.03421, 5.44047)
+transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0, 1, -1.09885, 1.03421, 3.86018)
 wall_min_slide_angle = 0.785398
 
 [node name="Enemies" type="Node3D" parent="."]

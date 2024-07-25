@@ -25,6 +25,7 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	distance_to_player =  position.distance_to(player.position)
+	print(distance_to_player)
 	player_to_ball = player.position.direction_to(position)
 	player_to_ball.y = 0
 
@@ -39,7 +40,7 @@ func kick():
 	kick_timer.start()
 
 	player_to_ball.y = 0;
-	var force = player.kick_force - distance_to_player;
+	var force = player.kick_force - 10 * distance_to_player;
 	var ballImpulse = force * player_to_ball;
 	apply_impulse(ballImpulse);
 
