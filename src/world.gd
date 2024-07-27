@@ -17,12 +17,16 @@ func _ready():
 
 
 func _unhandled_input(_event):
+	
+
 	if Input.is_action_just_pressed("LeftClick"):
 		player.handle_left_mouse_click()
-		control_sticks.handle_left_mouse_click()
+		if state == GAMESTATE.PLAYING:
+			control_sticks.handle_left_mouse_click()
 	if Input.is_action_just_released("LeftClick"):
 		player.handle_left_mouse_release()
-		control_sticks.handle_left_mouse_release()
+		if state == GAMESTATE.PLAYING:
+			control_sticks.handle_left_mouse_release()
 
 func handle_player_death():
 	state = GAMESTATE.END

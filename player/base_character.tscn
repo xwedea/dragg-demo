@@ -3895,7 +3895,7 @@ floor_max_angle = 0.349066
 script = ExtResource("1_cgmpx")
 walk_speed = null
 kick_force = null
-max_health = null
+max_health = 10
 
 [node name="CapsuleCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.826024, 0)

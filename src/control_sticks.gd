@@ -15,7 +15,7 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
-	if world.state == world.GAMESTATE.PAUSED: return
+	if world.state != world.GAMESTATE.PLAYING: return
 
 	mouse_position = game_viewport.get_mouse_position()
 

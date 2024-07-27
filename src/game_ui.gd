@@ -36,6 +36,7 @@ func _update_timer(delta):
 	seconds_label.text = "%02d" % seconds
 
 func handle_game_end():
+	control_sticks.visible = false
 	end_anim_player.play("appear")
 
 func _on_pause_button_toggled(toggled_on:bool):
