@@ -22,13 +22,11 @@ var time := 0.0
 func _ready():
 	pause_menu.visible = false
 
-
 func _process(delta):
 	if world.state != world.GAMESTATE.PLAYING: return
 		
 	_update_timer(delta)
 	count_label.text = str(world.coins_collected)	
-
 
 func _update_timer(delta):
 	time += delta
@@ -55,10 +53,11 @@ func _on_pause_button_toggled(toggled_on:bool):
 		world.state = world.GAMESTATE.PLAYING
 
 func _on_end_button_pressed():
+	player.ball.arrow.visible = false 
+	player.health = 0
+	player.health_bar.value = 0
 	end_label.text = "SUICIDE"
+	player.health = 0
 	end_button.visible = false
 	get_tree().paused = false
-	player.die()
-	
-	# get_tree().change_scene_to_packed(title_world)
-	
+	player.die()	

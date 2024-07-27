@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://b14uq6kn8i7r0"]
+[gd_scene load_steps=61 format=3 uid="uid://b14uq6kn8i7r0"]
 
 [ext_resource type="Script" path="res://src/control_sticks.gd" id="1_4y8b4"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="1_ojbat"]
@@ -19,12 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://vbnkq27gcx0y" path="res://assets-dragg/ui/continuewhite.png" id="8_8vepc"]
 [ext_resource type="AudioStream" uid="uid://dhdcl8ho45ex7" path="res://assets-dragg/audio/collectcoin-6075.mp3" id="10_vihk2"]
 [ext_resource type="Texture2D" uid="uid://dpk6u2ncm4sl4" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Red.png" id="11_v51ol"]
+[ext_resource type="LabelSettings" uid="uid://djhradakb5gnu" path="res://ui/resources/button_label_L.tres" id="13_6omob"]
 [ext_resource type="Script" path="res://src/button_control.gd" id="15_0cq3n"]
-[ext_resource type="Script" path="res://world/ControlEnd.gd" id="15_gokhy"]
 [ext_resource type="Texture2D" uid="uid://cra7lhrdam17n" path="res://assets-dragg/casual_ui/label/Label_TitleFlag02_Red.png" id="16_2jioe"]
 [ext_resource type="Texture2D" uid="uid://cnowye4gdiee5" path="res://assets-dragg/Sprite/Component/Button/Btn_OtherButton_Hexagon01_Blue.png" id="16_d0qlm"]
-[ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="17_tjwdj"]
 [ext_resource type="AudioStream" uid="uid://bs43433qmf4j7" path="res://assets-dragg/audio/punchy-taps-ui-5-183901.mp3" id="18_qav8n"]
+[ext_resource type="Script" path="res://src/control_end.gd" id="18_sdpfg"]
 [ext_resource type="FontFile" uid="uid://cxk6i33q176fg" path="res://ui/fonts/supercell-magic-webfont.ttf" id="20_kc466"]
 [ext_resource type="PackedScene" uid="uid://ddl8atr316gfs" path="res://environment/rocks/big_rock_a.tscn" id="23_v82qc"]
 [ext_resource type="PackedScene" uid="uid://2tfjicgomjq5" path="res://environment/rocks/big_rock_b.tscn" id="24_bk6ii"]
@@ -61,7 +61,7 @@ shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_ih40o"]
 resource_name = "appear"
-length = 4.0
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -89,48 +89,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("UI/ControlEnd/GoButton:visible")
+tracks/2/path = NodePath("UI/ControlEnd/ColorRect:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI/ControlEnd/ColorRect:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-
-[sub_resource type="Animation" id="Animation_kslf1"]
-resource_name = "appear_fast"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI/ControlEnd/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.160784, 0.392157, 1, 0), Color(0.160784, 0.392157, 1, 0), Color(0.160784, 0.392157, 1, 0.501961), Color(0.160784, 0.392157, 1, 1)]
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/ControlEnd/AgainButton:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ry15c"]
 _data = {
-"appear": SubResource("Animation_ih40o"),
-"appear_fast": SubResource("Animation_kslf1")
+"appear": SubResource("Animation_ih40o")
 }
 
 [sub_resource type="Environment" id="Environment_dwyoh"]
@@ -443,14 +426,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -63.5
-offset_top = -47.5
-offset_right = 63.5
-offset_bottom = 47.5
+offset_left = -117.5
+offset_top = -59.0
+offset_right = 117.5
+offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "END"
-label_settings = ExtResource("17_tjwdj")
+label_settings = ExtResource("13_6omob")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TapAudio" type="AudioStreamPlayer" parent="UI/ControlCenter/ControlPauseMenu/EndButton"]
 stream = ExtResource("18_qav8n")
@@ -521,7 +506,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("15_gokhy")
+script = ExtResource("18_sdpfg")
 
 [node name="ColorRect" type="ColorRect" parent="UI/ControlEnd"]
 layout_mode = 0
@@ -532,7 +517,7 @@ offset_bottom = 1262.0
 mouse_filter = 1
 color = Color(0.160784, 0.392157, 1, 0)
 
-[node name="GoButton" type="Control" parent="UI/ControlEnd"]
+[node name="AgainButton" type="Control" parent="UI/ControlEnd"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -548,32 +533,41 @@ grow_vertical = 2
 theme = ExtResource("4_keggv")
 script = ExtResource("15_0cq3n")
 
-[node name="TextureButton" type="TextureButton" parent="UI/ControlEnd/GoButton"]
-layout_mode = 0
-offset_left = -207.0
-offset_top = -221.0
-offset_right = 200.0
-offset_bottom = 270.0
-texture_normal = ExtResource("16_d0qlm")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="UI/ControlEnd/GoButton"]
+[node name="TextureButton" type="TextureButton" parent="UI/ControlEnd/AgainButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -180.0
-offset_top = -41.0
-offset_right = 176.0
-offset_bottom = 107.0
+offset_left = -203.5
+offset_top = -245.5
+offset_right = 203.5
+offset_bottom = 245.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "AGAIN"
-label_settings = ExtResource("17_tjwdj")
+texture_normal = ExtResource("16_d0qlm")
+stretch_mode = 0
 
-[node name="TapAudio" type="AudioStreamPlayer" parent="UI/ControlEnd/GoButton"]
+[node name="Label" type="Label" parent="UI/ControlEnd/AgainButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -59.0
+offset_right = 149.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+label_settings = ExtResource("13_6omob")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TapAudio" type="AudioStreamPlayer" parent="UI/ControlEnd/AgainButton"]
 stream = ExtResource("18_qav8n")
 
 [node name="Label" type="Label" parent="UI/ControlEnd"]
@@ -604,6 +598,7 @@ libraries = {
 script = ExtResource("1_ojbat")
 
 [node name="SpawnTimer" type="Timer" parent="Spawner"]
+wait_time = 2.0
 
 [node name="Audio" type="Node" parent="."]
 
@@ -1458,9 +1453,9 @@ transform = Transform3D(-1.86987e-06, -42.7776, -1.86987e-06, 0, -1.86987e-06, 4
 [connection signal="button_down" from="UI/ControlCenter/ControlPauseMenu/EndButton/TextureButton" to="UI/ControlCenter/ControlPauseMenu/EndButton" method="_on_texture_button_button_down"]
 [connection signal="button_up" from="UI/ControlCenter/ControlPauseMenu/EndButton/TextureButton" to="UI/ControlCenter/ControlPauseMenu/EndButton" method="_on_texture_button_button_up"]
 [connection signal="pressed" from="UI/ControlCenter/ControlPauseMenu/EndButton/TextureButton" to="UI" method="_on_end_button_pressed"]
-[connection signal="button_down" from="UI/ControlEnd/GoButton/TextureButton" to="UI/ControlEnd/GoButton" method="_on_texture_button_button_down"]
-[connection signal="button_up" from="UI/ControlEnd/GoButton/TextureButton" to="UI/ControlEnd/GoButton" method="_on_texture_button_button_up"]
-[connection signal="pressed" from="UI/ControlEnd/GoButton/TextureButton" to="UI/ControlEnd" method="_on_go_button_pressed"]
+[connection signal="button_down" from="UI/ControlEnd/AgainButton/TextureButton" to="UI/ControlEnd/AgainButton" method="_on_texture_button_button_down"]
+[connection signal="button_up" from="UI/ControlEnd/AgainButton/TextureButton" to="UI/ControlEnd/AgainButton" method="_on_texture_button_button_up"]
+[connection signal="pressed" from="UI/ControlEnd/AgainButton/TextureButton" to="UI/ControlEnd" method="_on_again_button_pressed"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 
 [editable path="UI/ControlTopCenter/PauseButton"]
