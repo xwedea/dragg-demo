@@ -25,7 +25,6 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	distance_to_player =  position.distance_to(player.position)
-	print(distance_to_player)
 	player_to_ball = player.position.direction_to(position)
 	player_to_ball.y = 0
 

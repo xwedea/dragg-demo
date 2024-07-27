@@ -4,9 +4,9 @@ class_name World extends Node3D
 @onready var background_audio := get_node("Audio/BackgroundAudio") as AudioStreamPlayer
 @onready var player := get_node("Player") as BaseCharacter
 @onready var control_sticks := get_node("UI/ControlSticks") as ControlSticks
+@onready var game_ui := get_node("UI") as UserInterfaceNode
 
-
-enum GAMESTATE {PLAYING, COUNTDOWN, PAUSED}
+enum GAMESTATE {PLAYING, COUNTDOWN, PAUSED, END}
 var state = GAMESTATE.PLAYING
 
 var coin_scene: Resource = preload("res://objects/coin/coin.tscn")
@@ -23,6 +23,10 @@ func _unhandled_input(_event):
 	if Input.is_action_just_released("LeftClick"):
 		player.handle_left_mouse_release()
 		control_sticks.handle_left_mouse_release()
+
+func handle_player_death():
+	state = GAMESTATE.END
+	game_ui.handle_game_end()
 
 
 func handle_enemy_death(enemy_pos: Vector3):

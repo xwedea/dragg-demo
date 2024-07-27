@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://b14uq6kn8i7r0"]
+[gd_scene load_steps=60 format=3 uid="uid://b14uq6kn8i7r0"]
 
 [ext_resource type="Script" path="res://src/control_sticks.gd" id="1_4y8b4"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="1_ojbat"]
@@ -19,7 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://vbnkq27gcx0y" path="res://assets-dragg/ui/continuewhite.png" id="8_8vepc"]
 [ext_resource type="AudioStream" uid="uid://dhdcl8ho45ex7" path="res://assets-dragg/audio/collectcoin-6075.mp3" id="10_vihk2"]
 [ext_resource type="Texture2D" uid="uid://dpk6u2ncm4sl4" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Red.png" id="11_v51ol"]
+[ext_resource type="Script" path="res://src/button_control.gd" id="15_0cq3n"]
+[ext_resource type="Script" path="res://world/ControlEnd.gd" id="15_gokhy"]
 [ext_resource type="Texture2D" uid="uid://cra7lhrdam17n" path="res://assets-dragg/casual_ui/label/Label_TitleFlag02_Red.png" id="16_2jioe"]
+[ext_resource type="Texture2D" uid="uid://cnowye4gdiee5" path="res://assets-dragg/Sprite/Component/Button/Btn_OtherButton_Hexagon01_Blue.png" id="16_d0qlm"]
+[ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="17_tjwdj"]
+[ext_resource type="AudioStream" uid="uid://bs43433qmf4j7" path="res://assets-dragg/audio/punchy-taps-ui-5-183901.mp3" id="18_qav8n"]
 [ext_resource type="PackedScene" uid="uid://ddl8atr316gfs" path="res://environment/rocks/big_rock_a.tscn" id="23_v82qc"]
 [ext_resource type="PackedScene" uid="uid://2tfjicgomjq5" path="res://environment/rocks/big_rock_b.tscn" id="24_bk6ii"]
 [ext_resource type="PackedScene" uid="uid://jgh8faqld37e" path="res://environment/rocks/rock_2.tscn" id="26_k0dws"]
@@ -46,6 +51,80 @@ font_size = 52
 
 [sub_resource type="LabelSettings" id="LabelSettings_w0gk0"]
 font_size = 64
+
+[sub_resource type="Animation" id="Animation_ih40o"]
+resource_name = "appear"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/ControlEnd/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.5, 3, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.160784, 0.392157, 1, 0), Color(0.160784, 0.392157, 1, 0), Color(0.160784, 0.392157, 1, 0.333333), Color(0.160784, 0.392157, 1, 0.666667), Color(0.160784, 0.392157, 1, 1), Color(0.160784, 0.392157, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/ControlEnd:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/ControlEnd/GoButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/ControlEnd/ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kslf1"]
+resource_name = "appear_fast"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/ControlEnd/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.160784, 0.392157, 1, 0), Color(0.160784, 0.392157, 1, 0), Color(0.160784, 0.392157, 1, 0.501961), Color(0.160784, 0.392157, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ry15c"]
+_data = {
+"appear": SubResource("Animation_ih40o"),
+"appear_fast": SubResource("Animation_kslf1")
+}
 
 [sub_resource type="Environment" id="Environment_dwyoh"]
 
@@ -397,6 +476,76 @@ grow_vertical = 2
 texture = ExtResource("4_xwvsk")
 expand_mode = 1
 
+[node name="ControlEnd" type="Control" parent="UI"]
+z_index = 11
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+script = ExtResource("15_gokhy")
+
+[node name="ColorRect" type="ColorRect" parent="UI/ControlEnd"]
+layout_mode = 0
+offset_left = -72.0
+offset_top = -60.0
+offset_right = 1263.0
+offset_bottom = 2497.0
+mouse_filter = 1
+color = Color(0.160784, 0.392157, 1, 0)
+
+[node name="GoButton" type="Control" parent="UI/ControlEnd"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 543.0
+offset_top = 1835.0
+offset_right = 543.0
+offset_bottom = 1835.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_keggv")
+script = ExtResource("15_0cq3n")
+
+[node name="TextureButton" type="TextureButton" parent="UI/ControlEnd/GoButton"]
+layout_mode = 0
+offset_left = -207.0
+offset_top = -221.0
+offset_right = 200.0
+offset_bottom = 270.0
+texture_normal = ExtResource("16_d0qlm")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/ControlEnd/GoButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -47.5
+offset_right = 63.5
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GO"
+label_settings = ExtResource("17_tjwdj")
+
+[node name="TapAudio" type="AudioStreamPlayer" parent="UI/ControlEnd/GoButton"]
+stream = ExtResource("18_qav8n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/ControlEnd"]
+reset_on_save = false
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_ry15c")
+}
+
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("1_ojbat")
 
@@ -429,6 +578,9 @@ pull_force = 2
 [node name="Player" parent="." instance=ExtResource("5_1nxl5")]
 transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0, 1, -1.09885, 1.03421, 3.86018)
 wall_min_slide_angle = 0.785398
+walk_speed = 5
+kick_force = 100
+max_health = 100
 
 [node name="Enemies" type="Node3D" parent="."]
 
@@ -1252,6 +1404,9 @@ transform = Transform3D(-1.86987e-06, -42.7776, -1.86987e-06, 0, -1.86987e-06, 4
 
 [connection signal="toggled" from="UI/ControlTopCenter/PauseButton/TextureButton" to="UI" method="_on_pause_button_toggled"]
 [connection signal="pressed" from="UI/ControlCenter/ControlPauseMenu/EndButtonControl/TextureButton" to="UI" method="_on_end_button_pressed"]
+[connection signal="button_down" from="UI/ControlEnd/GoButton/TextureButton" to="UI/ControlEnd/GoButton" method="_on_texture_button_button_down"]
+[connection signal="button_up" from="UI/ControlEnd/GoButton/TextureButton" to="UI/ControlEnd/GoButton" method="_on_texture_button_button_up"]
+[connection signal="pressed" from="UI/ControlEnd/GoButton/TextureButton" to="UI/ControlEnd" method="_on_go_button_pressed"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 
 [editable path="UI/ControlTopCenter/PauseButton"]

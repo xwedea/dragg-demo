@@ -10,16 +10,18 @@ class_name UserInterfaceNode extends Node
 @onready var continue_icon := get_node("ControlTopCenter/PauseButton/ContinueIcon") as TextureRect
 @onready var pause_menu := get_node("ControlCenter/ControlPauseMenu") as Control
 @onready var title_world := load("res://title/title_world.tscn") as PackedScene
+@onready var end_control := get_node("ControlEnd") as Control
+@onready var end_overlay := end_control.get_node("ColorRect") as ColorRect
+@onready var end_anim_player := end_control.get_node("AnimationPlayer") as AnimationPlayer
 
 var time := 0.0
-
 
 func _ready():
 	pause_menu.visible = false
 
 
 func _process(delta):
-	if world.state == world.GAMESTATE.PAUSED: return
+	if world.state != world.GAMESTATE.PLAYING: return
 		
 	_update_timer(delta)
 	count_label.text = str(world.coins_collected)	
@@ -32,6 +34,9 @@ func _update_timer(delta):
 
 	minutes_label.text = "%02d" % minutes
 	seconds_label.text = "%02d" % seconds
+
+func handle_game_end():
+	end_anim_player.play("appear")
 
 func _on_pause_button_toggled(toggled_on:bool):
 	get_tree().paused = toggled_on

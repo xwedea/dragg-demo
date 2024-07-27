@@ -103,6 +103,7 @@ func handle_left_mouse_release():
 func _die():
 	is_dead = true
 	anim_player.play("Defeat")
+	world.handle_player_death()
 	death_timer.start()
 
 func _on_hit_box_body_entered(body:Node3D):
@@ -119,9 +120,10 @@ func _on_hit_box_body_entered(body:Node3D):
 func _on_hit_timer_timeout():
 	just_got_damaged = false
 
-
 func _on_death_timer_timeout():
-	get_tree().reload_current_scene()
+	pass
+	# get_tree().reload_current_scene()
+	
 
 func _on_pull_area_area_entered(area:Area3D):
 	var object = area.get_parent() as Pullable
