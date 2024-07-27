@@ -406,14 +406,21 @@ offset_top = 660.0
 offset_right = 40.0
 offset_bottom = 700.0
 
-[node name="EndButtonControl" parent="UI/ControlCenter/ControlPauseMenu" instance=ExtResource("2_6ekdf")]
+[node name="EndButton" type="Control" parent="UI/ControlCenter/ControlPauseMenu"]
 layout_mode = 1
-offset_left = -9.0
-offset_top = 0.0
-offset_right = -9.0
-offset_bottom = 0.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_right = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_keggv")
+script = ExtResource("15_0cq3n")
 
-[node name="TextureButton" parent="UI/ControlCenter/ControlPauseMenu/EndButtonControl" index="0"]
+[node name="TextureButton" type="TextureButton" parent="UI/ControlCenter/ControlPauseMenu/EndButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -429,8 +436,24 @@ grow_vertical = 2
 texture_normal = ExtResource("11_v51ol")
 stretch_mode = 0
 
-[node name="Label" parent="UI/ControlCenter/ControlPauseMenu/EndButtonControl" index="1"]
+[node name="Label" type="Label" parent="UI/ControlCenter/ControlPauseMenu/EndButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -47.5
+offset_right = 63.5
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "END"
+label_settings = ExtResource("17_tjwdj")
+
+[node name="TapAudio" type="AudioStreamPlayer" parent="UI/ControlCenter/ControlPauseMenu/EndButton"]
+stream = ExtResource("18_qav8n")
 
 [node name="ControlSticks" type="Control" parent="UI"]
 layout_mode = 3
@@ -516,9 +539,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 13.0
+offset_left = 3.0
 offset_top = 655.0
-offset_right = 13.0
+offset_right = 3.0
 offset_bottom = 655.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -541,13 +564,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -101.0
-offset_top = -53.0
-offset_right = 97.0
-offset_bottom = 95.0
+offset_left = -180.0
+offset_top = -41.0
+offset_right = 176.0
+offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "GO"
+text = "AGAIN"
 label_settings = ExtResource("17_tjwdj")
 
 [node name="TapAudio" type="AudioStreamPlayer" parent="UI/ControlEnd/GoButton"]
@@ -555,16 +578,20 @@ stream = ExtResource("18_qav8n")
 
 [node name="Label" type="Label" parent="UI/ControlEnd"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -338.0
-offset_top = -458.0
-offset_right = 339.0
-offset_bottom = -310.0
+anchor_bottom = 0.5
+offset_left = -338.5
+offset_top = -387.0
+offset_right = 338.5
+offset_bottom = 387.0
 grow_horizontal = 2
+grow_vertical = 2
 text = "YOU DIED"
 label_settings = SubResource("LabelSettings_60knc")
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/ControlEnd"]
 reset_on_save = false
@@ -605,8 +632,6 @@ pull_force = 2
 [node name="Player" parent="." instance=ExtResource("5_1nxl5")]
 transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0, 1, -1.09885, 1.03421, 3.86018)
 wall_min_slide_angle = 0.785398
-walk_speed = 5
-kick_force = 100
 max_health = 100
 
 [node name="Enemies" type="Node3D" parent="."]
@@ -1430,11 +1455,12 @@ transform = Transform3D(-1.86987e-06, -42.7776, -1.86987e-06, 0, -1.86987e-06, 4
 transform = Transform3D(-1.86987e-06, -42.7776, -1.86987e-06, 0, -1.86987e-06, 42.7776, -42.7776, 1.86987e-06, 8.17345e-14, -100.789, 1.31888, 98.4648)
 
 [connection signal="toggled" from="UI/ControlTopCenter/PauseButton/TextureButton" to="UI" method="_on_pause_button_toggled"]
-[connection signal="pressed" from="UI/ControlCenter/ControlPauseMenu/EndButtonControl/TextureButton" to="UI" method="_on_end_button_pressed"]
+[connection signal="button_down" from="UI/ControlCenter/ControlPauseMenu/EndButton/TextureButton" to="UI/ControlCenter/ControlPauseMenu/EndButton" method="_on_texture_button_button_down"]
+[connection signal="button_up" from="UI/ControlCenter/ControlPauseMenu/EndButton/TextureButton" to="UI/ControlCenter/ControlPauseMenu/EndButton" method="_on_texture_button_button_up"]
+[connection signal="pressed" from="UI/ControlCenter/ControlPauseMenu/EndButton/TextureButton" to="UI" method="_on_end_button_pressed"]
 [connection signal="button_down" from="UI/ControlEnd/GoButton/TextureButton" to="UI/ControlEnd/GoButton" method="_on_texture_button_button_down"]
 [connection signal="button_up" from="UI/ControlEnd/GoButton/TextureButton" to="UI/ControlEnd/GoButton" method="_on_texture_button_button_up"]
 [connection signal="pressed" from="UI/ControlEnd/GoButton/TextureButton" to="UI/ControlEnd" method="_on_go_button_pressed"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 
 [editable path="UI/ControlTopCenter/PauseButton"]
-[editable path="UI/ControlCenter/ControlPauseMenu/EndButtonControl"]

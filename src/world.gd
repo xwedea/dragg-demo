@@ -17,8 +17,6 @@ func _ready():
 
 
 func _unhandled_input(_event):
-	
-
 	if Input.is_action_just_pressed("LeftClick"):
 		player.handle_left_mouse_click()
 		if state == GAMESTATE.PLAYING:

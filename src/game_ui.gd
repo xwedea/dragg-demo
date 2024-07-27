@@ -2,6 +2,8 @@ class_name UserInterfaceNode extends Node
 
 @onready var world := get_tree().root.get_node("World3D") as World
 @onready var player := world.get_node("Player") as BaseCharacter
+@onready var control_top_center := get_node("ControlTopCenter") as Control
+@onready var end_button := get_node("ControlCenter/ControlPauseMenu/EndButton") as ButtonControl
 @onready var control_sticks := get_node("ControlSticks") as ControlSticks
 @onready var minutes_label := get_node("ControlTopCenter/ControlTimer/Minutes") as Label
 @onready var seconds_label := get_node("ControlTopCenter/ControlTimer/Seconds") as Label
@@ -13,6 +15,7 @@ class_name UserInterfaceNode extends Node
 @onready var end_control := get_node("ControlEnd") as Control
 @onready var end_overlay := end_control.get_node("ColorRect") as ColorRect
 @onready var end_anim_player := end_control.get_node("AnimationPlayer") as AnimationPlayer
+@onready var end_label := end_control.get_node("Label") as Label
 
 var time := 0.0
 
@@ -37,6 +40,7 @@ func _update_timer(delta):
 
 func handle_game_end():
 	control_sticks.visible = false
+	control_top_center.visible = false
 	end_anim_player.play("appear")
 
 func _on_pause_button_toggled(toggled_on:bool):
@@ -50,8 +54,11 @@ func _on_pause_button_toggled(toggled_on:bool):
 	else:
 		world.state = world.GAMESTATE.PLAYING
 
-
 func _on_end_button_pressed():
+	end_label.text = "SUICIDE"
+	end_button.visible = false
 	get_tree().paused = false
-	get_tree().change_scene_to_packed(title_world)
+	player.die()
+	
+	# get_tree().change_scene_to_packed(title_world)
 	

@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cot21xrmvhxwc"]
+[gd_scene load_steps=20 format=3 uid="uid://cot21xrmvhxwc"]
 
 [ext_resource type="Script" path="res://src/title_control.gd" id="1_3bk7o"]
 [ext_resource type="Script" path="res://src/title_world.gd" id="1_bon2a"]
 [ext_resource type="AudioStream" uid="uid://ckg3w6p6m1wfv" path="res://assets-dragg/audio/background.mp3" id="2_ictak"]
 [ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="3_yy0f0"]
 [ext_resource type="FontFile" uid="uid://cxk6i33q176fg" path="res://ui/fonts/supercell-magic-webfont.ttf" id="4_ppego"]
+[ext_resource type="LabelSettings" uid="uid://cbf27dffxmfw4" path="res://ui/resources/button_label_XL.tres" id="7_r1ayr"]
 [ext_resource type="Texture2D" uid="uid://duhqfo61ptw54" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue_Shaded.png" id="7_vm383"]
 [ext_resource type="PackedScene" uid="uid://cnb8hge3tao55" path="res://title/title_scene.tscn" id="8_gt681"]
 [ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/button_control.tscn" id="10_fu3f0"]
@@ -87,6 +88,9 @@ scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(140, 165.556)
 texture_pressed = ExtResource("7_vm383")
 stretch_mode = 0
+
+[node name="Label" parent="TitleControl/PlayButton" index="1"]
+label_settings = ExtResource("7_r1ayr")
 
 [node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ictak")

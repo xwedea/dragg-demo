@@ -100,7 +100,7 @@ func handle_left_mouse_release():
 	if (distance < ball.max_kick_distance):
 		ball.kick()
 
-func _die():
+func die():
 	is_dead = true
 	anim_player.play("Defeat")
 	world.handle_player_death()
@@ -115,7 +115,7 @@ func _on_hit_box_body_entered(body:Node3D):
 		health -= 35
 		health_bar.value = health
 		if health <= 0:
-			_die()
+			die()
 		
 func _on_hit_timer_timeout():
 	just_got_damaged = false
