@@ -492,6 +492,7 @@ texture = ExtResource("4_xwvsk")
 expand_mode = 1
 
 [node name="ControlEnd" type="Control" parent="UI"]
+visible = false
 z_index = 11
 layout_mode = 3
 anchors_preset = 8
@@ -540,10 +541,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -203.5
-offset_top = -245.5
-offset_right = 203.5
-offset_bottom = 245.5
+offset_left = -218.5
+offset_top = -263.5
+offset_right = 218.5
+offset_bottom = 263.5
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("16_d0qlm")
