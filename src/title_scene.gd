@@ -10,15 +10,15 @@ var velocity := Vector3(1, 0, 0)
 
 func _ready():
 	turn_timer.wait_time = turn_rate
-	turn_timer.start()
+	# turn_timer.start()
 
-func _process(delta):
+func _process(_delta):
 	if opposite:
 		velocity = Vector3(-1, 0, 0)
 	else:
 		velocity = Vector3(1, 0, 0)
 	
-	position = position + (velocity * speed * delta)
+	#position = position + (velocity * speed * delta)
 
 func _on_turn_timer_timeout():
 	if opposite:

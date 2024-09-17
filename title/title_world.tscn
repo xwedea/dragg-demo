@@ -1,8 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://cot21xrmvhxwc"]
+[gd_scene load_steps=19 format=3 uid="uid://cot21xrmvhxwc"]
 
 [ext_resource type="Script" path="res://src/title_control.gd" id="1_3bk7o"]
 [ext_resource type="Script" path="res://src/title_world.gd" id="1_bon2a"]
-[ext_resource type="AudioStream" uid="uid://ckg3w6p6m1wfv" path="res://assets-dragg/audio/background.mp3" id="2_ictak"]
 [ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="3_yy0f0"]
 [ext_resource type="FontFile" uid="uid://cxk6i33q176fg" path="res://ui/fonts/supercell-magic-webfont.ttf" id="4_ppego"]
 [ext_resource type="LabelSettings" uid="uid://djhradakb5gnu" path="res://ui/resources/button_label_L.tres" id="7_aah67"]
@@ -45,18 +44,28 @@ albedo_color = Color(0.788235, 0.341176, 0.976471, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_cb2s3"]
 
 [node name="World3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20448, 0, 0)
 script = ExtResource("1_bon2a")
 
 [node name="TitleControl" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_3bk7o")
 
 [node name="TitleLabel" type="Label" parent="TitleControl"]
-layout_mode = 0
-offset_top = 237.0
-offset_right = 1078.0
-offset_bottom = 532.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -371.5
+offset_top = 200.0
+offset_right = 371.5
+offset_bottom = 422.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_yy0f0")
 theme_override_font_sizes/font_size = 200
@@ -66,10 +75,15 @@ horizontal_alignment = 1
 
 [node name="PlayButton" parent="TitleControl" instance=ExtResource("10_fu3f0")]
 layout_mode = 1
-offset_left = 551.0
-offset_top = 1950.0
-offset_right = 551.0
-offset_bottom = 1950.0
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = -400.0
+offset_right = 0.0
+offset_bottom = -400.0
+grow_vertical = 0
+metadata/_edit_group_ = true
 
 [node name="TextureButton" parent="TitleControl/PlayButton" index="0"]
 layout_mode = 1
@@ -98,7 +112,6 @@ text = "PLAY"
 label_settings = ExtResource("7_aah67")
 
 [node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ictak")
 volume_db = -10.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -124,7 +137,7 @@ mesh = SubResource("BoxMesh_tglxd")
 skeleton = NodePath("../../..")
 
 [node name="TitleCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.790155, 0.612907, 0, -0.612907, 0.790155, 0, 5.14939, 6.29863)
+transform = Transform3D(1, 0, 0, 0, 0.790155, 0.612907, 0, -0.612907, 0.790155, 0, 5.149, 6.299)
 current = true
 
 [node name="Obstacle" type="RigidBody3D" parent="."]
@@ -139,7 +152,7 @@ material_override = SubResource("StandardMaterial3D_rhm6q")
 mesh = SubResource("CylinderMesh_cb2s3")
 
 [node name="TitleScene" parent="." instance=ExtResource("8_gt681")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.306, 0, 0)
+transform = Transform3D(-0.975856, 0, -0.218416, 0, 1, 0, 0.218416, 0, -0.975856, 0.0287821, 0, 1.04668)
 
 [connection signal="pressed" from="TitleControl/PlayButton/TextureButton" to="TitleControl" method="_on_play_button_pressed"]
 
