@@ -2,18 +2,18 @@ class_name UserInterfaceNode extends Node
 
 @onready var world := get_tree().root.get_node("World3D") as World
 @onready var player := world.get_node("Player") as BaseCharacter
-@onready var control_top_center := get_node("ControlTopCenter") as Control
-@onready var end_button := get_node("ControlCenter/ControlPauseMenu/EndButton") as ButtonControl
-@onready var control_sticks := get_node("ControlSticks") as ControlSticks
-@onready var minutes_label := get_node("ControlTopCenter/ControlTimer/Minutes") as Label
-@onready var seconds_label := get_node("ControlTopCenter/ControlTimer/Seconds") as Label
-@onready var count_label := get_node("ControlTopCenter/ControlCoin/CoinLabel") as Label
-@onready var pause_label := get_node("ControlTopCenter/PauseButton/Label") as Label
-@onready var continue_icon := get_node("ControlTopCenter/PauseButton/ContinueIcon") as TextureRect
-@onready var pause_menu := get_node("ControlCenter/ControlPauseMenu") as Control
+@onready var control_top_center := get_node("Score") as Control
+@onready var end_button := get_node("PauseMenu/EndButton") as ButtonControl
+@onready var control_sticks := get_node("Sticks") as ControlSticks
+@onready var minutes_label := get_node("Score/ControlTimer/Minutes") as Label
+@onready var seconds_label := get_node("Score/ControlTimer/Seconds") as Label
+@onready var count_label := get_node("Score/ControlCoin/CoinLabel") as Label
+@onready var pause_label := get_node("PauseButton/Label") as Label
+@onready var continue_icon := get_node("PauseButton/ContinueIcon") as TextureRect
+@onready var pause_menu := get_node("PauseMenu") as Control
 @onready var title_world := load("res://title/title_world.tscn") as PackedScene
-@onready var end_control := get_node("ControlEnd") as Control
-@onready var end_overlay := end_control.get_node("ColorRect") as ColorRect
+@onready var end_control := get_node("Ending") as Control
+@onready var end_overlay := get_node("Overlay") as ColorRect
 @onready var end_anim_player := end_control.get_node("AnimationPlayer") as AnimationPlayer
 @onready var end_label := end_control.get_node("Label") as Label
 
@@ -56,7 +56,7 @@ func _on_end_button_pressed():
 	player.ball.arrow.visible = false 
 	player.health = 0
 	player.health_bar.value = 0
-	end_label.text = "SUICIDE"
+	end_label.text = "YOU ENDED"
 	player.health = 0
 	end_button.visible = false
 	get_tree().paused = false

@@ -15,7 +15,7 @@ class_name TitleEnemy extends CharacterBody3D
 
 func _ready():
 	randomize()
-	var anim_delay = randf_range(0, 1)
+	# var anim_delay = randf_range(0, 1)
 	# await get_tree().create_timer(anim_delay).timeout
 	# anim_player.play("Run")
 	anim_player.play("Idle")

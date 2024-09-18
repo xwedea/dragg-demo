@@ -3,7 +3,7 @@ class_name World extends Node3D
 @onready var coin_collect_audio := get_node("Audio/CoinCollectAudio") as AudioStreamPlayer
 @onready var background_audio := get_node("Audio/BackgroundAudio") as AudioStreamPlayer
 @onready var player := get_node("Player") as BaseCharacter
-@onready var control_sticks := get_node("UI/ControlSticks") as ControlSticks
+@onready var control_sticks := get_node("UI/Sticks") as ControlSticks
 @onready var game_ui := get_node("UI") as UserInterfaceNode
 
 enum GAMESTATE {PLAYING, COUNTDOWN, PAUSED, END}
