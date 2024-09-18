@@ -11,7 +11,6 @@ class_name BaseEnemy extends CharacterBody3D
 @onready var collision_shape := get_node("CapsuleCollision") as CollisionShape3D
 @onready var hit_audio := get_node("HitAudio") as AudioStreamPlayer
 
-
 @export var death_threshold := 30
 @export var speed := 100
 
