@@ -16,6 +16,7 @@ class_name UserInterfaceNode extends Node
 @onready var end_overlay := get_node("Overlay") as ColorRect
 @onready var end_anim_player := end_control.get_node("AnimationPlayer") as AnimationPlayer
 @onready var end_label := end_control.get_node("Label") as Label
+@onready var pause_button := get_node("PauseButton") as ButtonControl
 
 var time := 0.0
 
@@ -37,6 +38,7 @@ func _update_timer(delta):
 	seconds_label.text = "%02d" % seconds
 
 func handle_game_end():
+	pause_button.visible = false
 	control_sticks.visible = false
 	control_top_center.visible = false
 	end_anim_player.play("appear")
