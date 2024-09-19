@@ -213,19 +213,11 @@ size = Vector3(200, 2, 200)
 [node name="World3D" type="Node3D"]
 script = ExtResource("1_qmkdd")
 
-[node name="UI" type="Control" parent="."]
-process_mode = 4
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="UI" type="Node" parent="."]
 script = ExtResource("2_emipb")
 
 [node name="PauseButton" parent="UI" instance=ExtResource("2_6ekdf")]
 process_mode = 3
-layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_top = 0.0
@@ -281,7 +273,7 @@ expand_mode = 1
 [node name="Score" type="Control" parent="UI"]
 process_mode = 3
 z_index = 10
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -402,7 +394,7 @@ expand_mode = 1
 
 [node name="PauseMenu" type="Control" parent="UI"]
 process_mode = 3
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -468,7 +460,7 @@ stream = ExtResource("18_qav8n")
 
 [node name="Sticks" type="Control" parent="UI"]
 process_mode = 3
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -520,7 +512,6 @@ expand_mode = 1
 
 [node name="Overlay" type="ColorRect" parent="UI"]
 process_mode = 4
-layout_mode = 1
 offset_left = -100.0
 offset_top = -100.0
 offset_right = -100.0
@@ -531,7 +522,7 @@ color = Color(0.160784, 0.392157, 1, 0)
 [node name="Ending" type="Control" parent="UI"]
 process_mode = 3
 z_index = 11
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
