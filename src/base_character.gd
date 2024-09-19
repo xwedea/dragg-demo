@@ -8,6 +8,7 @@ class_name BaseCharacter extends CharacterBody3D
 @onready var health_bar := get_node("HealthBar3D/SubViewport/HealthBar") as ProgressBar
 @onready var hit_timer := get_node("HitBox/HitTimer") as Timer
 @onready var death_timer := get_node("DeathTimer") as Timer
+@onready var nav_agent := get_node("NavigationAgent3D") as NavigationAgent3D
 
 @export var walk_speed := 5
 @export var kick_force := 100

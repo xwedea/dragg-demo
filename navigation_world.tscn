@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://c1l4wh3v3k04h"]
+[gd_scene load_steps=18 format=4 uid="uid://c1l4wh3v3k04h"]
 
 [ext_resource type="Script" path="res://src/navigation_world.gd" id="1_f7kb7"]
 [ext_resource type="Script" path="res://src/camera.gd" id="2_sjw2v"]
 [ext_resource type="Texture2D" uid="uid://cvgpgok4ghgry" path="res://assets-dragg/lowpolytrees/RockTexture/RockTexture2.png" id="3_hs3kx"]
+[ext_resource type="PackedScene" uid="uid://cj3o3s0hmaqut" path="res://navigation_character.tscn" id="4_bvjqt"]
 
 [sub_resource type="Environment" id="Environment_ykp01"]
 
@@ -66,6 +67,12 @@ albedo_color = Color(0.0784314, 0.227451, 1, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_jln7w"]
 material = SubResource("StandardMaterial3D_vyaqa")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w00w2"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_l83cw"]
+material = SubResource("StandardMaterial3D_w00w2")
+
 [node name="NavigationWorld" type="Node3D"]
 script = ExtResource("1_f7kb7")
 
@@ -93,7 +100,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_8ysbb")
 
 [node name="BigRock1" type="MeshInstance3D" parent="NavigationRegion3D"]
-transform = Transform3D(244.138, 0, 0, 0, -2.91035e-05, 244.138, 0, -244.138, -2.91035e-05, 0, 0, 0)
+transform = Transform3D(244.138, 0, 0, 0, -2.91035e-05, 244.138, 0, -244.138, -2.91035e-05, 48.4487, 0, 0)
 mesh = SubResource("ArrayMesh_xcjm6")
 skeleton = NodePath("")
 
@@ -107,3 +114,12 @@ shape = SubResource("ConcavePolygonShape3D_kk3tw")
 [node name="NavTarget" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.339, 4.76837e-07, 17.2374)
 mesh = SubResource("CylinderMesh_jln7w")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NavTarget"]
+
+[node name="NavigationCharacter" parent="." instance=ExtResource("4_bvjqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05636, 2.86102e-06, 1.30393)
+
+[node name="PositionMarker" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61781, 0, 4.58522)
+mesh = SubResource("SphereMesh_l83cw")
