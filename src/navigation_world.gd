@@ -5,7 +5,7 @@ extends Node3D
 func _ready():
 	pass
 	# get_tree().create_timer(1).timeout.connect(spawn_nav_agent)
-	# spawn_nav_agent(Vector3(0, 0, 0))
+	spawn_nav_agent(Vector3(0, 0, 0))
 
 
 

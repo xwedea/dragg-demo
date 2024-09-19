@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var nav_target := nav_world.get_node("NavTarget") as Node3D
 @onready var nav_agent := get_node("NavigationAgent3D") as NavigationAgent3D
 
-@export var speed := 100
+@export var speed := 1000
 
 func _ready():
 	print(name + " is ready at: " + str(position))
