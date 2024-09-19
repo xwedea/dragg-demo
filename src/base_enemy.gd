@@ -22,7 +22,7 @@ var is_ball_colliding := false
 
 func _ready():
 	anim_player.play("Run")
-
+	print("spawn position: ", position)
 
 func _physics_process(delta: float) -> void:
 	if is_ball_colliding && ball.is_just_kicked:
