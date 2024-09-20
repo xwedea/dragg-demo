@@ -1,6 +1,6 @@
 class_name BaseEnemy extends CharacterBody3D
 
-@onready var world := get_tree().root.get_node("World3D") as Node3D
+@onready var world := get_tree().root.get_node("World3D") as World
 @onready var ball := world.get_node("Ball") as Ball
 @onready var death_timer := get_node("DeathTimer") as Timer
 @onready var knock_out_timer := get_node("KnockOutTimer") as Timer
@@ -75,6 +75,7 @@ func _die():
 	call_deferred("_disable_collision")
 	anim_player.play("Defeat")
 	world.handle_enemy_death(position)
+	world.enemy_count -= 1
 
 func _disable_collision():
 	collision_shape.disabled = true

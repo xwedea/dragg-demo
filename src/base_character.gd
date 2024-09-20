@@ -4,7 +4,6 @@ class_name BaseCharacter extends CharacterBody3D
 @onready var model := get_node("Model") as Node3D
 @onready var ball := world.get_node("Ball") as Ball
 @onready var anim_player := model.get_node("AnimationPlayer") as AnimationPlayer 
-@onready var rope_slot := get_node("RopeSlot") as Node3D
 @onready var health_bar := get_node("HealthBar3D/SubViewport/HealthBar") as ProgressBar
 @onready var hit_timer := get_node("HitBox/HitTimer") as Timer
 @onready var death_timer := get_node("DeathTimer") as Timer
@@ -14,7 +13,7 @@ class_name BaseCharacter extends CharacterBody3D
 @export var kick_force := 100
 @export var max_health := 100
 
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+static var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var health: float
 var just_got_damaged := false
 var is_moving := false 
@@ -122,9 +121,7 @@ func _on_hit_timer_timeout():
 	just_got_damaged = false
 
 func _on_death_timer_timeout():
-	pass
-	# get_tree().reload_current_scene()
-	
+	pass	
 
 func _on_pull_area_area_entered(area:Area3D):
 	var object = area.get_parent() as Pullable

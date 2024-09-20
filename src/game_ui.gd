@@ -24,14 +24,12 @@ func _ready():
 	pause_menu.visible = false
 
 func _process(delta):
-	print(world.state)
 	if not world.state == world.GAMESTATE.PLAYING: return
 		
 	_update_timer(delta)
 	count_label.text = str(world.coins_collected)	
 
 func _update_timer(delta):
-	print("UPdating")
 	time += delta
 	var seconds = fmod(time, 60)
 	var minutes = fmod(time, 3600) / 60

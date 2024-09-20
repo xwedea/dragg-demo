@@ -619,9 +619,6 @@ libraries = {
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("1_ojbat")
 
-[node name="SpawnTimer" type="Timer" parent="Spawner"]
-wait_time = 2.0
-
 [node name="Audio" type="Node" parent="."]
 
 [node name="CoinCollectAudio" type="AudioStreamPlayer" parent="Audio"]
@@ -1481,6 +1478,5 @@ shape = SubResource("BoxShape3D_3ppio")
 [connection signal="button_down" from="UI/Ending/AgainButton/TextureButton" to="UI/Ending/AgainButton" method="_on_texture_button_button_down"]
 [connection signal="button_up" from="UI/Ending/AgainButton/TextureButton" to="UI/Ending/AgainButton" method="_on_texture_button_button_up"]
 [connection signal="pressed" from="UI/Ending/AgainButton/TextureButton" to="UI/Ending" method="_on_again_button_pressed"]
-[connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 
 [editable path="UI/PauseButton"]
