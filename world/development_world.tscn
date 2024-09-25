@@ -1,9 +1,8 @@
-[gd_scene load_steps=62 format=4 uid="uid://b14uq6kn8i7r0"]
+[gd_scene load_steps=61 format=4 uid="uid://b14uq6kn8i7r0"]
 
 [ext_resource type="Script" path="res://src/control_sticks.gd" id="1_4y8b4"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="1_ojbat"]
 [ext_resource type="Script" path="res://src/world.gd" id="1_qmkdd"]
-[ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/button_control.tscn" id="2_6ekdf"]
 [ext_resource type="Script" path="res://src/game_ui.gd" id="2_emipb"]
 [ext_resource type="Script" path="res://src/game_camera.gd" id="4_isc8j"]
 [ext_resource type="Theme" uid="uid://cw5e22i0akvq5" path="res://ui/resources/casual_theme.tres" id="4_keggv"]
@@ -15,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://bfx54y75ia2vg" path="res://ball/ball.tscn" id="6_ydc3q"]
 [ext_resource type="PackedScene" uid="uid://c3bo0ps5tay8y" path="res://enemy/base_enemy.tscn" id="7_cwvuu"]
 [ext_resource type="Texture2D" uid="uid://c3ykad5rl80o2" path="res://assets-dragg/ui/Icon_Gold.Png" id="7_eyfe2"]
-[ext_resource type="Script" path="res://src/pause_button_control.gd" id="7_m6dtd"]
 [ext_resource type="Texture2D" uid="uid://vbnkq27gcx0y" path="res://assets-dragg/ui/continuewhite.png" id="8_8vepc"]
 [ext_resource type="AudioStream" uid="uid://dhdcl8ho45ex7" path="res://assets-dragg/audio/collectcoin-6075.mp3" id="10_vihk2"]
 [ext_resource type="Texture2D" uid="uid://dpk6u2ncm4sl4" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Red.png" id="11_v51ol"]
@@ -25,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://cnowye4gdiee5" path="res://assets-dragg/Sprite/Component/Button/Btn_OtherButton_Hexagon01_Blue.png" id="16_d0qlm"]
 [ext_resource type="AudioStream" uid="uid://bs43433qmf4j7" path="res://assets-dragg/audio/punchy-taps-ui-5-183901.mp3" id="18_qav8n"]
 [ext_resource type="Script" path="res://src/control_end.gd" id="18_sdpfg"]
+[ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="20_5ui8m"]
 [ext_resource type="FontFile" uid="uid://cxk6i33q176fg" path="res://ui/fonts/supercell-magic-webfont.ttf" id="20_kc466"]
 [ext_resource type="PackedScene" uid="uid://ddl8atr316gfs" path="res://environment/rocks/big_rock_a.tscn" id="23_v82qc"]
 [ext_resource type="PackedScene" uid="uid://2tfjicgomjq5" path="res://environment/rocks/big_rock_b.tscn" id="24_bk6ii"]
@@ -61,6 +60,18 @@ shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_8shcc"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Ending/HomeButton:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ih40o"]
 resource_name = "appear"
@@ -109,6 +120,18 @@ tracks/3/path = NodePath("UI/Ending/AgainButton:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Ending/HomeButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(4),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -216,23 +239,22 @@ script = ExtResource("1_qmkdd")
 [node name="UI" type="Node" parent="."]
 script = ExtResource("2_emipb")
 
-[node name="PauseButton" parent="UI" instance=ExtResource("2_6ekdf")]
+[node name="PauseButton" type="Control" parent="UI"]
 process_mode = 3
+layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 0.0
 offset_left = -151.0
 offset_top = 226.0
 offset_right = -151.0
 offset_bottom = 226.0
 grow_horizontal = 0
-grow_vertical = 1
 pivot_offset = Vector2(6, 0)
-script = ExtResource("7_m6dtd")
+theme = ExtResource("4_keggv")
+script = ExtResource("15_0cq3n")
 
-[node name="TextureButton" parent="UI/PauseButton" index="0"]
+[node name="TextureButton" type="TextureButton" parent="UI/PauseButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -250,11 +272,19 @@ toggle_mode = true
 action_mode = 0
 texture_normal = ExtResource("5_yc4vh")
 
-[node name="Label" parent="UI/PauseButton" index="1"]
+[node name="Label" type="Label" parent="UI/PauseButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -18.0
 offset_top = -31.0
 offset_right = 18.0
 offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "II"
 label_settings = SubResource("LabelSettings_w0gk0")
 horizontal_alignment = 1
@@ -545,9 +575,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = 706.0
+offset_top = 486.0
 offset_right = -20.0
-offset_bottom = 706.0
+offset_bottom = 486.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_keggv")
@@ -587,8 +617,54 @@ label_settings = ExtResource("13_6omob")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TapAudio" type="AudioStreamPlayer" parent="UI/Ending/AgainButton"]
-stream = ExtResource("18_qav8n")
+[node name="HomeButton" type="Control" parent="UI/Ending"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = 940.0
+offset_right = -21.0
+offset_bottom = 940.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_keggv")
+script = ExtResource("15_0cq3n")
+
+[node name="TextureButton" type="TextureButton" parent="UI/Ending/HomeButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -157.5
+offset_right = 137.0
+offset_bottom = 157.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("11_v51ol")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/Ending/HomeButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -47.5
+offset_right = 63.5
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "HOME"
+label_settings = ExtResource("20_5ui8m")
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="UI/Ending"]
 layout_mode = 1
@@ -598,9 +674,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -350.0
-offset_top = -387.0
+offset_top = -927.0
 offset_right = 350.0
-offset_bottom = 387.0
+offset_bottom = -153.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "YOU DIED"
@@ -1471,12 +1547,6 @@ mesh = SubResource("BoxMesh_40xeg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/IslandMesh/StaticBody3D"]
 shape = SubResource("BoxShape3D_3ppio")
 
-[connection signal="toggled" from="UI/PauseButton/TextureButton" to="UI" method="_on_pause_button_toggled"]
-[connection signal="button_down" from="UI/PauseMenu/EndButton/TextureButton" to="UI/PauseMenu/EndButton" method="_on_texture_button_button_down"]
-[connection signal="button_up" from="UI/PauseMenu/EndButton/TextureButton" to="UI/PauseMenu/EndButton" method="_on_texture_button_button_up"]
-[connection signal="pressed" from="UI/PauseMenu/EndButton/TextureButton" to="UI" method="_on_end_button_pressed"]
 [connection signal="button_down" from="UI/Ending/AgainButton/TextureButton" to="UI/Ending/AgainButton" method="_on_texture_button_button_down"]
 [connection signal="button_up" from="UI/Ending/AgainButton/TextureButton" to="UI/Ending/AgainButton" method="_on_texture_button_button_up"]
 [connection signal="pressed" from="UI/Ending/AgainButton/TextureButton" to="UI/Ending" method="_on_again_button_pressed"]
-
-[editable path="UI/PauseButton"]

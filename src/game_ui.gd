@@ -3,7 +3,7 @@ class_name UserInterfaceNode extends Node
 @onready var world := get_tree().root.get_node("World3D") as World
 @onready var player := world.get_node("Player") as BaseCharacter
 @onready var control_top_center := get_node("Score") as Control
-@onready var end_button := get_node("PauseMenu/EndButton") as ButtonControl
+@onready var end_button_control := get_node("PauseMenu/EndButton") as ButtonControl
 @onready var control_sticks := get_node("Sticks") as ControlSticks
 @onready var minutes_label := get_node("Score/ControlTimer/Minutes") as Label
 @onready var seconds_label := get_node("Score/ControlTimer/Seconds") as Label
@@ -16,12 +16,14 @@ class_name UserInterfaceNode extends Node
 @onready var end_overlay := get_node("Overlay") as ColorRect
 @onready var end_anim_player := end_control.get_node("AnimationPlayer") as AnimationPlayer
 @onready var end_label := end_control.get_node("Label") as Label
-@onready var pause_button := get_node("PauseButton") as ButtonControl
+@onready var pause_button_control := get_node("PauseButton") as ButtonControl
 
 var time := 0.0
 
 func _ready():
 	pause_menu.visible = false
+	pause_button_control.texture_button.toggled.connect(_on_pause_button_toggled)
+	end_button_control.texture_button.pressed.connect(_on_end_button_pressed)
 
 func _process(delta):
 	if not world.state == world.GAMESTATE.PLAYING: return
@@ -38,7 +40,7 @@ func _update_timer(delta):
 	seconds_label.text = "%02d" % seconds
 
 func handle_game_end():
-	pause_button.visible = false
+	pause_button_control.visible = false
 	control_sticks.visible = false
 	control_top_center.visible = false
 	end_anim_player.play("appear")
@@ -60,6 +62,7 @@ func _on_end_button_pressed():
 	player.health_bar.value = 0
 	end_label.text = "YOU ENDED"
 	player.health = 0
-	end_button.visible = false
+	end_button_control.visible = false
 	get_tree().paused = false
-	player.die()	
+	player.die()
+

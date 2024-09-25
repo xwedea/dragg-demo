@@ -4038,8 +4038,3 @@ wait_time = 2.0
 [node name="HitAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_50kur")
 volume_db = -15.0
-
-[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
-[connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]
-[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
-[connection signal="timeout" from="KnockOutTimer" to="." method="_on_knock_out_timer_timeout"]

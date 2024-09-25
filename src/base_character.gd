@@ -6,8 +6,9 @@ class_name BaseCharacter extends CharacterBody3D
 @onready var anim_player := model.get_node("AnimationPlayer") as AnimationPlayer 
 @onready var health_bar := get_node("HealthBar3D/SubViewport/HealthBar") as ProgressBar
 @onready var hit_timer := get_node("HitBox/HitTimer") as Timer
-@onready var death_timer := get_node("DeathTimer") as Timer
 @onready var nav_agent := get_node("NavigationAgent3D") as NavigationAgent3D
+@onready var hit_box := get_node("HitBox") as Area3D
+@onready var pull_area := get_node("PullArea") as Area3D
 
 @export var walk_speed := 5
 @export var kick_force := 100
@@ -18,7 +19,7 @@ var health: float
 var just_got_damaged := false
 var is_moving := false 
 var is_dead := false
-var stick_center: Vector2 # 
+var stick_center: Vector2
 
 func _ready():
 	anim_player.play("Idle")
@@ -28,6 +29,12 @@ func _ready():
 
 	health = max_health
 	health_bar.value = health
+
+	hit_box.body_entered.connect(_on_hit_box_body_entered)
+	hit_box.area_entered.connect(_on_hit_box_area_entered)
+	pull_area.area_entered.connect(_on_pull_area_area_entered)
+	hit_timer.timeout.connect(_on_hit_timer_timeout)
+
 
 func _physics_process(delta):
 	if is_dead:
@@ -104,7 +111,6 @@ func die():
 	is_dead = true
 	anim_player.play("Defeat")
 	world.handle_player_death()
-	death_timer.start()
 
 func _on_hit_box_body_entered(body:Node3D):
 	if just_got_damaged || is_dead: return
@@ -120,8 +126,6 @@ func _on_hit_box_body_entered(body:Node3D):
 func _on_hit_timer_timeout():
 	just_got_damaged = false
 
-func _on_death_timer_timeout():
-	pass	
 
 func _on_pull_area_area_entered(area:Area3D):
 	var object = area.get_parent() as Pullable

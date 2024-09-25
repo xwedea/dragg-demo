@@ -10,6 +10,7 @@ class_name BaseEnemy extends CharacterBody3D
 @onready var anim_player := model.get_node("AnimationPlayer") as AnimationPlayer
 @onready var collision_shape := get_node("CapsuleCollision") as CollisionShape3D
 @onready var hit_audio := get_node("HitAudio") as AudioStreamPlayer
+@onready var hit_box := get_node("HitBox") as Area3D
 
 @export var death_threshold := 30
 @export var speed := 100
@@ -19,10 +20,13 @@ var is_dead := false
 var is_knocked_out := false
 var is_ball_colliding := false
 
-
 func _ready():
 	anim_player.play("Run")
-	print("spawn position: ", position)
+
+	hit_box.body_entered.connect(_on_hit_box_body_entered)
+	hit_box.body_exited.connect(_on_hit_box_body_exited)
+	death_timer.timeout.connect(_on_death_timer_timeout)
+	knock_out_timer.timeout.connect(_on_knock_out_timer_timeout)
 
 func _physics_process(delta: float) -> void:
 	if is_ball_colliding && ball.is_just_kicked:
@@ -38,7 +42,7 @@ func _physics_process(delta: float) -> void:
 	look_at(player.global_position)
 
 
-func _on_HitBox_body_entered(body: Node3D) -> void:
+func _on_hit_box_body_entered(body: Node3D) -> void:
 	if is_dead || is_knocked_out:
 		return
 		
@@ -80,16 +84,13 @@ func _die():
 func _disable_collision():
 	collision_shape.disabled = true
 	
-
 func _get_knocked_out(duration: float) -> void:
 	is_knocked_out = true
 	knock_out_timer.wait_time = duration
 	knock_out_timer.start()
 
-
-func _on_DeathTimer_timeout() -> void:
+func _on_death_timer_timeout() -> void:
 	queue_free()
-
 
 func _on_knock_out_timer_timeout():
 	is_knocked_out = false
