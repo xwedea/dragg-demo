@@ -1,4 +1,4 @@
-class_name UserInterfaceNode extends Node
+class_name GameUI extends Node
 
 @onready var world := get_tree().root.get_node("World3D") as World
 @onready var player := world.get_node("Player") as BaseCharacter

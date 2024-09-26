@@ -1,13 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://cot21xrmvhxwc"]
+[gd_scene load_steps=22 format=3 uid="uid://cot21xrmvhxwc"]
 
-[ext_resource type="Script" path="res://src/title_control.gd" id="1_3bk7o"]
 [ext_resource type="Script" path="res://src/title_world.gd" id="1_bon2a"]
+[ext_resource type="Script" path="res://src/title_ui.gd" id="2_gn0m2"]
 [ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="3_yy0f0"]
 [ext_resource type="FontFile" uid="uid://cxk6i33q176fg" path="res://ui/fonts/supercell-magic-webfont.ttf" id="4_ppego"]
+[ext_resource type="Theme" uid="uid://cw5e22i0akvq5" path="res://ui/resources/casual_theme.tres" id="5_46jms"]
+[ext_resource type="Script" path="res://src/button_control.gd" id="6_ivjkg"]
 [ext_resource type="LabelSettings" uid="uid://djhradakb5gnu" path="res://ui/resources/button_label_L.tres" id="7_aah67"]
+[ext_resource type="Texture2D" uid="uid://d0iyg5kkk51iu" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue.png" id="7_b3vg6"]
 [ext_resource type="Texture2D" uid="uid://duhqfo61ptw54" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue_Shaded.png" id="7_vm383"]
+[ext_resource type="AudioStream" uid="uid://ckg3w6p6m1wfv" path="res://assets-dragg/audio/background.mp3" id="8_aaaxm"]
 [ext_resource type="PackedScene" uid="uid://cnb8hge3tao55" path="res://title/title_scene.tscn" id="8_gt681"]
-[ext_resource type="PackedScene" uid="uid://owk041bgsx5c" path="res://ui/button_control.tscn" id="10_fu3f0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lv0bh"]
 font = ExtResource("4_ppego")
@@ -47,17 +50,10 @@ albedo_color = Color(0.788235, 0.341176, 0.976471, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20448, 0, 0)
 script = ExtResource("1_bon2a")
 
-[node name="TitleControl" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_3bk7o")
+[node name="UI" type="Node" parent="."]
+script = ExtResource("2_gn0m2")
 
-[node name="TitleLabel" type="Label" parent="TitleControl"]
-layout_mode = 1
+[node name="TitleLabel" type="Label" parent="UI"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -73,19 +69,22 @@ text = "DRAGG"
 label_settings = SubResource("LabelSettings_lv0bh")
 horizontal_alignment = 1
 
-[node name="PlayButton" parent="TitleControl" instance=ExtResource("10_fu3f0")]
-layout_mode = 1
+[node name="PlayButton" type="Control" parent="UI"]
+layout_mode = 3
 anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 0.0
 offset_top = -400.0
-offset_right = 0.0
 offset_bottom = -400.0
+grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("5_46jms")
+script = ExtResource("6_ivjkg")
 metadata/_edit_group_ = true
 
-[node name="TextureButton" parent="TitleControl/PlayButton" index="0"]
+[node name="TextureButton" type="TextureButton" parent="UI/PlayButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -100,18 +99,28 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(140, 165.556)
+texture_normal = ExtResource("7_b3vg6")
 texture_pressed = ExtResource("7_vm383")
 stretch_mode = 0
 
-[node name="Label" parent="TitleControl/PlayButton" index="1"]
+[node name="Label" type="Label" parent="UI/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -149.0
 offset_top = -59.0
 offset_right = 149.0
 offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "PLAY"
 label_settings = ExtResource("7_aah67")
 
 [node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_aaaxm")
 volume_db = -10.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -153,7 +162,3 @@ mesh = SubResource("CylinderMesh_cb2s3")
 
 [node name="TitleScene" parent="." instance=ExtResource("8_gt681")]
 transform = Transform3D(-0.975856, 0, -0.218416, 0, 1, 0, 0.218416, 0, -0.975856, 0.0287821, 0, 1.04668)
-
-[connection signal="pressed" from="TitleControl/PlayButton/TextureButton" to="TitleControl" method="_on_play_button_pressed"]
-
-[editable path="TitleControl/PlayButton"]

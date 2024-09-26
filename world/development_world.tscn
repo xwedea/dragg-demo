@@ -692,15 +692,15 @@ libraries = {
 "": SubResource("AnimationLibrary_ry15c")
 }
 
-[node name="Spawner" type="Node" parent="."]
-script = ExtResource("1_ojbat")
-
 [node name="Audio" type="Node" parent="."]
 
 [node name="CoinCollectAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("10_vihk2")
 
 [node name="BackgroundAudio" type="AudioStreamPlayer" parent="Audio"]
+
+[node name="Spawner" type="Node" parent="."]
+script = ExtResource("1_ojbat")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.520786, 0.853687, 0, -0.853687, 0.520786, 0, 20.902, 0)
@@ -729,7 +729,7 @@ max_health = 100
 [node name="BaseEnemy" parent="Enemies" instance=ExtResource("7_cwvuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.111, 1, -2.213)
 
-[node name="WaterMesh" type="MeshInstance3D" parent="."]
+[node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.67536, -0.150558, -6.70175)
 mesh = SubResource("BoxMesh_56scq")
 skeleton = NodePath("")

@@ -7,3 +7,7 @@ func _ready():
 	if background_audio:
 		background_audio.play()
 
+	
+
+
+
