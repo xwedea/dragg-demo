@@ -11,9 +11,19 @@ config_version=5
 [application]
 
 config/name="dragg"
-run/main_scene="res://world/development_world.tscn"
+run/main_scene="res://title/title_world.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets-dragg/images/icon.svg"
+
+[autoload]
+
+GodotPlayGameServices="*res://addons/GodotPlayGameServices/autoloads/godot_play_game_services.gd"
+SignInClient="*res://addons/GodotPlayGameServices/autoloads/sign_in_client.gd"
+PlayersClient="*res://addons/GodotPlayGameServices/autoloads/players_client.gd"
+AchievementsClient="*res://addons/GodotPlayGameServices/autoloads/achievements_client.gd"
+LeaderboardsClient="*res://addons/GodotPlayGameServices/autoloads/leaderboards_client.gd"
+SnapshotsClient="*res://addons/GodotPlayGameServices/autoloads/snapshots_client.gd"
+EventsClient="*res://addons/GodotPlayGameServices/autoloads/events_client.gd"
 
 [display]
 
@@ -31,7 +41,7 @@ project/assembly_name="dragg"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/GodotPlayGameServices/plugin.cfg")
 
 [filesystem]
 

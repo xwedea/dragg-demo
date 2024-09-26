@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var background_audio := get_node("BackgroundAudio") as AudioStreamPlayer
-
+@onready var signin_label := get_node("UI/SignInLabel") as Label
 
 func _ready():
 	if background_audio:
@@ -13,7 +13,10 @@ func _ready():
 
 
 func _on_user_authenticated(is_authenticated):
-	print("Authenticated: ", is_authenticated)
+	signin_label.text = "is authenticated: " + str(is_authenticated)
+
+	if not is_authenticated:
+		SignInClient.sign_in()
 	
 
 func _on_user_signed_in():

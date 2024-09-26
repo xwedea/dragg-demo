@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://cot21xrmvhxwc"]
+[gd_scene load_steps=23 format=3 uid="uid://cot21xrmvhxwc"]
 
 [ext_resource type="Script" path="res://src/title_world.gd" id="1_bon2a"]
 [ext_resource type="Script" path="res://src/title_ui.gd" id="2_gn0m2"]
 [ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="3_yy0f0"]
 [ext_resource type="FontFile" uid="uid://cxk6i33q176fg" path="res://ui/fonts/supercell-magic-webfont.ttf" id="4_ppego"]
 [ext_resource type="Theme" uid="uid://cw5e22i0akvq5" path="res://ui/resources/casual_theme.tres" id="5_46jms"]
+[ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="5_bpgwk"]
 [ext_resource type="Script" path="res://src/button_control.gd" id="6_ivjkg"]
 [ext_resource type="LabelSettings" uid="uid://djhradakb5gnu" path="res://ui/resources/button_label_L.tres" id="7_aah67"]
 [ext_resource type="Texture2D" uid="uid://d0iyg5kkk51iu" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue.png" id="7_b3vg6"]
@@ -67,6 +68,22 @@ theme_override_fonts/font = ExtResource("3_yy0f0")
 theme_override_font_sizes/font_size = 200
 text = "DRAGG"
 label_settings = SubResource("LabelSettings_lv0bh")
+horizontal_alignment = 1
+
+[node name="SignInLabel" type="Label" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = -41.5
+offset_right = 184.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "connecting..."
+label_settings = ExtResource("5_bpgwk")
 horizontal_alignment = 1
 
 [node name="PlayButton" type="Control" parent="UI"]
