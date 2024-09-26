@@ -42,6 +42,8 @@ func _input(event):
 			MOUSE_BUTTON_WHEEL_DOWN: # Decereases max velocity
 				_vel_multiplier = clamp(_vel_multiplier / 1.1, 0.2, 20)
 
+	
+
 	# Receives key input
 	if event is InputEventKey:
 		match event.keycode:
@@ -57,6 +59,8 @@ func _input(event):
 				_q = event.pressed
 			KEY_E:
 				_e = event.pressed
+				
+
 
 # Updates mouselook and movement every frame
 func _process(delta):

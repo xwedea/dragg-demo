@@ -4,10 +4,12 @@ extends Node3D
 @onready var signin_label := get_node("UI/SignInLabel") as Label
 
 var _sign_in_retries := 5
+var gpgs = GodotPlayGameServices.android_plugin
 
 func _ready():
 	if background_audio:
 		background_audio.play()
+		
 
 	if not GodotPlayGameServices.android_plugin:
 		signin_label.text = "Plugin Not Found!"

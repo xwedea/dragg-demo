@@ -9,12 +9,13 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 script = ExtResource("1_lirtv")
 
 [node name="TitleCharacter" parent="." instance=ExtResource("1_hjype")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.662686)
 
 [node name="TitleEnemy" parent="." instance=ExtResource("2_w8xsw")]
-transform = Transform3D(0.832544, 0, -0.553958, 0, 1, 0, 0.553958, 0, 0.832544, -2.34736, 0, 2.81703)
+transform = Transform3D(0.943766, 0, -0.330613, 0, 1, 0, 0.330613, 0, 0.943766, -1.46391, 0, 2.23679)
 
 [node name="TitleEnemy2" parent="." instance=ExtResource("2_w8xsw")]
-transform = Transform3D(0.962852, 0, 0.270029, 0, 1, 0, -0.270029, 0, 0.962852, 0.914568, 0, 2.81703)
+transform = Transform3D(0.962852, 0, 0.270029, 0, 1, 0, -0.270029, 0, 0.962852, 1.5385, 0, 2.28133)
 
 [node name="TurnTimer" type="Timer" parent="."]
 wait_time = 3.0

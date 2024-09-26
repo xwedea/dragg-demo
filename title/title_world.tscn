@@ -5,7 +5,6 @@
 [ext_resource type="FontFile" uid="uid://cibq3ki8d1cgt" path="res://ui/fonts/Salsa-Regular.ttf" id="3_yy0f0"]
 [ext_resource type="FontFile" uid="uid://cxk6i33q176fg" path="res://ui/fonts/supercell-magic-webfont.ttf" id="4_ppego"]
 [ext_resource type="Theme" uid="uid://cw5e22i0akvq5" path="res://ui/resources/casual_theme.tres" id="5_46jms"]
-[ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="5_bpgwk"]
 [ext_resource type="Script" path="res://src/button_control.gd" id="6_ivjkg"]
 [ext_resource type="LabelSettings" uid="uid://djhradakb5gnu" path="res://ui/resources/button_label_L.tres" id="7_aah67"]
 [ext_resource type="Texture2D" uid="uid://d0iyg5kkk51iu" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue.png" id="7_b3vg6"]
@@ -19,6 +18,11 @@ font_size = 150
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 15
 shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rv0hk"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_wdtfe"]
 
@@ -71,19 +75,20 @@ label_settings = SubResource("LabelSettings_lv0bh")
 horizontal_alignment = 1
 
 [node name="SignInLabel" type="Label" parent="UI"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -184.0
-offset_top = -41.5
+offset_top = -528.0
 offset_right = 184.0
-offset_bottom = 41.5
+offset_bottom = -445.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "connecting..."
-label_settings = ExtResource("5_bpgwk")
+label_settings = SubResource("LabelSettings_rv0hk")
 horizontal_alignment = 1
 
 [node name="PlayButton" type="Control" parent="UI"]
@@ -178,7 +183,6 @@ material_override = SubResource("StandardMaterial3D_rhm6q")
 mesh = SubResource("CylinderMesh_cb2s3")
 
 [node name="TitleScene" parent="." instance=ExtResource("8_gt681")]
-transform = Transform3D(-0.975856, 0, -0.218416, 0, 1, 0, 0.218416, 0, -0.975856, 0.0287821, 0, 1.04668)
-visible = false
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0287821, 0, 1.04668)
 
 [node name="GooglePlay" type="Node" parent="."]
