@@ -29,6 +29,10 @@ window/handheld/orientation=1
 
 project/assembly_name="dragg"
 
+[editor_plugins]
+
+enabled=PackedStringArray()
+
 [filesystem]
 
 import/fbx/enabled=false

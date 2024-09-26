@@ -162,3 +162,6 @@ mesh = SubResource("CylinderMesh_cb2s3")
 
 [node name="TitleScene" parent="." instance=ExtResource("8_gt681")]
 transform = Transform3D(-0.975856, 0, -0.218416, 0, 1, 0, 0.218416, 0, -0.975856, 0.0287821, 0, 1.04668)
+visible = false
+
+[node name="GooglePlay" type="Node" parent="."]
