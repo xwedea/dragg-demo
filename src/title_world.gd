@@ -8,9 +8,7 @@ func _ready():
 		background_audio.play()
 
 	print("title ready()")
-	# SignInClient.user_authenticated.connect(_on_user_authenticated)
-	# SignInClient.sign_in()
-
+	SignInClient.user_authenticated.connect(_on_user_authenticated)
 
 func _on_user_authenticated(is_authenticated):
 	signin_label.text = "is authenticated: " + str(is_authenticated)
