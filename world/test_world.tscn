@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ib2sw7w2nkts" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Circle01_n.png" id="9_hiqpt"]
 [ext_resource type="Texture2D" uid="uid://vbnkq27gcx0y" path="res://assets-dragg/ui/continuewhite.png" id="10_gbttb"]
 [ext_resource type="Texture2D" uid="uid://dpk6u2ncm4sl4" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Red.png" id="11_1xxto"]
-[ext_resource type="Script" path="res://src/control_sticks.gd" id="12_yuc6m"]
+[ext_resource type="Script" path="res://src/stick.gd" id="12_yuc6m"]
 [ext_resource type="Texture2D" uid="uid://bxe6l8pow7ypw" path="res://assets-dragg/images/bigcircle.png" id="13_anwk1"]
 [ext_resource type="Texture2D" uid="uid://cki8hmnrdbr1a" path="res://assets-dragg/images/smallcircle.png" id="14_bcqt4"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="15_y02j3"]
@@ -20,7 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://bfx54y75ia2vg" path="res://ball/ball.tscn" id="18_3fae2"]
 [ext_resource type="PackedScene" uid="uid://bumxigukd3hh2" path="res://player/base_character.tscn" id="19_o8jwx"]
 [ext_resource type="PackedScene" uid="uid://c3bo0ps5tay8y" path="res://enemy/base_enemy.tscn" id="20_wehdq"]
-[ext_resource type="MeshLibrary" uid="uid://bjp1a13tlaoh0" path="res://medieval_tiles.meshlib" id="21_4soyp"]
+[ext_resource type="MeshLibrary" path="res://medieval_tiles.meshlib" id="21_4soyp"]
+
 
 [sub_resource type="LabelSettings" id="LabelSettings_fjwxq"]
 font_size = 36

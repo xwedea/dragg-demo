@@ -2,4 +2,7 @@
 .godot/
 .vscode/
 android/
-build_stuff/
+release/
+
+.tmp*
+conventions.txt

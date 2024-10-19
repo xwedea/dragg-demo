@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ib2sw7w2nkts" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Circle01_n.png" id="9_7a3d1"]
 [ext_resource type="Texture2D" uid="uid://vbnkq27gcx0y" path="res://assets-dragg/ui/continuewhite.png" id="10_w24bu"]
 [ext_resource type="Texture2D" uid="uid://dpk6u2ncm4sl4" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Red.png" id="11_e3aqy"]
-[ext_resource type="Script" path="res://src/control_sticks.gd" id="12_0c64o"]
+[ext_resource type="Script" path="res://src/stick.gd" id="12_0c64o"]
 [ext_resource type="Texture2D" uid="uid://bxe6l8pow7ypw" path="res://assets-dragg/images/bigcircle.png" id="13_ckypm"]
 [ext_resource type="Texture2D" uid="uid://cki8hmnrdbr1a" path="res://assets-dragg/images/smallcircle.png" id="14_jvvij"]
 [ext_resource type="Script" path="res://src/spawner.gd" id="15_tmpb0"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://ciimmapnhq6uc" path="res://environment/trees/dead_oak_b.tscn" id="33_8icfo"]
 [ext_resource type="PackedScene" uid="uid://d3bfcxubcp4dk" path="res://environment/trees/dead_oak_a.tscn" id="34_nqrib"]
 [ext_resource type="PackedScene" uid="uid://dljixkadildgi" path="res://environment/trees/dead_spruce_b.tscn" id="36_gjxex"]
+
 
 [sub_resource type="LabelSettings" id="LabelSettings_fjwxq"]
 font_size = 36

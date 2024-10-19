@@ -4,7 +4,7 @@ class_name GameUI extends Node
 @onready var player := world.get_node("Player") as BaseCharacter
 @onready var control_top_center := get_node("Score") as Control
 @onready var end_button_control := get_node("PauseMenu/EndButton") as ButtonControl
-@onready var control_sticks := get_node("Sticks") as ControlSticks
+@onready var control_stick := get_node("Stick") as Stick
 @onready var minutes_label := get_node("Score/ControlTimer/Minutes") as Label
 @onready var seconds_label := get_node("Score/ControlTimer/Seconds") as Label
 @onready var count_label := get_node("Score/ControlCoin/CoinLabel") as Label
@@ -17,17 +17,23 @@ class_name GameUI extends Node
 @onready var end_anim_player := end_control.get_node("AnimationPlayer") as AnimationPlayer
 @onready var end_label := end_control.get_node("Label") as Label
 @onready var pause_button_control := get_node("PauseButton") as ButtonControl
+@onready var shadow_stick := get_node("ShadowStick") as Control
 
 var time := 0.0
+var screen_pressed := false
 
 func _ready():
+	var visible_rect := get_viewport().get_visible_rect()
 	pause_menu.visible = false
+	shadow_stick.visible = true
+	shadow_stick.position = Vector2(visible_rect.size.x * 0.5, visible_rect.size.y * 0.75)
+
 	pause_button_control.texture_button.toggled.connect(_on_pause_button_toggled)
 	end_button_control.texture_button.pressed.connect(_on_end_button_pressed)
 
 func _process(delta):
 	if not world.state == world.GAMESTATE.PLAYING: return
-		
+	
 	_update_timer(delta)
 	count_label.text = str(world.coins_collected)	
 
@@ -41,7 +47,7 @@ func _update_timer(delta):
 
 func handle_game_end():
 	pause_button_control.visible = false
-	control_sticks.visible = false
+	control_stick.visible = false
 	control_top_center.visible = false
 	end_anim_player.play("appear")
 
@@ -66,3 +72,10 @@ func _on_end_button_pressed():
 	get_tree().paused = false
 	player.die()
 
+func handle_left_mouse_click():
+	screen_pressed = true
+	shadow_stick.visible = false
+
+func handle_left_mouse_release():
+	screen_pressed = false
+	# shadow_stick.visible = true

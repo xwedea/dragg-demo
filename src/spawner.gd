@@ -3,8 +3,8 @@ extends Node
 @onready var world := get_tree().root.get_node("World3D") as World
 @onready var player := world.get_node("Player") as BaseCharacter
 
-@export var wait_time := 2
-@export var enemy_limit := 20
+@export var wait_time := 0.5
+@export var enemy_limit := 30
 
 static var enemy_scene := preload("res://enemy/base_enemy.tscn")
 var timer : Timer

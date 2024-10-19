@@ -5,7 +5,6 @@ static var tap_audio_stream := preload("res://assets-dragg/audio/punchy-taps-ui-
 var tap_audio : AudioStreamPlayer 
 
 func _ready():
-	# if tap_audio_stream.insat
 	tap_audio = AudioStreamPlayer.new()
 	tap_audio.stream = tap_audio_stream
 	add_child(tap_audio)

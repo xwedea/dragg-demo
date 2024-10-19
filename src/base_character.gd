@@ -20,6 +20,7 @@ var just_got_damaged := false
 var is_moving := false 
 var is_dead := false
 var stick_center: Vector2
+var stick_is_active := false
 
 func _ready():
 	anim_player.play("Idle")
@@ -96,16 +97,20 @@ func _handle_stick() -> void:
 	if get_tree().paused: return
 	if world.movement_disabled: return
 
-func handle_left_mouse_click():
+func handle_left_mouse_pressed():
 	is_moving = true;
 	stick_center = get_viewport().get_mouse_position();
+	stick_is_active = true
 
-func handle_left_mouse_release():
+func handle_left_mouse_released():
 	is_moving = false;
+
+	if stick_is_active:
+		var distance : float = position.distance_to(ball.position);
+		if (distance < ball.max_kick_distance):
+			ball.kick()
 	
-	var distance : float = position.distance_to(ball.position);
-	if (distance < ball.max_kick_distance):
-		ball.kick()
+	stick_is_active = false
 
 func die():
 	is_dead = true
