@@ -30,7 +30,7 @@ func _ready():
 	pause_button_control.texture_button.toggled.connect(_on_pause_button_toggled)
 	end_button_control.texture_button.pressed.connect(_on_end_button_pressed)
 
-func _process(delta):
+func _process(_delta):
 	if not world.state == world.GAMESTATE.PLAYING: return
 	
 	_update_timer()
