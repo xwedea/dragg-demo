@@ -19,7 +19,6 @@ class_name GameUI extends Node
 @onready var pause_button_control := get_node("PauseButton") as ButtonControl
 @onready var shadow_stick := get_node("ShadowStick") as Control
 
-var time := 0.0
 var screen_pressed := false
 
 func _ready():
@@ -34,13 +33,12 @@ func _ready():
 func _process(delta):
 	if not world.state == world.GAMESTATE.PLAYING: return
 	
-	_update_timer(delta)
+	_update_timer()
 	count_label.text = str(world.coins_collected)	
 
-func _update_timer(delta):
-	time += delta
-	var seconds = fmod(time, 60)
-	var minutes = fmod(time, 3600) / 60
+func _update_timer():
+	var seconds = fmod(world.time, 60)
+	var minutes = fmod(world.time, 3600) / 60
 
 	minutes_label.text = "%02d" % minutes
 	seconds_label.text = "%02d" % seconds

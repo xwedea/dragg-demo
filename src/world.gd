@@ -12,9 +12,13 @@ enum GAMESTATE {PLAYING, PAUSED, ENDED}
 var state = GAMESTATE.PLAYING
 var coins_collected := 0
 var enemy_count := 1
+var time := 0.0
 
 func _ready():
 	background_audio.play()
+
+func _process(delta):
+	time += delta
 
 func _unhandled_input(_event):
 	var viewport = get_viewport()

@@ -31,7 +31,7 @@ func play_games_login():
 
 	PlayersClient.current_player_loaded.connect(func(play_games_player: PlayersClient.PlayGamesPlayer):
 		print('current_player_loaded connected')
-		signin_label.text = 'Welcome ' + play_games_player.display_name + '!'
+		signin_label.text = 'Signed in as ' + play_games_player.display_name + '!'
 	)
 
 	get_tree().create_timer(3).timeout.connect(func():

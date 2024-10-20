@@ -1,8 +1,7 @@
-[gd_scene load_steps=25 format=4 uid="uid://dueryr2qp2mjl"]
+[gd_scene load_steps=24 format=4 uid="uid://dueryr2qp2mjl"]
 
 [ext_resource type="PackedScene" uid="uid://ddl8atr316gfs" path="res://environment/rocks/big_rock_a.tscn" id="1_fekfp"]
 [ext_resource type="PackedScene" uid="uid://2tfjicgomjq5" path="res://environment/rocks/big_rock_b.tscn" id="2_e2iw2"]
-[ext_resource type="PackedScene" uid="uid://jgh8faqld37e" path="res://environment/rocks/rock_2.tscn" id="3_rcecg"]
 [ext_resource type="PackedScene" uid="uid://csa6c0bn4f16e" path="res://environment/trees/oak_tree_b.tscn" id="4_0t5v0"]
 [ext_resource type="PackedScene" uid="uid://cffq3vjywgpou" path="res://environment/trees/spruce_tree_a.tscn" id="5_46qcx"]
 [ext_resource type="PackedScene" uid="uid://div77hswqvroq" path="res://environment/trees/spruce_tree_b.tscn" id="6_o72qn"]
@@ -134,10 +133,6 @@ transform = Transform3D(-54.0333, 212.074, 2.52812e-05, 0, -2.60889e-05, 218.849
 
 [node name="BigRock3" parent="Environment" instance=ExtResource("2_e2iw2")]
 transform = Transform3D(218.849, 0, 0, 0, -2.60889e-05, 218.849, 0, -218.849, -2.60889e-05, 38.3081, -2.07221, -19.4219)
-
-[node name="Rock2" parent="Environment" instance=ExtResource("3_rcecg")]
-transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 31.4326, 0.849442, -8.21768)
-visible = false
 
 [node name="OakTreeB" parent="Environment" instance=ExtResource("4_0t5v0")]
 transform = Transform3D(22.2389, 0, 0, 0, -2.65108e-06, 22.2388, 0, -22.2388, -2.65108e-06, 17.6889, 0.849442, 19.481)
