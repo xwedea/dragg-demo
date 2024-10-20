@@ -56,6 +56,7 @@ func _on_pause_button_toggled(toggled_on:bool):
 	pause_label.visible = !toggled_on
 	continue_icon.visible = toggled_on
 	pause_menu.visible = toggled_on
+	shadow_stick.visible = false
 
 	if toggled_on:
 		world.state = world.GAMESTATE.PAUSED

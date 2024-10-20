@@ -10,15 +10,12 @@ func _ready():
 	if background_audio:
 		background_audio.play()
 		
+	google_play_login()
 
+func google_play_login():
 	if not GodotPlayGameServices.android_plugin:
 		signin_label.text = "Plugin Not Found!"
 
-	PlayersClient.load_current_player(false)
-	PlayersClient.current_player_loaded.connect(func(player):
-		signin_label.text = "Signed in as " + player.get_display_name()
-	)
-	
 	SignInClient.user_authenticated.connect(func(is_authenticated: bool):
 		if _sign_in_retries > 0 and not is_authenticated:
 			signin_label.text = "Trying to sign in!"
@@ -32,17 +29,13 @@ func _ready():
 			signin_label.text = "Login Succesful!"
 	)
 
-func _on_user_authenticated(is_authenticated):
-	_update_signin_label("is authenticated: " + str(is_authenticated))
+	PlayersClient.current_player_loaded.connect(func(current_player: PlayersClient.Player):
+		print('current_player_loaded connected')
+		signin_label.text = 'Welcome ' + current_player.display_name + '!'
+	)
 
-	if not is_authenticated:
-		SignInClient.sign_in()
-
-func _on_user_signed_in():
-	print("signed in")
-
-func _update_signin_label(text):
-	signin_label.text = text
-
-
+	get_tree().create_timer(3).timeout.connect(func():
+		PlayersClient.load_current_player(false)
+		print('current_player_loaded emitted')
+	)
 
