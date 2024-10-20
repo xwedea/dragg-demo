@@ -5,7 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://bbiga5acuttje" path="res://assets-dragg/audio/hard-slap-46388.mp3" id="3_u7jls"]
 [ext_resource type="PackedScene" uid="uid://el4gldndbi7l" path="res://ui/health_bar.tscn" id="4_44npp"]
 [ext_resource type="PackedScene" uid="uid://bfx54y75ia2vg" path="res://ball/ball.tscn" id="6_shwfo"]
-[ext_resource type="Script" path="res://src/camera.gd" id="7_w0e1j"]
+[ext_resource type="Script" path="res://src/test_camera.gd" id="7_w0e1j"]
+
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3fcd"]
 radius = 0.393939

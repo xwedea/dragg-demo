@@ -5,7 +5,7 @@ class_name TitleScene extends Node3D
 @export var speed := 3
 @export var turn_rate := 5
 
-var opposite := false
+var is_returning := false
 var velocity := Vector3(1, 0, 0)
 
 func _ready():
@@ -13,7 +13,7 @@ func _ready():
 	# turn_timer.start()
 
 func _process(_delta):
-	if opposite:
+	if is_returning:
 		velocity = Vector3(-1, 0, 0)
 	else:
 		velocity = Vector3(1, 0, 0)
@@ -21,11 +21,11 @@ func _process(_delta):
 	#position = position + (velocity * speed * delta)
 
 func _on_turn_timer_timeout():
-	if opposite:
+	if is_returning:
 		rotation = Vector3(0, -90, 0)
-		opposite = false
+		is_returning = false
 	else:
 		rotation = Vector3(0, 90, 0)
-		opposite = true
+		is_returning = true
 	
 	turn_timer.start()

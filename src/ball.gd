@@ -10,18 +10,16 @@ class_name Ball extends RigidBody3D
 @export var line_length := 5
 @export var pull_force := 3
 @export var rope_thickness := 0.1
-@export var rope_color: Color
-@export var override_rope_color := false
+
 @export var arrow_distance := 0.75
 
 var is_just_kicked := false
-var player_in_active_area := false
+var player_is_in_active_area := false
 var distance_to_player : float
 var player_to_ball : Vector3
 
 func _ready():
-	if !override_rope_color:
-		rope_color = Color(1, 0, 0) # Red
+	pass
 
 func _physics_process(_delta: float) -> void:
 	if world.state != world.GAMESTATE.PLAYING: return
@@ -50,8 +48,8 @@ func _on_kick_timer_timeout():
 	is_just_kicked = false
 
 func _on_active_area_body_entered(_body:Node3D):
-	player_in_active_area = true
+	player_is_in_active_area = true
 
 func _on_active_area_body_exited(_body:Node3D):
-	player_in_active_area = false
+	player_is_in_active_area = false
 

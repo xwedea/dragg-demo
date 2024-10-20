@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=4 uid="uid://c1l4wh3v3k04h"]
 
 [ext_resource type="Script" path="res://src/navigation_world.gd" id="1_f7kb7"]
-[ext_resource type="Script" path="res://src/camera.gd" id="2_sjw2v"]
+[ext_resource type="Script" path="res://src/test_camera.gd" id="2_sjw2v"]
 [ext_resource type="Texture2D" uid="uid://cvgpgok4ghgry" path="res://assets-dragg/lowpolytrees/RockTexture/RockTexture2.png" id="3_hs3kx"]
 [ext_resource type="PackedScene" uid="uid://cj3o3s0hmaqut" path="res://navigation_character.tscn" id="4_bvjqt"]
 

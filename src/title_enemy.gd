@@ -12,18 +12,12 @@ class_name TitleEnemy extends CharacterBody3D
 @export var death_threshold := 30
 @export var speed := 100
 
-
 func _ready():
 	randomize()
-	# var anim_delay = randf_range(0, 1)
-	# await get_tree().create_timer(anim_delay).timeout
-	# anim_player.play("Run")
 	anim_player.play("Idle")
-
 
 func _physics_process(_delta: float) -> void:
 	pass
-	# look_at(player.global_position)
 
 func _on_HitBox_body_entered(_body: Node3D) -> void:
 	pass

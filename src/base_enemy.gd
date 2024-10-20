@@ -4,7 +4,6 @@ class_name BaseEnemy extends CharacterBody3D
 @onready var ball := world.get_node("Ball") as Ball
 @onready var death_timer := get_node("DeathTimer") as Timer
 @onready var knock_out_timer := get_node("KnockOutTimer") as Timer
-@onready var nav_agent := get_node("NavigationAgent3D") as NavigationAgent3D
 @onready var player := world.get_node("Player") as BaseCharacter
 @onready var model := get_node("Model") as Node3D
 @onready var anim_player := model.get_node("AnimationPlayer") as AnimationPlayer
@@ -15,10 +14,10 @@ class_name BaseEnemy extends CharacterBody3D
 @export var death_threshold := 30
 @export var speed := 100
 
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity := ProjectSettings.get_setting("physics/3d/default_gravity") as float
 var is_dead := false
 var is_knocked_out := false
-var is_ball_colliding := false
+var is_colliding_with_ball := false
 
 func _ready():
 	anim_player.play("Run")
@@ -29,14 +28,12 @@ func _ready():
 	knock_out_timer.timeout.connect(_on_knock_out_timer_timeout)
 
 func _physics_process(delta: float) -> void:
-	if is_ball_colliding && ball.is_just_kicked:
+	if is_colliding_with_ball && ball.is_just_kicked:
 		_handle_ball_hit()
 
 	if !is_dead and !is_knocked_out:
-		nav_agent.target_position = player.global_position
-		var nextPathPosition: Vector3 = nav_agent.get_next_path_position()
-		var direction: Vector3 = nextPathPosition - global_position
-		velocity = direction.normalized() * speed * delta
+		var to_player= player.global_position - global_position
+		velocity = to_player.normalized() * speed * delta
 	
 	move_and_slide()
 	look_at(player.global_position)
@@ -47,13 +44,13 @@ func _on_hit_box_body_entered(body: Node3D) -> void:
 		return
 		
 	if body is Ball:
-		is_ball_colliding = true
+		is_colliding_with_ball = true
 		_handle_ball_hit()
 
 
 func _on_hit_box_body_exited(body):
 	if body is Ball:
-		is_ball_colliding = false
+		is_colliding_with_ball = false
 
 
 func _handle_ball_hit():

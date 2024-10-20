@@ -8,7 +8,7 @@ class_name Stick extends Control
 @export var max_distance: float = 47
 
 var mouse_position: Vector2
-var screen_pressed := false
+var screen_is_pressed := false
 
 func _ready():
 	visible = false
@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 
 	mouse_position = game_viewport.get_mouse_position()
 
-	if screen_pressed:
+	if screen_is_pressed:
 		if position.distance_to(mouse_position) <= max_distance:
 			stick_button.global_position = mouse_position
 		else:
@@ -27,9 +27,9 @@ func _process(_delta: float) -> void:
 
 func handle_left_mouse_pressed():
 	position = game_viewport.get_mouse_position()
-	screen_pressed = true
+	screen_is_pressed = true
 	visible = true
 
 func handle_left_mouse_released():
-	screen_pressed = false
+	screen_is_pressed = false
 	visible = false

@@ -16,11 +16,11 @@ class_name BaseCharacter extends CharacterBody3D
 
 static var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var health: float
-var just_got_damaged := false
+var is_just_damaged := false
 var is_moving := false 
 var is_dead := false
-var stick_center: Vector2
 var stick_is_active := false
+var stick_center: Vector2
 
 func _ready():
 	anim_player.play("Idle")
@@ -65,7 +65,7 @@ func _physics_process(delta):
 
 func _get_dragged() -> void:
 	if is_moving: return
-	if ball.player_in_active_area: return
+	if ball.player_is_in_active_area: return
 
 	var distance = position.distance_to(ball.position);
 	var to_ball = position.direction_to(ball.position).normalized();
@@ -118,10 +118,10 @@ func die():
 	world.handle_player_death()
 
 func _on_hit_box_body_entered(body:Node3D):
-	if just_got_damaged || is_dead: return
+	if is_just_damaged || is_dead: return
 
 	if body is BaseEnemy:
-		just_got_damaged = true
+		is_just_damaged = true
 		hit_timer.start()
 		health -= 35
 		health_bar.value = health
@@ -129,7 +129,7 @@ func _on_hit_box_body_entered(body:Node3D):
 			die()
 		
 func _on_hit_timer_timeout():
-	just_got_damaged = false
+	is_just_damaged = false
 
 
 func _on_pull_area_area_entered(area:Area3D):

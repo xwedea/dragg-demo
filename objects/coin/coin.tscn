@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsk3m3rwoxqmy"]
 
-[ext_resource type="Script" path="res://src/coin.gd" id="1_8pnff"]
+[ext_resource type="Script" path="res://src/pullable.gd" id="1_5nkvw"]
 [ext_resource type="PackedScene" uid="uid://dnjuaerrd3b46" path="res://objects/coin/coin.glb" id="2_m6hka"]
 [ext_resource type="AudioStream" uid="uid://dhdcl8ho45ex7" path="res://assets-dragg/audio/collectcoin-6075.mp3" id="3_s24nf"]
 
@@ -8,7 +8,7 @@
 radius = 0.410594
 
 [node name="Coin" type="Node3D"]
-script = ExtResource("1_8pnff")
+script = ExtResource("1_5nkvw")
 
 [node name="CoinMesh" parent="." instance=ExtResource("2_m6hka")]
 transform = Transform3D(0.166093, 0.363574, -0.0150543, 0.145928, -0.0513914, 0.368868, 0.333344, -0.158659, -0.153979, -0.0525931, 0.298005, -5.41154e-05)
