@@ -14,7 +14,7 @@ signal game_saved(is_saved: bool, save_data_name: String, save_data_description:
 ## a saved game in the window presented after calling the [method show_saved_games]
 ## method.[br]
 ## [br]
-## [param snapshot]: The loaded snapshot.
+## [param snapshot]: The loaded snapshot, or null if the snapshot wasn't found.
 signal game_loaded(snapshot: Snapshot)
 
 ## Signal emitted after saving or loading a game, if a conflict is found.[br]
@@ -38,7 +38,10 @@ func _ready() -> void:
 		)
 		GodotPlayGameServices.android_plugin.gameLoaded.connect(func(json_data: String):
 			var safe_dictionary := GodotPlayGameServices.json_marshaller.safe_parse_dictionary(json_data)
-			game_loaded.emit(Snapshot.new(safe_dictionary))
+			if safe_dictionary.is_empty():
+				game_loaded.emit(null)
+			else:
+				game_loaded.emit(Snapshot.new(safe_dictionary))
 		)
 		GodotPlayGameServices.android_plugin.conflictEmitted.connect(func(json_data: String):
 			var safe_dictionary := GodotPlayGameServices.json_marshaller.safe_parse_dictionary(json_data)
@@ -135,12 +138,14 @@ class Snapshot:
 
 ## A class representing a conflict when saving or loading data.
 class SnapshotConflict:
+	var origin: String ## The original caller of the method, either "SAVE" or "LOAD"
 	var conflict_id: String ## The conflict id.
 	var conflicting_snapshot: Snapshot ## The modified version of the Snapshot in the case of a conflict. This may not be the same as the version that you tried to save.
 	var server_snapshot: Snapshot ## The most-up-to-date version of the Snapshot known by Google Play games services to be accurate for the player’s device.
 	
 	## Constructor that creates a SnapshotConflict from a [Dictionary] containing the properties.
 	func _init(dictionary: Dictionary) -> void:
+		if dictionary.has("origin"): origin = dictionary.origin
 		if dictionary.has("conflictId"): conflict_id = dictionary.conflictId
 		if dictionary.has("conflictingSnapshot"): conflicting_snapshot = Snapshot.new(dictionary.conflictingSnapshot)
 		if dictionary.has("serverSnapshot"): server_snapshot = Snapshot.new(dictionary.serverSnapshot)
@@ -148,6 +153,7 @@ class SnapshotConflict:
 	func _to_string() -> String:
 		var result := PackedStringArray()
 		
+		result.append("origin: %s" % origin)
 		result.append("conflict_id: %s" % conflict_id)
 		result.append("conflicting_snapshot: {%s}" % conflicting_snapshot)
 		result.append("server_snapshot: {%s}" % server_snapshot)
@@ -164,7 +170,7 @@ class SnapshotMetadata:
 	var last_modified_timestamp: int ## The last time this snapshot was modified, in millis since epoch.
 	var played_time: int ## The played time of this snapshot in milliseconds.
 	var has_change_pending: bool ## Indicates whether or not this snapshot has any changes pending that have not been uploaded to the server.
-	var owner: PlayersClient.Player ## The player that owns this snapshot.
+	var owner: PlayersClient.PlayGamesPlayer ## The player that owns this snapshot.
 	var game: GameInfo ## The game information associated with this snapshot.
 	var device_name: String ## The name of the device that wrote this snapshot, if known.
 	var cover_image_uri: String ## The snapshot cover image.
@@ -179,7 +185,7 @@ class SnapshotMetadata:
 		if dictionary.has("lastModifiedTimestamp"): last_modified_timestamp = dictionary.lastModifiedTimestamp
 		if dictionary.has("playedTime"): played_time = dictionary.playedTime
 		if dictionary.has("hasChangePending"): has_change_pending = dictionary.hasChangePending
-		if dictionary.has("owner"): owner = PlayersClient.Player.new(dictionary.owner)
+		if dictionary.has("owner"): owner = PlayersClient.PlayGamesPlayer.new(dictionary.owner)
 		if dictionary.has("game"): game = GameInfo.new(dictionary.game)
 		if dictionary.has("deviceName"): device_name = dictionary.deviceName
 		if dictionary.has("coverImageUri"): cover_image_uri = dictionary.coverImageUri

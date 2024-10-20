@@ -10,9 +10,9 @@ func _ready():
 	if background_audio:
 		background_audio.play()
 		
-	google_play_login()
+	play_games_login()
 
-func google_play_login():
+func play_games_login():
 	if not GodotPlayGameServices.android_plugin:
 		signin_label.text = "Plugin Not Found!"
 
@@ -29,9 +29,9 @@ func google_play_login():
 			signin_label.text = "Login Succesful!"
 	)
 
-	PlayersClient.current_player_loaded.connect(func(current_player: PlayersClient.Player):
+	PlayersClient.current_player_loaded.connect(func(play_games_player: PlayersClient.PlayGamesPlayer):
 		print('current_player_loaded connected')
-		signin_label.text = 'Welcome ' + current_player.display_name + '!'
+		signin_label.text = 'Welcome ' + play_games_player.display_name + '!'
 	)
 
 	get_tree().create_timer(3).timeout.connect(func():
