@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cki8hmnrdbr1a" path="res://assets-dragg/images/smallcircle.png" id="14_e785j"]
 [ext_resource type="Script" path="res://src/stick.gd" id="15_wefk6"]
 [ext_resource type="Script" path="res://src/control_end.gd" id="16_46y6c"]
-[ext_resource type="Texture2D" uid="uid://cnowye4gdiee5" path="res://assets-dragg/Sprite/Component/Button/Btn_OtherButton_Hexagon01_Blue.png" id="17_bd83o"]
+[ext_resource type="Texture2D" uid="uid://cnowye4gdiee5" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue.png" id="17_bd83o"]
 [ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="18_igon7"]
 [ext_resource type="FontFile" uid="uid://cxk6i33q176fg" path="res://ui/fonts/supercell-magic-webfont.ttf" id="19_2mkin"]
 [ext_resource type="AudioStream" uid="uid://dhdcl8ho45ex7" path="res://assets-dragg/audio/collectcoin-6075.mp3" id="20_yqw8y"]

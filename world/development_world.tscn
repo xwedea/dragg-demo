@@ -20,12 +20,13 @@
 [ext_resource type="LabelSettings" uid="uid://djhradakb5gnu" path="res://ui/resources/button_label_L.tres" id="13_6omob"]
 [ext_resource type="Script" path="res://src/button_control.gd" id="15_0cq3n"]
 [ext_resource type="Texture2D" uid="uid://cra7lhrdam17n" path="res://assets-dragg/casual_ui/label/Label_TitleFlag02_Red.png" id="16_2jioe"]
-[ext_resource type="Texture2D" uid="uid://cnowye4gdiee5" path="res://assets-dragg/Sprite/Component/Button/Btn_OtherButton_Hexagon01_Blue.png" id="16_d0qlm"]
+[ext_resource type="Texture2D" uid="uid://d0iyg5kkk51iu" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue.png" id="16_d0qlm"]
 [ext_resource type="AudioStream" uid="uid://bs43433qmf4j7" path="res://assets-dragg/audio/punchy-taps-ui-5-183901.mp3" id="18_qav8n"]
 [ext_resource type="Script" path="res://src/control_end.gd" id="18_sdpfg"]
 [ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="20_5ui8m"]
 [ext_resource type="FontFile" uid="uid://cxk6i33q176fg" path="res://ui/fonts/supercell-magic-webfont.ttf" id="20_kc466"]
 [ext_resource type="PackedScene" uid="uid://vbr5bk5fjnl2" path="res://world/game_map.tscn" id="27_1d1mf"]
+
 
 [sub_resource type="LabelSettings" id="LabelSettings_w0gk0"]
 font_size = 64
