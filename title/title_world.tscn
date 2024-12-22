@@ -54,6 +54,8 @@ albedo_color = Color(0.788235, 0.341176, 0.976471, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20448, 0, 0)
 script = ExtResource("1_bon2a")
 
+[node name="GooglePlay" type="Node" parent="."]
+
 [node name="UI" type="Node" parent="."]
 script = ExtResource("2_gn0m2")
 
@@ -221,5 +223,3 @@ mesh = SubResource("CylinderMesh_cb2s3")
 
 [node name="TitleScene" parent="." instance=ExtResource("8_gt681")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0287821, 0, 1.04668)
-
-[node name="GooglePlay" type="Node" parent="."]
