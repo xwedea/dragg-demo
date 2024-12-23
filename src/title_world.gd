@@ -26,7 +26,7 @@ func play_games_login():
 			signin_label.text = "Sign in attemps expired!"
 		
 		if is_authenticated:
-			signin_label.text = "Login Succesful!"
+			signin_label.text = "Sign in Successful!"
 	)
 
 	PlayersClient.current_player_loaded.connect(func(play_games_player: PlayersClient.PlayGamesPlayer):

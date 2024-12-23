@@ -24,7 +24,7 @@ shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4x840"]
 font_size = 40
-font_color = Color(0, 0, 0, 1)
+outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_wdtfe"]
@@ -79,60 +79,36 @@ text = "DRAGG"
 label_settings = SubResource("LabelSettings_lv0bh")
 horizontal_alignment = 1
 
-[node name="Profile" type="Control" parent="UI"]
+[node name="Home" type="Control" parent="UI"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="SignInLabel" type="Label" parent="UI/Profile"]
+[node name="PlayButton" type="Control" parent="UI/Home"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 336.0
-offset_top = 445.0
-offset_right = 704.0
-offset_bottom = 528.0
+offset_top = 480.0
+offset_bottom = 480.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("5_46jms")
-label_settings = SubResource("LabelSettings_4x840")
-horizontal_alignment = 1
-
-[node name="Guide" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="LearnInfo" parent="UI/Guide" instance=ExtResource("12_liixu")]
-layout_mode = 1
-offset_left = 520.0
-offset_top = 926.0
-offset_right = 520.0
-offset_bottom = 926.0
-
-[node name="PlayButton" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = -610.0
-offset_right = 1.0
-offset_bottom = -610.0
-grow_horizontal = 2
-grow_vertical = 0
 theme = ExtResource("5_46jms")
 script = ExtResource("6_ivjkg")
 metadata/_edit_group_ = true
 
-[node name="TextureButton" type="TextureButton" parent="UI/PlayButton"]
+[node name="TextureButton" type="TextureButton" parent="UI/Home/PlayButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -151,7 +127,7 @@ texture_normal = ExtResource("7_b3vg6")
 texture_pressed = ExtResource("7_vm383")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="UI/PlayButton"]
+[node name="Label" type="Label" parent="UI/Home/PlayButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -167,6 +143,55 @@ grow_vertical = 2
 text = "PLAY"
 label_settings = ExtResource("7_aah67")
 uppercase = true
+
+[node name="Profile" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SignInLabel" type="Label" parent="UI/Profile"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -333.5
+offset_top = -41.5
+offset_right = 333.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_46jms")
+text = "fdsaf"
+label_settings = SubResource("LabelSettings_4x840")
+horizontal_alignment = 1
+
+[node name="Guide" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LearnInfo" parent="UI/Guide" instance=ExtResource("12_liixu")]
+layout_mode = 1
 
 [node name="HomeButton" type="Control" parent="UI"]
 layout_mode = 3

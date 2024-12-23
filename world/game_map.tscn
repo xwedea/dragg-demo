@@ -532,7 +532,7 @@ transform = Transform3D(14.3219, 17.0132, 2.02814e-06, 1.49017e-13, -2.65108e-06
 transform = Transform3D(14.0565, 17.2331, 2.05435e-06, 0, -2.65108e-06, 22.2388, 17.2332, -14.0565, -1.67567e-06, -8.1945, 0.849442, 19.6733)
 
 [node name="OakTreeB20" parent="Environment" instance=ExtResource("3_pmo0q")]
-transform = Transform3D(14.0565, 17.2331, 2.05435e-06, 0, -2.65108e-06, 22.2388, 17.2332, -14.0565, -1.67567e-06, 29.8121, 0.849446, 1.93677)
+transform = Transform3D(14.0565, 17.2331, 2.05435e-06, 0, -2.65108e-06, 22.2388, 17.2332, -14.0565, -1.67567e-06, 46.9554, 0.849446, -5.01802)
 
 [node name="DeadOakB2" parent="Environment" instance=ExtResource("10_8063c")]
 transform = Transform3D(15.7253, -15.7252, -1.8746e-06, -1.36847e-13, -2.65108e-06, 22.2388, -15.7253, -15.7252, -1.8746e-06, 29, 1, 39)
@@ -547,7 +547,7 @@ transform = Transform3D(90, 0, 0, 0, -1.07288e-05, 115.44, 0, -90, -1.37616e-05,
 transform = Transform3D(90, 0, 0, 0, -1.07288e-05, 115.44, 0, -90, -1.37616e-05, -22.2292, 0.849443, -52.9875)
 
 [node name="DeadOakA8" parent="Environment" instance=ExtResource("11_71mxy")]
-transform = Transform3D(54.0194, 0, 0, 0, -6.43962e-06, 54.0194, 0, -54.0194, -6.43962e-06, 37.6434, 0.849442, -41.763)
+transform = Transform3D(27.0252, 46.7732, 5.57581e-06, 0, -6.43962e-06, 54.0194, 46.7732, -27.0252, -3.22166e-06, 37.6434, 0.849442, -41.763)
 
 [node name="DeadOakA9" parent="Environment" instance=ExtResource("11_71mxy")]
 transform = Transform3D(54.0194, 0, 0, 0, -6.43962e-06, 54.0194, 0, -54.0194, -6.43962e-06, 42.0787, 0.849442, 22.2296)
