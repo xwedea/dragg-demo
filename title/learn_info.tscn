@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b5ds040mpnm7d" path="res://phoneholding_icon.png" id="2_tka62"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wp3gu"]
-font_size = 30
-outline_size = 16
+font_size = 32
+outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [node name="LearnInfo" type="Control"]
