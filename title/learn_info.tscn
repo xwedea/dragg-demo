@@ -27,9 +27,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -82.0
-offset_top = -132.0
+offset_top = -634.0
 offset_right = 82.0
-offset_bottom = 32.0
+offset_bottom = -470.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_tka62")
@@ -42,23 +42,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -482.5
-offset_top = -262.5
-offset_right = 482.5
-offset_bottom = 262.5
+offset_left = -497.0
+offset_top = -406.0
+offset_right = 498.0
+offset_bottom = 407.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Place your finger on
 the bottom part of the screen
 
-
-
-
-
-Move around
 +
-Release your finger 
-next to the ball to kick it"
+
+Walk around
+
++
+
+To kick the ball
+Release your finger when your
+character is next to the ball
+
++
+
+Eliminate your enemies"
 label_settings = SubResource("LabelSettings_wp3gu")
 horizontal_alignment = 1
 uppercase = true

@@ -3,7 +3,7 @@ extends Node3D
 @onready var background_audio := get_node("BackgroundAudio") as AudioStreamPlayer
 @onready var signin_label := get_node("UI/Profile/SignInLabel") as Label
 
-var _sign_in_retries := 3
+var _sign_in_retries := 2
 var gpgs = GodotPlayGameServices.android_plugin
 
 func _ready():
@@ -23,7 +23,7 @@ func play_games_login():
 			_sign_in_retries -= 1
 		
 		if _sign_in_retries == 0:
-			signin_label.text = "Sign in attemps expired!"
+			signin_label.text = "Sign in attempts expired!"
 		
 		if is_authenticated:
 			signin_label.text = "Sign in Successful!"
