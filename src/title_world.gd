@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var background_audio := get_node("BackgroundAudio") as AudioStreamPlayer
-@onready var signin_label := get_node("UI/SignInLabel") as Label
+@onready var signin_label := get_node("UI/Profile/SignInLabel") as Label
 
 var _sign_in_retries := 3
 var gpgs = GodotPlayGameServices.android_plugin

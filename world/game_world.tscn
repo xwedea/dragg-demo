@@ -39,6 +39,8 @@ font_size = 52
 [sub_resource type="LabelSettings" id="LabelSettings_60knc"]
 font = ExtResource("19_2mkin")
 font_size = 100
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 1)
 
@@ -615,6 +617,7 @@ text = "PLAY"
 label_settings = ExtResource("11_ovk1l")
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="HomeButton" type="Control" parent="UI/Ending"]
 layout_mode = 1
@@ -664,6 +667,7 @@ grow_vertical = 2
 text = "HOME"
 label_settings = ExtResource("18_igon7")
 horizontal_alignment = 1
+uppercase = true
 
 [node name="Label" type="Label" parent="UI/Ending"]
 layout_mode = 1
@@ -683,6 +687,7 @@ label_settings = SubResource("LabelSettings_60knc")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+uppercase = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Ending"]
 reset_on_save = false

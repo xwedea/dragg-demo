@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cot21xrmvhxwc"]
+[gd_scene load_steps=26 format=3 uid="uid://cot21xrmvhxwc"]
 
 [ext_resource type="Script" path="res://src/title_world.gd" id="1_bon2a"]
 [ext_resource type="Script" path="res://src/title_ui.gd" id="2_gn0m2"]
@@ -11,8 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://duhqfo61ptw54" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Blue_Shaded.png" id="7_vm383"]
 [ext_resource type="AudioStream" uid="uid://ckg3w6p6m1wfv" path="res://assets-dragg/audio/background.mp3" id="8_aaaxm"]
 [ext_resource type="PackedScene" uid="uid://cnb8hge3tao55" path="res://title/title_scene.tscn" id="8_gt681"]
-[ext_resource type="Texture2D" uid="uid://dpk6u2ncm4sl4" path="res://assets-dragg/casual_ui/button/Btn_OtherButton_Hexagon01_Red.png" id="10_5s025"]
 [ext_resource type="LabelSettings" uid="uid://bwjg65ahtyke3" path="res://ui/resources/button_label_M.tres" id="10_kjjqa"]
+[ext_resource type="PackedScene" uid="uid://bv18k4me5txg6" path="res://title/learn_info.tscn" id="12_liixu"]
+[ext_resource type="LabelSettings" uid="uid://fd4h3yrctuax" path="res://ui/resources/button_label_S.tres" id="13_dv3fg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lv0bh"]
 font = ExtResource("4_ppego")
@@ -22,7 +23,9 @@ shadow_size = 15
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4x840"]
-font_size = 42
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_wdtfe"]
 
@@ -51,7 +54,7 @@ albedo_color = Color(0.788235, 0.341176, 0.976471, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_cb2s3"]
 
-[node name="World3D" type="Node3D"]
+[node name="TitleWorld" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20448, 0, 0)
 script = ExtResource("1_bon2a")
 
@@ -76,20 +79,41 @@ text = "DRAGG"
 label_settings = SubResource("LabelSettings_lv0bh")
 horizontal_alignment = 1
 
-[node name="SignInLabel" type="Label" parent="UI"]
+[node name="Profile" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SignInLabel" type="Label" parent="UI/Profile"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -184.0
-offset_top = -735.0
-offset_right = 184.0
-offset_bottom = -652.0
+offset_left = 336.0
+offset_top = 445.0
+offset_right = 704.0
+offset_bottom = 528.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_46jms")
 label_settings = SubResource("LabelSettings_4x840")
 horizontal_alignment = 1
+
+[node name="Guide" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LearnInfo" parent="UI/Guide" instance=ExtResource("12_liixu")]
+layout_mode = 1
+offset_left = 520.0
+offset_top = 926.0
+offset_right = 520.0
+offset_bottom = 926.0
 
 [node name="PlayButton" type="Control" parent="UI"]
 layout_mode = 3
@@ -140,23 +164,27 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "PLAY"
 label_settings = ExtResource("7_aah67")
+uppercase = true
 
-[node name="TutorialButton" type="Control" parent="UI"]
+[node name="HomeButton" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -239.0
-offset_bottom = -239.0
+offset_left = -340.0
+offset_top = -240.0
+offset_right = -340.0
+offset_bottom = -240.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("5_46jms")
 script = ExtResource("6_ivjkg")
-metadata/_edit_group_ = true
 
-[node name="TextureButton" type="TextureButton" parent="UI/TutorialButton"]
+[node name="TextureButton" type="TextureButton" parent="UI/HomeButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -169,10 +197,11 @@ offset_right = 158.0
 offset_bottom = 188.5
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("10_5s025")
+toggle_mode = true
+texture_normal = ExtResource("7_vm383")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="UI/TutorialButton"]
+[node name="Label" type="Label" parent="UI/HomeButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -185,8 +214,107 @@ offset_right = 21.0
 offset_bottom = 47.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "LEARN"
+text = "Home"
 label_settings = ExtResource("10_kjjqa")
+uppercase = true
+
+[node name="GuideButton" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 344.0
+offset_top = -240.0
+offset_right = 344.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_46jms")
+script = ExtResource("6_ivjkg")
+
+[node name="TextureButton" type="TextureButton" parent="UI/GuideButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -188.5
+offset_right = 158.0
+offset_bottom = 188.5
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("7_vm383")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/GuideButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -47.5
+offset_right = 21.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Guide"
+label_settings = ExtResource("10_kjjqa")
+uppercase = true
+
+[node name="ProfileButton" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -240.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_46jms")
+script = ExtResource("6_ivjkg")
+
+[node name="TextureButton" type="TextureButton" parent="UI/ProfileButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -188.5
+offset_right = 158.0
+offset_bottom = 188.5
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("7_vm383")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/ProfileButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -30.0
+offset_right = 117.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Profile"
+label_settings = ExtResource("13_dv3fg")
+uppercase = true
 
 [node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_aaaxm")
