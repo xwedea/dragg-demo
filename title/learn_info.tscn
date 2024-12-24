@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bv18k4me5txg6"]
 
 [ext_resource type="Theme" uid="uid://cw5e22i0akvq5" path="res://ui/resources/casual_theme.tres" id="1_13shc"]
-[ext_resource type="Texture2D" uid="uid://b5ds040mpnm7d" path="res://phoneholding_icon.png" id="2_tka62"]
+[ext_resource type="Texture2D" uid="uid://cl0r07djwr6w5" path="res://assets-dragg/ui/phoneholding_icon.png" id="2_tka62"]
+
 
 [sub_resource type="LabelSettings" id="LabelSettings_wp3gu"]
 font_size = 32

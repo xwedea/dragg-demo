@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5ds040mpnm7d"
-path="res://.godot/imported/phoneholding_icon.png-0724e29ae811a70e1f2f10f8bde4c602.ctex"
+uid="uid://cl0r07djwr6w5"
+path="res://.godot/imported/phoneholding_icon.png-5c8944f8ac0cb6a4e17e1fa4122fee75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://phoneholding_icon.png"
-dest_files=["res://.godot/imported/phoneholding_icon.png-0724e29ae811a70e1f2f10f8bde4c602.ctex"]
+source_file="res://assets-dragg/ui/phoneholding_icon.png"
+dest_files=["res://.godot/imported/phoneholding_icon.png-5c8944f8ac0cb6a4e17e1fa4122fee75.ctex"]
 
 [params]
 
