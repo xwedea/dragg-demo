@@ -228,7 +228,7 @@ offset_right = 158.0
 offset_bottom = 233.0
 grow_horizontal = 2
 grow_vertical = 2
-toggle_mode = true
+action_mode = 0
 texture_normal = ExtResource("7_b3vg6")
 stretch_mode = 0
 
@@ -247,6 +247,54 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Home"
 label_settings = ExtResource("10_kjjqa")
+uppercase = true
+
+[node name="ProfileButton" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -9.5
+offset_bottom = -9.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_46jms")
+script = ExtResource("6_ivjkg")
+
+[node name="TextureButton" type="TextureButton" parent="UI/ProfileButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -188.5
+offset_right = 158.0
+offset_bottom = 188.5
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+texture_normal = ExtResource("7_b3vg6")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/ProfileButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -83.0
+offset_right = 117.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Profile"
+label_settings = ExtResource("13_dv3fg")
 uppercase = true
 
 [node name="GuideButton" type="Control" parent="UI"]
@@ -278,7 +326,7 @@ offset_right = 158.0
 offset_bottom = 188.5
 grow_horizontal = 2
 grow_vertical = 2
-toggle_mode = true
+action_mode = 0
 texture_normal = ExtResource("7_b3vg6")
 stretch_mode = 0
 
@@ -297,54 +345,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Guide"
 label_settings = ExtResource("10_kjjqa")
-uppercase = true
-
-[node name="ProfileButton" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_top = -9.5
-offset_bottom = -9.5
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("5_46jms")
-script = ExtResource("6_ivjkg")
-
-[node name="TextureButton" type="TextureButton" parent="UI/ProfileButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -158.0
-offset_top = -188.5
-offset_right = 158.0
-offset_bottom = 188.5
-grow_horizontal = 2
-grow_vertical = 2
-toggle_mode = true
-texture_normal = ExtResource("7_b3vg6")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="UI/ProfileButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -117.0
-offset_top = -83.0
-offset_right = 117.0
-offset_bottom = -23.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Profile"
-label_settings = ExtResource("13_dv3fg")
 uppercase = true
 
 [node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
