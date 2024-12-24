@@ -1,6 +1,6 @@
 # Dragg Demo
 
-Dragg is a 3D rogue-lite survival game, designed to be played with one finger.
+Dragg is a 3D rogue-lite survival game.
 
 This demo includes the game mechanics and google play account integration.
 
