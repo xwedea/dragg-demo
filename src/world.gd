@@ -42,6 +42,7 @@ func handle_player_death():
 	state = GAMESTATE.ENDED
 	game_ui.handle_game_end()
 
+
 func handle_enemy_death(enemy_pos: Vector3):
 	var coin = coin_scene.instantiate()
 	coin.position = enemy_pos

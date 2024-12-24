@@ -194,8 +194,8 @@ grow_vertical = 2
 
 [node name="LearnInfo" parent="UI/Guide" instance=ExtResource("12_liixu")]
 layout_mode = 1
-offset_top = 147.0
-offset_bottom = 147.0
+offset_top = 113.0
+offset_bottom = 113.0
 
 [node name="HomeButton" type="Control" parent="UI"]
 layout_mode = 3

@@ -114,6 +114,7 @@ func handle_left_mouse_released():
 
 func die():
 	is_dead = true
+	health_bar.visible = false
 	anim_player.play("Defeat")
 	world.handle_player_death()
 

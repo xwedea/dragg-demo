@@ -3,7 +3,8 @@ extends Node
 @onready var world := get_tree().root.get_node("World3D") as World
 @onready var player := world.get_node("Player") as BaseCharacter
 
-@export var base_wait_time := 1.5
+@export var base_wait_time := 2
+@export var min_wait_time := 0.2
 @export var enemy_limit := 100
 
 static var enemy_scene := preload("res://enemy/base_enemy.tscn")
@@ -38,10 +39,20 @@ func spawn_enemy() -> BaseEnemy:
 	world.enemy_count += 1
 	return new_enemy
 
+func spawn_enemies(count):
+	for i in range(count):
+		spawn_enemy()
+
 func _on_spawn_timer_timeout():
 	if world.state == world.GAMESTATE.PLAYING and world.enemy_count < enemy_limit:
 		spawn_enemy()
+
 	timer.start()
 
-	var new_wait_time : float = base_wait_time - world.time * 0.002
-	timer.wait_time = new_wait_time
+	# var subtraction = min(base_wait_time, world.time / (60 * 100))
+	var wait_time = max(min_wait_time, base_wait_time - world.time / (60 * 5))
+
+	print("%.1f" % world.time + " : " + "%.4f" % wait_time)
+	
+	timer.wait_time = wait_time
+
